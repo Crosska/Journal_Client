@@ -20,10 +20,8 @@ namespace Journal_Client
             internal string IP;
             internal string Port;
             internal string DatabaseName;
-            internal void ShowAllInfo()
-            {
-                MessageBox.Show($"IP: {IP}\nPort: {Port}\nDatabaseName: {DatabaseName}");
-            }
+            internal string User;
+            internal string Password;
         }
         private Server ConData;
 
@@ -33,11 +31,13 @@ namespace Journal_Client
             ConData.IP = "192.168.23.100";
             ConData.Port = "5432";
             ConData.DatabaseName = "postgres";
-            ok_button.Enabled = false;
-            text_connect.Text = "Подключение успешное";
-            timer1.Interval = 500; // 500 миллисекунд
-            timer1.Enabled = true;
-            timer1.Tick += timer1_Tick;
+            ConData.User = "root";
+            ConData.Password = "Qwerty2";
+            button_ok.Enabled = false;
+            label_connect.Text = "Подключение успешное";
+            timer_fake_progress.Interval = 500; // 0,5 секунды
+            timer_fake_progress.Enabled = true;
+            timer_fake_progress.Tick += timer1_Tick;
             progress_bar.Minimum = 0;
             progress_bar.Maximum = 100;
         }
@@ -70,8 +70,8 @@ namespace Journal_Client
             progress_bar.Value += 10;
             if (progress_bar.Value == 100)
             {
-                timer1.Stop();
-                ok_button.Enabled = true;
+                timer_fake_progress.Stop();
+                button_ok.Enabled = true;
             }
                             
         }
