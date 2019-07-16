@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Journal_Client
 {
-    public partial class Form1 : Form
+    public partial class DatabaseConnection : Form
     {
-        public Form1()
+        public DatabaseConnection()
         {
             InitializeComponent();
         }
