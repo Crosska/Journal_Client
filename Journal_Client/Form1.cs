@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace Journal_Client
     public partial class DatabaseConnection : Form
     {
 
+
         private struct Server
         {
             internal string IP;
@@ -24,7 +26,6 @@ namespace Journal_Client
             }
         }
         private Server ConData;
-
 
         public DatabaseConnection()
         {
@@ -39,6 +40,20 @@ namespace Journal_Client
             string login = Operator_login_online.Text;
             string password = Operator_password_online.Text;
             MessageBox.Show("Введенный логин = " + login + "\nВведенный пароль = " + password);
+            String conString = "Server=" + ConData.IP + ";Port=" + ConData.Port + ";UserID=" + login + ";Password=" + password + ";Database=" + ConData.DatabaseName + ";";
+            MessageBox.Show(conString);
+            try
+            {
+                NpgsqlConnection database = new NpgsqlConnection(conString);
+                database.Open();
+                MessageBox.Show("Подключение прошло успешно");
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.ToString());
+            }
         }
+
+
     }
 }
