@@ -74,6 +74,46 @@ namespace Journal_Client
             }
 
         }
+
+        private void UpdateAllData() {
+            String conString = "Server=localhost;Port=5432;UserID=localroot;Password=Qwerty2;Database=postgres;";
+            NpgsqlConnection database = new NpgsqlConnection(conString);
+            try // Синхронизация "Районов"
+            {
+                database.Open();
+                string SQLCommand = "select \"Район\" from \"Район\"";
+                NpgsqlCommand cmd;
+                cmd = new NpgsqlCommand(SQLCommand, database);
+                DataTable TempTable = new DataTable();
+                TempTable.Load(cmd.ExecuteReader());
+                database.Close();
+                for (int i = 0; i < TempTable.Rows.Count; i++)
+                {
+                    try
+                    {
+                        SQLCommand = "INSERT INTO \"Район\" VALUES (  ," + TempTable.Rows[i] + ")";
+                        cmd = new NpgsqlCommand(SQLCommand, database);
+                        cmd.Prepare();
+                        cmd.CommandType = CommandType.Text;
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+            }
+            finally
+            {
+                database.Close();
+            }
+        }
+
+
     }
   
 }
