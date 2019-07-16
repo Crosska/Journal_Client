@@ -33,7 +33,6 @@
             this.label_connect = new System.Windows.Forms.Label();
             this.button_ok = new System.Windows.Forms.Button();
             this.timer_fake_progress = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // progress_bar
@@ -65,31 +64,21 @@
             this.button_ok.UseVisualStyleBackColor = true;
             this.button_ok.Click += new System.EventHandler(this.Button_Ok_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(200, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 19);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Загрузка";
-            // 
             // DatabaseConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(498, 159);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button_ok);
             this.Controls.Add(this.label_connect);
             this.Controls.Add(this.progress_bar);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DatabaseConnection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Подключение к журналу";
+            this.Load += new System.EventHandler(this.DatabaseConnection_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,7 +90,6 @@
         private System.Windows.Forms.Label label_connect;
         private System.Windows.Forms.Button button_ok;
         private System.Windows.Forms.Timer timer_fake_progress;
-        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.combocox_rayon = new System.Windows.Forms.ComboBox();
+            this.combobox_rayon = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button_ok = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // combocox_rayon
+            // combobox_rayon
             // 
-            this.combocox_rayon.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.combocox_rayon.FormattingEnabled = true;
-            this.combocox_rayon.Location = new System.Drawing.Point(17, 57);
-            this.combocox_rayon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.combocox_rayon.Name = "combocox_rayon";
-            this.combocox_rayon.Size = new System.Drawing.Size(250, 25);
-            this.combocox_rayon.TabIndex = 0;
+            this.combobox_rayon.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.combobox_rayon.FormattingEnabled = true;
+            this.combobox_rayon.Location = new System.Drawing.Point(17, 57);
+            this.combobox_rayon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.combobox_rayon.Name = "combobox_rayon";
+            this.combobox_rayon.Size = new System.Drawing.Size(250, 25);
+            this.combobox_rayon.TabIndex = 0;
             // 
             // label1
             // 
@@ -64,6 +64,7 @@
             this.button_ok.TabIndex = 2;
             this.button_ok.Text = "OK";
             this.button_ok.UseVisualStyleBackColor = true;
+            this.button_ok.Click += new System.EventHandler(this.Button_ok_Click);
             // 
             // DatabaseChooseRayon
             // 
@@ -72,7 +73,7 @@
             this.ClientSize = new System.Drawing.Size(282, 155);
             this.Controls.Add(this.button_ok);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.combocox_rayon);
+            this.Controls.Add(this.combobox_rayon);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DatabaseChooseRayon";
@@ -86,7 +87,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox combocox_rayon;
+        private System.Windows.Forms.ComboBox combobox_rayon;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_ok;
     }

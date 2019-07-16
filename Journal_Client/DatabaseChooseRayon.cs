@@ -63,7 +63,7 @@ namespace Journal_Client
                 {
                     ListRayon.Add(TempTable.Rows[i].Field<string>(0));
                 }
-                combocox_rayon.DataSource = new BindingSource(ListRayon, null);
+                combobox_rayon.DataSource = new BindingSource(ListRayon, null);
             }
             catch
             {
@@ -80,5 +80,10 @@ namespace Journal_Client
             Application.Exit();
         }
 
+        private void Button_ok_Click(object sender, EventArgs e)
+        {
+            DatabaseControlPanel ControlForm = new DatabaseControlPanel(combobox_rayon.SelectedItem.ToString());
+            ControlForm.ShowDialog();
+        }
     }
 }

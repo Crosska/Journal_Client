@@ -113,7 +113,10 @@ namespace Journal_Client
             }
         }
 
+        private void DatabaseConnection_Load(object sender, EventArgs e)
+        {
 
+        }
     }
   
 }

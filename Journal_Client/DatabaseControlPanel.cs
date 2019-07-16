@@ -12,9 +12,12 @@ namespace Journal_Client
 {
     public partial class DatabaseControlPanel : Form
     {
-        public DatabaseControlPanel()
+        private string rayon;
+        public DatabaseControlPanel(string rayon_received)
         {
             InitializeComponent();
+            rayon = rayon_received;
+            MessageBox.Show(rayon);
         }
 
        
