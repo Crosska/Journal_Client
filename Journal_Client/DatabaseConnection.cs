@@ -43,7 +43,9 @@ namespace Journal_Client
 
         private void Button1_Click(object sender, EventArgs e)
         {
-
+            this.Visible = false;
+            DatabaseChooseRayon RayonForm = new DatabaseChooseRayon();
+            RayonForm.Show();
         }
         // обработчик события Tick таймера
         void timer1_Tick(object sender, EventArgs e)
@@ -54,7 +56,7 @@ namespace Journal_Client
                 timer_fake_progress.Stop();
                 button_ok.Enabled = true;
                 String conString = "Server=" + ConData.IP + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-                MessageBox.Show(conString);
+               // MessageBox.Show(conString);
                 NpgsqlConnection database = new NpgsqlConnection(conString);
                 try
                 {
@@ -62,8 +64,8 @@ namespace Journal_Client
                     database.Open();
                     label_connect.Text = "Подключение успешное";
                     MessageBox.Show("Подключение прошло успешно");
-                    this.Visible = false;
-
+                    
+                    
                 }
                 catch (Exception error)
                 {

@@ -82,6 +82,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DatabaseChooseRayon.resx">
+      <DependentUpon>DatabaseChooseRayon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DatabaseConnection.resx">
       <DependentUpon>DatabaseConnection.cs</DependentUpon>
     </EmbeddedResource>

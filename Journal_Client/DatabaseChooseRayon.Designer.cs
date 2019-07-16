@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.combocox_rayon = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // combocox_rayon
+            // 
+            this.combocox_rayon.FormattingEnabled = true;
+            this.combocox_rayon.Location = new System.Drawing.Point(264, 116);
+            this.combocox_rayon.Name = "combocox_rayon";
+            this.combocox_rayon.Size = new System.Drawing.Size(121, 21);
+            this.combocox_rayon.TabIndex = 0;
+            // 
+            // DatabaseChooseRayon
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "DatabaseChooseRayon";
+            this.Controls.Add(this.combocox_rayon);
+            this.Name = "DatabaseChooseRayon";
+            this.Text = "Выбор района";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CloseAll);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ComboBox combocox_rayon;
     }
 }
