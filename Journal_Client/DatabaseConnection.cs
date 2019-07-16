@@ -55,20 +55,22 @@ namespace Journal_Client
                 button_ok.Enabled = true;
                 String conString = "Server=" + ConData.IP + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
                 MessageBox.Show(conString);
+                NpgsqlConnection database = new NpgsqlConnection(conString);
                 try
                 {
-                    NpgsqlConnection database = new NpgsqlConnection(conString);
+                    
                     database.Open();
                     label_connect.Text = "Подключение успешное";
                     MessageBox.Show("Подключение прошло успешно");
-                    //this.Visible = false;
-                    
+                    this.Visible = false;
+
                 }
                 catch (Exception error)
                 {
                     MessageBox.Show("Ошибка подключения");
                     label_connect.Text = "Ошибка подключения";
                 }
+                finally { database.Close(); }
             }
 
         }
