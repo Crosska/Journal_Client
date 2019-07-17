@@ -28,39 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.combobox_rayon = new System.Windows.Forms.ComboBox();
+            this.combobox_district = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button_ok = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // combobox_rayon
+            // combobox_district
             // 
-            this.combobox_rayon.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.combobox_rayon.FormattingEnabled = true;
-            this.combobox_rayon.Location = new System.Drawing.Point(17, 57);
-            this.combobox_rayon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.combobox_rayon.Name = "combobox_rayon";
-            this.combobox_rayon.Size = new System.Drawing.Size(250, 25);
-            this.combobox_rayon.TabIndex = 0;
+            this.combobox_district.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.combobox_district.FormattingEnabled = true;
+            this.combobox_district.Items.AddRange(new object[] {
+            "Гвардейский",
+            "Горняцкий",
+            "Кировский",
+            "Советский",
+            "Центральный"});
+            this.combobox_district.Location = new System.Drawing.Point(12, 56);
+            this.combobox_district.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.combobox_district.Name = "combobox_district";
+            this.combobox_district.Size = new System.Drawing.Size(275, 25);
+            this.combobox_district.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(21, 19);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(243, 22);
+            this.label1.Size = new System.Drawing.Size(370, 25);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Выберите район города";
+            this.label1.Text = "Выберите необходимый сервер";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button_ok
             // 
             this.button_ok.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_ok.Location = new System.Drawing.Point(17, 105);
+            this.button_ok.Location = new System.Drawing.Point(293, 56);
             this.button_ok.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_ok.Name = "button_ok";
-            this.button_ok.Size = new System.Drawing.Size(250, 37);
+            this.button_ok.Size = new System.Drawing.Size(89, 26);
             this.button_ok.TabIndex = 2;
             this.button_ok.Text = "OK";
             this.button_ok.UseVisualStyleBackColor = true;
@@ -70,16 +76,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 155);
+            this.ClientSize = new System.Drawing.Size(394, 94);
             this.Controls.Add(this.button_ok);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.combobox_rayon);
+            this.Controls.Add(this.combobox_district);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DatabaseChooseRayon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Выбор района";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CloseAll);
+            this.Text = "Выбор сервера";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -87,7 +92,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox combobox_rayon;
+        private System.Windows.Forms.ComboBox combobox_district;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_ok;
     }

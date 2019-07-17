@@ -16,7 +16,7 @@ namespace Journal_Client
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DatabaseConnection());
+            Application.Run(new DatabaseChooseRayon());
         }
     }
 }

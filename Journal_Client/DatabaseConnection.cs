@@ -14,27 +14,32 @@ namespace Journal_Client
     public partial class DatabaseConnection : Form
     {
 
-        private bool online = true;
+        private string ServerIP = "";
 
-        private struct Server
-        {
-            internal string IP;
-            internal string Port;
-            internal string DatabaseName;
-            internal string User;
-            internal string Password;
-        }
-        private Server ConData;
-
-        public DatabaseConnection()
+        public DatabaseConnection(int chosen_district_received)
         {
             InitializeComponent();
-            ConData.IP = "192.168.23.100";
-            ConData.Port = "5432";
-            ConData.DatabaseName = "postgres";
-            ConData.User = "root";
-            ConData.Password = "Qwerty2";
-            button_ok.Enabled = false;
+            switch (chosen_district_received)
+            {
+                case 0:
+                    ServerIP = "192.168.85.250"; // Гвардейский
+                    break;
+                case 1:
+                    ServerIP = "192.168.82.250"; // Горняцкий
+                    break;
+                case 2:
+                    ServerIP = "192.168.1.250"; // Кировский
+                    break;
+                case 3:
+                    ServerIP = "192.168.87.250"; // Советский
+                    break;
+                case 4:
+                    ServerIP = "192.168.88.250"; // Центральный
+                    break;
+                default:
+                    MessageBox.Show("Произошла ошибка при передаче выбранного сервера в программу");
+                    break;
+            }
             timer_fake_progress.Interval = 400; // 0,4 секунды
             timer_fake_progress.Enabled = true;
             timer_fake_progress.Tick += timer_Tick;
@@ -42,80 +47,21 @@ namespace Journal_Client
             progress_bar.Maximum = 100;
         }
 
-        private void Button_Ok_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            DatabaseChooseRayon RayonForm = new DatabaseChooseRayon(online);
-            RayonForm.Show();
-        }
-
         void timer_Tick(object sender, EventArgs e)
         {
-            progress_bar.Value += 10;
+            progress_bar.Value += 20;
             if (progress_bar.Value == 100)
             {
                 timer_fake_progress.Stop();
-                button_ok.Enabled = true;
-                String conString = "Server=" + ConData.IP + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-                //MessageBox.Show(conString);
-                NpgsqlConnection database = new NpgsqlConnection(conString);
-                try
-                {
-                    database.Open();
-                    label_connect.Text = "Подключение прошло успешно";
-                }
-                catch
-                {
-                    online = false;
-                    MessageBox.Show("Ошибка подключения");
-                    label_connect.Text = "Подключение к оффлайн базе данных";
-                }
-                finally { database.Close(); }
-            }
-
-        }
-
-        private void UpdateAllData() {
-            String conString = "Server=localhost;Port=5432;UserID=localroot;Password=Qwerty2;Database=postgres;";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
-            try // Синхронизация "Районов"
-            {
-                database.Open();
-                string SQLCommand = "select \"Район\" from \"Район\"";
-                NpgsqlCommand cmd;
-                cmd = new NpgsqlCommand(SQLCommand, database);
-                DataTable TempTable = new DataTable();
-                TempTable.Load(cmd.ExecuteReader());
-                database.Close();
-                for (int i = 0; i < TempTable.Rows.Count; i++)
-                {
-                    try
-                    {
-                        SQLCommand = "INSERT INTO \"Район\" VALUES (  ," + TempTable.Rows[i] + ")";
-                        cmd = new NpgsqlCommand(SQLCommand, database);
-                        cmd.Prepare();
-                        cmd.CommandType = CommandType.Text;
-                        cmd.ExecuteNonQuery();
-                    }
-                    catch
-                    {
-                        
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
-            }
-            finally
-            {
-                database.Close();
+                this.Visible = false;
+                DatabaseControlPanel ControlForm = new DatabaseControlPanel(ServerIP);
+                ControlForm.Show();
             }
         }
 
-        private void DatabaseConnection_Load(object sender, EventArgs e)
+        private void form_closed(object sender, FormClosedEventArgs e)
         {
-
+            Application.Exit();
         }
     }
   

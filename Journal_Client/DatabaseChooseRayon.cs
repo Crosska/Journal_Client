@@ -15,9 +15,7 @@ namespace Journal_Client
     public partial class DatabaseChooseRayon : Form
     {
 
-        private bool online;
-
-        private struct Server
+        /*private struct Server
         {
             internal string IP;
             internal string Port;
@@ -25,17 +23,17 @@ namespace Journal_Client
             internal string User;
             internal string Password;
         }
-        private Server ConData;
+        private Server ConData;*/
 
-        public DatabaseChooseRayon(bool online_received)
+        public DatabaseChooseRayon()
         {
             InitializeComponent();
-            ConData.IP = "192.168.23.100";
+            combobox_district.SelectedIndex = 0;
+            /*ConData.IP = "192.168.23.100";
             ConData.Port = "5432";
             ConData.DatabaseName = "postgres";
             ConData.User = "root";
             ConData.Password = "Qwerty2";
-            online = online_received;
             String conString = "";
             switch (online)
             {
@@ -63,7 +61,7 @@ namespace Journal_Client
                 {
                     ListRayon.Add(TempTable.Rows[i].Field<string>(0));
                 }
-                combobox_rayon.DataSource = new BindingSource(ListRayon, null);
+                combobox_district.DataSource = new BindingSource(ListRayon, null);
             }
             catch
             {
@@ -72,18 +70,16 @@ namespace Journal_Client
             finally
             {
                 database.Close();
-            }
-        }
-
-        private void CloseAll(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
+            }*/
         }
 
         private void Button_ok_Click(object sender, EventArgs e)
         {
-            DatabaseControlPanel ControlForm = new DatabaseControlPanel(combobox_rayon.SelectedItem.ToString());
-            ControlForm.ShowDialog();
+            int chosen_district = combobox_district.SelectedIndex;
+            MessageBox.Show(chosen_district.ToString());
+            this.Visible = false;
+            DatabaseConnection ConnectionForm = new DatabaseConnection(chosen_district);
+            ConnectionForm.ShowDialog();
         }
     }
 }
