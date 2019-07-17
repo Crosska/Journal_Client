@@ -86,6 +86,12 @@
     <Compile Include="DatabaseControlPanel.Designer.cs">
       <DependentUpon>DatabaseControlPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseRegistryArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseRegistryArea.Designer.cs">
+      <DependentUpon>DatabaseRegistryArea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DatabaseChooseRayon.resx">
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseControlPanel.resx">
       <DependentUpon>DatabaseControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseRegistryArea.resx">
+      <DependentUpon>DatabaseRegistryArea.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

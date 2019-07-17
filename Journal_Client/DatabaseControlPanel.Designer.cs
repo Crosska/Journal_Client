@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_registry_area = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -40,16 +40,17 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // button_registry_area
             // 
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(7, 23);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(229, 65);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Регистрация участков";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_registry_area.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_registry_area.Location = new System.Drawing.Point(7, 23);
+            this.button_registry_area.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_registry_area.Name = "button_registry_area";
+            this.button_registry_area.Size = new System.Drawing.Size(229, 65);
+            this.button_registry_area.TabIndex = 0;
+            this.button_registry_area.Text = "Регистрация участков";
+            this.button_registry_area.UseVisualStyleBackColor = true;
+            this.button_registry_area.Click += new System.EventHandler(this.Button_registry_area_Click);
             // 
             // button2
             // 
@@ -85,7 +86,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.button_registry_area);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -155,7 +156,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_registry_area;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
