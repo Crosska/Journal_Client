@@ -24,6 +24,8 @@ namespace Journal_Client
         }
         private Database ConData = new Database();
 
+        private string DistrictName = "";
+
         public DatabaseRegistryArea(string ServerIP_received)
         {
             InitializeComponent();
@@ -33,6 +35,27 @@ namespace Journal_Client
             ConData.User = "root";
             ConData.Password = "Qwerty2";
             datagridtable_streets.RowHeadersVisible = false;
+            switch (ConData.IP)
+            {
+                case "192.168.85.250":
+                    DistrictName = "Гвардейский";
+                    break;
+                case "192.168.82.250":
+                    DistrictName = "Горняцкий";
+                    break;
+                case "192.168.1.250":
+                    DistrictName = "Кировский";
+                    break;
+                case "192.168.87.250":
+                    DistrictName = "Советский";
+                    break;
+                case "192.168.88.250":
+                    DistrictName = "Центральный";
+                    break;
+                default:
+                    MessageBox.Show("Произошла ошибка при передаче IP адреса сервера в программу");
+                    break;
+            }
             show_streets_for_date();
         }
 
@@ -56,7 +79,8 @@ namespace Journal_Client
                 string SQLCommand = "SELECT \"Улица\" FROM \"Участок\" " +
                 "INNER JOIN \"Улица\" ON \"Участок\".\"#Код улицы\" = \"Улица\".\"#Код улицы\" " +
                 "INNER JOIN \"Дата обхода\" ON \"Участок\".\"#Код даты\" = \"Дата обхода\".\"#Код даты\" " +
-                "WHERE \"Дата обхода\".\"Дата\" = '" + chosen_date_sql + "'";
+                "INNER JOIN \"Район\" ON \"Дата обхода\".\"#Код района\" = \"Район\".\"#Код района\" " +
+                "WHERE \"Дата обхода\".\"Дата\" = '" + chosen_date_sql + "' AND \"Район\" = '" + DistrictName + "' ";
                 //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(SQLCommand, database);
@@ -74,8 +98,17 @@ namespace Journal_Client
                 database.Close();
             }
 
-
         }
 
+        private void Button_add_Click(object sender, EventArgs e)
+        {
+            DatabaseAddStreet AddStreetForm = new DatabaseAddStreet(datetime_show.Value, DistrictName);
+            AddStreetForm.ShowDialog();
+        }
+
+        private void RefreshTable(object sender, EventArgs e)
+        {
+            show_streets_for_date();
+        }
     }
 }

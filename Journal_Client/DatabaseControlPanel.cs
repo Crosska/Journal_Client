@@ -20,7 +20,7 @@ namespace Journal_Client
         {
             InitializeComponent();
             ServerIP = ServerIP_received;
-            MessageBox.Show(ServerIP);
+            //MessageBox.Show(ServerIP);
             switch (ServerIP)
             {
                 case "192.168.85.250":

@@ -68,6 +68,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseAddStreet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseAddStreet.Designer.cs">
+      <DependentUpon>DatabaseAddStreet.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseChooseRayon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DatabaseAddStreet.resx">
+      <DependentUpon>DatabaseAddStreet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DatabaseChooseRayon.resx">
       <DependentUpon>DatabaseChooseRayon.cs</DependentUpon>
     </EmbeddedResource>

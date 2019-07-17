@@ -76,7 +76,7 @@ namespace Journal_Client
         private void Button_ok_Click(object sender, EventArgs e)
         {
             int chosen_district = combobox_district.SelectedIndex;
-            MessageBox.Show(chosen_district.ToString());
+            //MessageBox.Show(chosen_district.ToString());
             this.Visible = false;
             DatabaseConnection ConnectionForm = new DatabaseConnection(chosen_district);
             ConnectionForm.ShowDialog();
