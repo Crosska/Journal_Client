@@ -54,5 +54,11 @@ namespace Journal_Client
             DatabaseRegistryArea registry_area_form = new DatabaseRegistryArea(ServerIP);
             registry_area_form.Show();
         }
+
+        private void Button_registry_request_Click(object sender, EventArgs e)
+        {
+            DatabaseRegistryRequest registry_request_form = new DatabaseRegistryRequest(label_server.Text);
+            registry_request_form.Show();
+        }
     }
 }

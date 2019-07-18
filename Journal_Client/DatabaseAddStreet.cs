@@ -15,7 +15,6 @@ namespace Journal_Client
     {
         struct Database
         {
-            public string IP;
             public string Port;
             public string DatabaseName;
             public string User;

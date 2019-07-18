@@ -98,6 +98,12 @@
     <Compile Include="DatabaseRegistryArea.Designer.cs">
       <DependentUpon>DatabaseRegistryArea.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseRegistryRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseRegistryRequest.Designer.cs">
+      <DependentUpon>DatabaseRegistryRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DatabaseAddStreet.resx">
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseRegistryArea.resx">
       <DependentUpon>DatabaseRegistryArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseRegistryRequest.resx">
+      <DependentUpon>DatabaseRegistryRequest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

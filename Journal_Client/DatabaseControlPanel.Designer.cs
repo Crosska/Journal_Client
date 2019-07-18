@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.button_registry_area = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button_registry_request = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -52,16 +52,17 @@
             this.button_registry_area.UseVisualStyleBackColor = true;
             this.button_registry_area.Click += new System.EventHandler(this.Button_registry_area_Click);
             // 
-            // button2
+            // button_registry_request
             // 
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(7, 96);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(229, 65);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Журнал регистрации заявок";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_registry_request.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_registry_request.Location = new System.Drawing.Point(7, 96);
+            this.button_registry_request.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_registry_request.Name = "button_registry_request";
+            this.button_registry_request.Size = new System.Drawing.Size(229, 65);
+            this.button_registry_request.TabIndex = 1;
+            this.button_registry_request.Text = "Журнал регистрации заявок";
+            this.button_registry_request.UseVisualStyleBackColor = true;
+            this.button_registry_request.Click += new System.EventHandler(this.Button_registry_request_Click);
             // 
             // button3
             // 
@@ -87,7 +88,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button_registry_area);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button_registry_request);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 35);
@@ -157,7 +158,7 @@
         #endregion
 
         private System.Windows.Forms.Button button_registry_area;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_registry_request;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox1;
