@@ -76,11 +76,10 @@ namespace Journal_Client
             try
             {
                 database.Open();
-                string SQLCommand = "SELECT \"Улица\" FROM \"Участок\" " +
-                "INNER JOIN \"Улица\" ON \"Участок\".\"#Код улицы\" = \"Улица\".\"#Код улицы\" " +
-                "INNER JOIN \"Дата обхода\" ON \"Участок\".\"#Код даты\" = \"Дата обхода\".\"#Код даты\" " +
-                "INNER JOIN \"Район\" ON \"Дата обхода\".\"#Код района\" = \"Район\".\"#Код района\" " +
-                "WHERE \"Дата обхода\".\"Дата\" = '" + chosen_date_sql + "' AND \"Район\" = '" + DistrictName + "' ";
+                string SQLCommand = "SELECT \"Улица\" FROM \"Улица\" " +
+                "INNER JOIN \"Район\" ON \"Улица\".\"#Код района\" = \"Район\".\"#Код района\" " +
+                "INNER JOIN \"Участок\" ON \"Улица\".\"#Код улицы\" = \"Участок\".\"#Код улицы\" " +
+                "WHERE \"Район\" = '" + DistrictName + "' AND \"Дата обхода\" = '" + chosen_date_sql + "' ";
                 //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(SQLCommand, database);

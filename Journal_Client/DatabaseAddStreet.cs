@@ -75,15 +75,15 @@ namespace Journal_Client
         private void Button_add_Click(object sender, EventArgs e)
         {
             string street_code = get_street_code();
-            string date_code = get_date_code();
+            string date = date_active.Value.ToShortDateString();
             string conString = "Server=" + /*IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
                 database.Open();
-                string SQLCommand = "INSERT INTO \"Участок\" VALUES (" + date_code + ", " + street_code + " )";
-                //MessageBox.Show(SQLCommand);
+                string SQLCommand = "INSERT INTO \"Участок\" (\"#Код улицы\", \"Дата обхода\") VALUES (" + street_code + ", '" + date + "' )";
+                MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd.Prepare();
@@ -108,15 +108,11 @@ namespace Journal_Client
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
-                string chosen_street_sql = combobox_streets.SelectedItem.ToString();
                 DataTable temp_table = new DataTable();
                 database.Open();
-                string SQLCommand = "SELECT \"Улица\".\"#Код улицы\" FROM \"Улица\" " +
-                "INNER JOIN \"Участок\" ON \"Улица\".\"#Код улицы\" = \"Участок\".\"#Код улицы\" " +
-                "INNER JOIN \"Дата обхода\" ON \"Участок\".\"#Код даты\" = \"Дата обхода\".\"#Код даты\" " +
-                "INNER JOIN \"Район\" ON \"Дата обхода\".\"#Код района\" = \"Район\".\"#Код района\" " +
-                "WHERE \"Улица\" = '" + combobox_streets.SelectedItem.ToString() + "' AND \"Район\" = '" + DistrictName + "' " +
-                "GROUP BY \"Улица\".\"#Код улицы\" ";
+                string SQLCommand = "SELECT \"#Код улицы\" FROM \"Улица\" " +
+                "INNER JOIN \"Район\" ON \"Улица\".\"#Код района\" = \"Район\".\"#Код района\" " +
+                "WHERE \"Район\" = '" + DistrictName + "' and \"Улица\" = '" + combobox_streets.SelectedItem.ToString() + "' ";
                 //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table.Load(cmd.ExecuteReader());
@@ -133,35 +129,6 @@ namespace Journal_Client
             return street_code;
         }
 
-        private string get_date_code()
-        {
-            string date_code = "";
-            string conString = "Server=" + /*IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
-            try
-            {
-                string chosen_street_sql = combobox_streets.SelectedItem.ToString();
-                DataTable temp_table = new DataTable();
-                database.Open();
-                string SQLCommand = " SELECT \"Дата обхода\".\"#Код даты\" FROM \"Дата обхода\" " +
-                "INNER JOIN \"Район\" ON \"Дата обхода\".\"#Код района\" = \"Район\".\"#Код района\" " +
-                "WHERE \"Район\" = '" + DistrictName + "' AND \"Дата\" = '" + date_active.Value.ToShortDateString() + "' ";
-                //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
-                temp_table.Load(cmd.ExecuteReader());
-                date_code = temp_table.Rows[0].Field<int>(0).ToString();
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
-            }
-            finally
-            {
-                database.Close();
-            }
-            return date_code;
-        }
-
         private void getStreets(string IP)
         {
             string conString = "";
@@ -172,11 +139,9 @@ namespace Journal_Client
                 
                 DataTable temp_table = new DataTable();
                 database.Open();
-                string SQLCommand = "SELECT \"Улица\" FROM \"Участок\" " +
-                    "INNER JOIN \"Улица\" ON \"Участок\".\"#Код улицы\" = \"Улица\".\"#Код улицы\" " +
-                    "INNER JOIN \"Дата обхода\" ON \"Участок\".\"#Код даты\" = \"Дата обхода\".\"#Код даты\" " +
-                    "INNER JOIN \"Район\" ON \"Дата обхода\".\"#Код района\" = \"Район\".\"#Код района\" " +
-                    "WHERE \"Район\" = '" + DistrictName + "' ";
+                string SQLCommand = "SELECT \"Улица\" FROM \"Улица\" " +
+                "INNER JOIN \"Район\" ON \"Улица\".\"#Код района\" = \"Район\".\"#Код района\" " +
+                "WHERE \"Район\" = '" + DistrictName + "'";
                 //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table.Load(cmd.ExecuteReader());

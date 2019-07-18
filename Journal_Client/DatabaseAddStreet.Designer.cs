@@ -109,6 +109,8 @@
             // 
             // combobox_streets
             // 
+            this.combobox_streets.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.combobox_streets.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combobox_streets.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.combobox_streets.FormattingEnabled = true;
             this.combobox_streets.Location = new System.Drawing.Point(178, 66);
