@@ -49,6 +49,8 @@
             this.button_add = new System.Windows.Forms.Button();
             this.button_close = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.datetime_show = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericupdown_payment)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -75,7 +77,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(253, 330);
+            this.groupBox1.Size = new System.Drawing.Size(253, 344);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Данные";
@@ -177,6 +179,7 @@
             this.combobox_street.Name = "combobox_street";
             this.combobox_street.Size = new System.Drawing.Size(236, 25);
             this.combobox_street.TabIndex = 4;
+            this.combobox_street.SelectedIndexChanged += new System.EventHandler(this.street_changed);
             // 
             // label3
             // 
@@ -196,14 +199,15 @@
             // 
             // calendar_application_submission
             // 
-            this.calendar_application_submission.Location = new System.Drawing.Point(12, 58);
+            this.calendar_application_submission.Location = new System.Drawing.Point(13, 40);
             this.calendar_application_submission.Name = "calendar_application_submission";
             this.calendar_application_submission.TabIndex = 0;
+            this.calendar_application_submission.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.selected_new_date);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.combobox_processing_date);
-            this.groupBox2.Location = new System.Drawing.Point(281, 261);
+            this.groupBox2.Location = new System.Drawing.Point(281, 275);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(188, 82);
             this.groupBox2.TabIndex = 1;
@@ -221,38 +225,60 @@
             // button_add
             // 
             this.button_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button_add.Location = new System.Drawing.Point(241, 349);
+            this.button_add.Location = new System.Drawing.Point(241, 364);
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(228, 44);
             this.button_add.TabIndex = 2;
             this.button_add.Text = "Добавить";
             this.button_add.UseVisualStyleBackColor = false;
+            this.button_add.Click += new System.EventHandler(this.Button_add_Click);
             // 
             // button_close
             // 
             this.button_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button_close.Location = new System.Drawing.Point(12, 349);
+            this.button_close.Location = new System.Drawing.Point(11, 364);
             this.button_close.Name = "button_close";
             this.button_close.Size = new System.Drawing.Size(224, 44);
             this.button_close.TabIndex = 3;
             this.button_close.Text = "Закрыть";
             this.button_close.UseVisualStyleBackColor = false;
+            this.button_close.Click += new System.EventHandler(this.Button_close_Click);
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.datetime_show);
+            this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.calendar_application_submission);
             this.groupBox3.Location = new System.Drawing.Point(281, 13);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(188, 242);
+            this.groupBox3.Size = new System.Drawing.Size(188, 256);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Выбрать дату подачи заявки";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(9, 203);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 17);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Выбранная дата";
+            // 
+            // datetime_show
+            // 
+            this.datetime_show.Enabled = false;
+            this.datetime_show.Location = new System.Drawing.Point(12, 223);
+            this.datetime_show.Name = "datetime_show";
+            this.datetime_show.Size = new System.Drawing.Size(163, 24);
+            this.datetime_show.TabIndex = 18;
             // 
             // DatabaseRegistryRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 404);
+            this.ClientSize = new System.Drawing.Size(478, 420);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.button_close);
             this.Controls.Add(this.button_add);
@@ -268,6 +294,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericupdown_payment)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -295,5 +322,7 @@
         private System.Windows.Forms.Button button_add;
         private System.Windows.Forms.Button button_close;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DateTimePicker datetime_show;
+        private System.Windows.Forms.Label label1;
     }
 }
