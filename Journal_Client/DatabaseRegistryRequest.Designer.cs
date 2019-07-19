@@ -112,10 +112,17 @@
             // 
             // numericupdown_payment
             // 
+            this.numericupdown_payment.DecimalPlaces = 2;
             this.numericupdown_payment.Location = new System.Drawing.Point(6, 295);
+            this.numericupdown_payment.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numericupdown_payment.Name = "numericupdown_payment";
             this.numericupdown_payment.Size = new System.Drawing.Size(236, 24);
             this.numericupdown_payment.TabIndex = 14;
+            this.numericupdown_payment.ThousandsSeparator = true;
             // 
             // combobox_type_application
             // 

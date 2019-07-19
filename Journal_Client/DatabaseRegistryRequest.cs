@@ -142,13 +142,14 @@ namespace Journal_Client
                 string SQLCommand = "INSERT INTO \"Журнал регистраций\" (\"#Код участка\", \"Дата подачи заявки\", \"ФИО потребителя\", \"Улица\", " +
                 "\"Дом\", \"Квартира\", \"Оплата\", \"Дата обработки\", \"Лицевой счет\", \"#Код вида заявки\") " +
                 "VALUES(" + district_code + ", '" + datetime_show.Value.ToShortDateString() + "', '" + textbox_fio.Text + "', '" + combobox_street.SelectedItem.ToString() + "'," +
-                " '" + textbox_house.Text + "', '" + textbox_flat.Text + "'," + numericupdown_payment.Value + " , '" + combobox_processing_date.SelectedItem.ToString() + "', " + textbox_personal_account.Text + ", " + application_type_code + ")";
+                " '" + textbox_house.Text + "', '" + textbox_flat.Text + "', '" + numericupdown_payment.Value.ToString().Replace(',', '.') + "' , '" + combobox_processing_date.SelectedItem.ToString() + "', " + textbox_personal_account.Text + ", " + application_type_code + ")";
                 //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd.Prepare();
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Запись успешно добавлена.");
+
             }
             catch
             {
@@ -158,6 +159,7 @@ namespace Journal_Client
             {
                 database.Close();
             }
+            date_count_refresh();
         }
 
         private void Button_close_Click(object sender, EventArgs e)
@@ -280,6 +282,11 @@ namespace Journal_Client
 
         private void date_proccessing_changed(object sender, EventArgs e)
         {
+            date_count_refresh();
+        }
+
+        private void date_count_refresh()
+        {
             string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             int count = 0;
@@ -287,7 +294,7 @@ namespace Journal_Client
             {
                 DataTable temp_table = new DataTable();
                 database.Open();
-                string SQLCommand = "select count(\"#Код участка\") from \"Участок\" where \"Дата обхода\" = '" + combobox_processing_date.SelectedItem.ToString() + "' ";
+                string SQLCommand = "select count(\"#Код заявки\") from \"Журнал регистраций\" where \"Дата обработки\" = '" + combobox_processing_date.SelectedItem.ToString() + "' ";
                 //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table.Load(cmd.ExecuteReader());
@@ -310,5 +317,6 @@ namespace Journal_Client
                 database.Close();
             }
         }
+
     }
 }
