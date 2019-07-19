@@ -131,7 +131,33 @@ namespace Journal_Client
 
         private void Button_add_Click(object sender, EventArgs e)
         {
-
+            int district_code = get_district_code();
+            int application_type_code = get_application_type_code();
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            NpgsqlConnection database = new NpgsqlConnection(conString);
+            try
+            {
+                DataTable temp_table = new DataTable();
+                database.Open();
+                string SQLCommand = "INSERT INTO \"Журнал регистраций\" (\"#Код участка\", \"Дата подачи заявки\", \"ФИО потребителя\", \"Улица\", " +
+                "\"Дом\", \"Квартира\", \"Оплата\", \"Дата обработки\", \"Лицевой счет\", \"#Код вида заявки\") " +
+                "VALUES(" + district_code + ", '" + datetime_show.Value.ToShortDateString() + "', '" + textbox_fio.Text + "', '" + combobox_street.SelectedItem.ToString() + "'," +
+                " '" + textbox_house.Text + "', '" + textbox_flat.Text + "'," + numericupdown_payment.Value + " , '" + combobox_processing_date.SelectedItem.ToString() + "', " + textbox_personal_account.Text + ", " + application_type_code + ")";
+                //MessageBox.Show(SQLCommand);
+                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd.Prepare();
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Запись успешно добавлена.");
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+            }
+            finally
+            {
+                database.Close();
+            }
         }
 
         private void Button_close_Click(object sender, EventArgs e)
@@ -158,7 +184,7 @@ namespace Journal_Client
                 "INNER JOIN \"Улица\" ON \"Участок\".\"#Код улицы\" = \"Улица\".\"#Код улицы\" " +
                 "INNER JOIN \"Район\" ON \"Улица\".\"#Код района\" = \"Район\".\"#Код района\" " +
                 "WHERE \"Район\".\"Район\" = '" + DistrictName + "' AND \"Улица\" = '" + street + "'";
-                MessageBox.Show(SQLCommand);
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table.Load(cmd.ExecuteReader());
                 List<string> List_streets = new List<string>(temp_table.Rows.Count);
@@ -178,6 +204,109 @@ namespace Journal_Client
             }
             finally
             {
+                database.Close();
+            }
+        }
+
+        private int get_district_code()
+        {
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            NpgsqlConnection database = new NpgsqlConnection(conString);
+            int district_code = -1;
+            try
+            {
+                DataTable temp_table = new DataTable();
+                database.Open();
+                string SQLCommand = "SELECT \"#Код участка\" FROM \"Участок\" " +
+                "INNER JOIN \"Улица\" ON \"Участок\".\"#Код улицы\" = \"Улица\".\"#Код улицы\" " +
+                "INNER JOIN \"Район\" ON \"Улица\".\"#Код района\" = \"Район\".\"#Код района\" " +
+                "WHERE \"Район\" = '" + DistrictName + "' AND \"Дата обхода\" = '" + combobox_processing_date.SelectedItem.ToString() + "' AND \"Улица\" = '" + combobox_street.SelectedItem.ToString() + "'";
+                //MessageBox.Show(SQLCommand);
+                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                temp_table.Load(cmd.ExecuteReader());
+                foreach (DataRow row in temp_table.Rows)
+                {
+                    try
+                    {
+                        district_code = Convert.ToInt32(row[0]);
+                    }
+                    catch { }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+            }
+            finally
+            {
+                database.Close();
+            }
+            return district_code;
+        }
+
+        private int get_application_type_code()
+        {
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            NpgsqlConnection database = new NpgsqlConnection(conString);
+            int application_type_code = -1;
+            try
+            {
+                DataTable temp_table = new DataTable();
+                database.Open();
+                string SQLCommand = "SELECT \"#Код вида заявки\" FROM \"Вид заявки\" " +
+                "WHERE \"Вид заявки\" = '" + combobox_type_application.SelectedItem.ToString() + "' ";
+                //MessageBox.Show(SQLCommand);
+                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                temp_table.Load(cmd.ExecuteReader());
+                foreach (DataRow row in temp_table.Rows)
+                {
+                    try
+                    {
+                        application_type_code = Convert.ToInt32(row[0]);
+                    }
+                    catch { }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+            }
+            finally
+            {
+                database.Close();
+            }
+            return application_type_code;
+        }
+
+        private void date_proccessing_changed(object sender, EventArgs e)
+        {
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            NpgsqlConnection database = new NpgsqlConnection(conString);
+            int count = 0;
+            try
+            {
+                DataTable temp_table = new DataTable();
+                database.Open();
+                string SQLCommand = "select count(\"#Код участка\") from \"Участок\" where \"Дата обхода\" = '" + combobox_processing_date.SelectedItem.ToString() + "' ";
+                //MessageBox.Show(SQLCommand);
+                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                temp_table.Load(cmd.ExecuteReader());
+                foreach (DataRow row in temp_table.Rows)
+                {
+                    try
+                    {
+                        count = Convert.ToInt32(row[0]);
+                    }
+                    catch { }
+                }
+            }
+            catch
+            {
+                count = 0;
+            }
+            finally
+            {
+                textview_bypass.Text = count.ToString();
                 database.Close();
             }
         }
