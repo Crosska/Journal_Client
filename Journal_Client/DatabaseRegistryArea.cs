@@ -59,12 +59,12 @@ namespace Journal_Client
             show_streets_for_date();
         }
 
-        private void date_changed(object sender, DateRangeEventArgs e)
+        private void date_changed(object sender, DateRangeEventArgs e) // Действие при выборе даты
         {
             show_streets_for_date();
         }
 
-        private void show_streets_for_date()
+        private void show_streets_for_date() // Выводит улицы по выбранной дате
         {
             DateTime chosen_date = Calendar.SelectionRange.Start;
             //MessageBox.Show(chosen_date.ToString());
@@ -99,13 +99,13 @@ namespace Journal_Client
 
         }
 
-        private void Button_add_Click(object sender, EventArgs e)
+        private void Button_add_Click(object sender, EventArgs e) // Действие при нажатии на кнопку "Добавить"
         {
             DatabaseAddStreet AddStreetForm = new DatabaseAddStreet(datetime_show.Value, DistrictName);
             AddStreetForm.ShowDialog();
         }
 
-        private void RefreshTable(object sender, EventArgs e)
+        private void RefreshTable(object sender, EventArgs e) // Действия при обновлении таблицы
         {
             show_streets_for_date();
         }

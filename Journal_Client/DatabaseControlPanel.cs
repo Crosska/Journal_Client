@@ -44,39 +44,41 @@ namespace Journal_Client
             }
         }
 
-        private void form_closed(object sender, FormClosedEventArgs e)
+        private void form_closed(object sender, FormClosedEventArgs e) // Действие при закрытии формы (закрывает всю программу)
         {
             Application.Exit();
         }
 
         private void Button_registry_area_Click(object sender, EventArgs e)
         {
-            DatabaseRegistryArea registry_area_form = new DatabaseRegistryArea(ServerIP);
+            DatabaseRegistryArea registry_area_form = new DatabaseRegistryArea(ServerIP); // Открыть форму регистрации участка
             registry_area_form.Show();
         }
 
         private void Button_registry_request_Click(object sender, EventArgs e)
         {
-            DatabaseRegistryRequest registry_request_form = new DatabaseRegistryRequest(label_server.Text);
+            DatabaseRegistryRequest registry_request_form = new DatabaseRegistryRequest(label_server.Text); // Открыть форму регистрации запроса
             registry_request_form.Show();
         }
 
         private void Button_sealers_directory_Click(object sender, EventArgs e)
         {
-            DatabaseSealsControllersLinks sealers_directory_form = new DatabaseSealsControllersLinks(label_server.Text);
-            sealers_directory_form.Show();
+            DatabaseSealsControllersLinks seals_controllers_links_form = new DatabaseSealsControllersLinks(label_server.Text); // Открыть форму связей контролера и пломбиратора
+            seals_controllers_links_form.Show();
         }
 
         private void Button_controllers_directory_Click(object sender, EventArgs e)
         {
-            DatabaseControllersDirectory controllers_directory_form = new DatabaseControllersDirectory(label_server.Text);
+            DatabaseControllersDirectory controllers_directory_form = new DatabaseControllersDirectory(label_server.Text); // Открыть форму справочника контролеров
             controllers_directory_form.Show();
         }
 
         private void Button_seales_directory_Click(object sender, EventArgs e)
         {
-            DatabaseSealsDirectory seals_directory_form = new DatabaseSealsDirectory(label_server.Text);
+            DatabaseSealsDirectory seals_directory_form = new DatabaseSealsDirectory(label_server.Text); // Открыть форму справочника пломбираторов
             seals_directory_form.Show();
         }
+
     }
+
 }

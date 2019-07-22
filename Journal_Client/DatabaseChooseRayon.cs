@@ -27,7 +27,7 @@ namespace Journal_Client
             //MessageBox.Show(chosen_district.ToString());
             this.Visible = false;
             DatabaseConnection ConnectionForm = new DatabaseConnection(chosen_district);
-            ConnectionForm.ShowDialog();
+            ConnectionForm.Show();
         }
     }
 }
