@@ -42,7 +42,7 @@
             this.button_delete_link.Name = "button_delete_link";
             this.button_delete_link.Size = new System.Drawing.Size(216, 43);
             this.button_delete_link.TabIndex = 2;
-            this.button_delete_link.Text = "Удалить";
+            this.button_delete_link.Text = "Отвязать";
             this.button_delete_link.UseVisualStyleBackColor = false;
             this.button_delete_link.Click += new System.EventHandler(this.Button_delete_link_Click);
             // 
@@ -52,9 +52,9 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(12, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(291, 21);
+            this.label1.Size = new System.Drawing.Size(294, 21);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Удалить пломбиратор с номером:";
+            this.label1.Text = "Отвязать пломбиратор с номером:";
             // 
             // button_cancel
             // 
@@ -72,7 +72,7 @@
             // 
             this.label_seal_number.AutoSize = true;
             this.label_seal_number.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_seal_number.Location = new System.Drawing.Point(299, 19);
+            this.label_seal_number.Location = new System.Drawing.Point(302, 19);
             this.label_seal_number.Name = "label_seal_number";
             this.label_seal_number.Size = new System.Drawing.Size(25, 21);
             this.label_seal_number.TabIndex = 5;
@@ -91,7 +91,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DatabaseDeleteSealFromController";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Выбор пломбиратора";
+            this.Text = "Подтверждение отвязки пломбиратора";
             this.ResumeLayout(false);
             this.PerformLayout();
 
