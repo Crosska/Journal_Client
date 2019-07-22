@@ -11,8 +11,10 @@ using System.Windows.Forms;
 
 namespace Journal_Client
 {
-    public partial class DatabaseAddStreet : Form
+    public partial class DatabaseSealsDirectory : Form
     {
+        private string DistrictName;
+
         struct Database
         {
             public string IP;
@@ -23,66 +25,47 @@ namespace Journal_Client
         }
         private Database ConData = new Database();
 
-        private DateTime chosen_date;
-        private string DistrictName;
-
-        public DatabaseAddStreet(DateTime chosen_date_received, string DistrictName_received)
+        public DatabaseSealsDirectory(string DistrictName_received)
         {
             InitializeComponent();
             ConData.Port = "5432";
             ConData.DatabaseName = "postgres";
             ConData.User = "root";
             ConData.Password = "Qwerty2";
-            chosen_date = chosen_date_received;
             DistrictName = DistrictName_received;
-            date_active.Value = chosen_date;
-            string IP = "";
             switch (DistrictName)
             {
                 case "Гвардейский":
                     ConData.IP = "192.168.85.250"; // Гвардейский
-                    getStreets(ConData.IP);
                     break;
                 case "Горняцкий":
                     ConData.IP = "192.168.82.250"; // Горняцкий
-                    getStreets(ConData.IP);
                     break;
                 case "Кировский":
                     ConData.IP = "192.168.1.250"; // Кировский
-                    getStreets(ConData.IP);
                     break;
                 case "Советский":
                     ConData.IP = "192.168.87.250"; // Советский
-                    getStreets(ConData.IP);
                     break;
                 case "Центральный":
                     ConData.IP = "192.168.88.250"; // Центральный
-                    getStreets(ConData.IP);
                     break;
                 default:
                     MessageBox.Show("Произошла ошибка при передаче выбранного сервера в форму добавления");
                     this.Close();
                     break;
             }
-
         }
 
-        private void Button_close_Click(object sender, EventArgs e)
+        private void Button_add_seal_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void Button_add_Click(object sender, EventArgs e)
-        {
-            string street_code = get_street_code();
-            string date = date_active.Value.ToShortDateString();
             string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
                 database.Open();
-                string SQLCommand = "INSERT INTO \"Участок\" (\"#Код улицы\", \"Дата обхода\") VALUES (" + street_code + ", '" + date + "' )";
+                string SQLCommand = "INSERT INTO \"Пломбиратор\" (\"Номер\") VALUES ( " + textbox_number_seal.Text + " )";
                 MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd = new NpgsqlCommand(SQLCommand, database);
@@ -99,24 +82,25 @@ namespace Journal_Client
             {
                 database.Close();
             }
+            Update_seals_list();
         }
 
-        private string get_street_code()
+        private void Button_delete_seal_Click(object sender, EventArgs e)
         {
-            string street_code = "";
             string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
                 database.Open();
-                string SQLCommand = "SELECT \"#Код улицы\" FROM \"Улица\" " +
-                "INNER JOIN \"Район\" ON \"Улица\".\"#Код района\" = \"Район\".\"#Код района\" " +
-                "WHERE \"Район\" = '" + DistrictName + "' and \"Улица\" = '" + combobox_streets.SelectedItem.ToString() + "' ";
-                //MessageBox.Show(SQLCommand);
+                string SQLCommand = "DELETE FROM \"Пломбиратор\" where \"Номер\" = '" + combobox_sealer_list.SelectedItem.ToString() + "'";
+                MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
-                temp_table.Load(cmd.ExecuteReader());
-                street_code = temp_table.Rows[0].Field<int>(0).ToString();
+                cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd.Prepare();
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Запись успешно удалена.");
             }
             catch
             {
@@ -125,36 +109,32 @@ namespace Journal_Client
             finally
             {
                 database.Close();
+                Update_seals_list();
             }
-            return street_code;
         }
 
-        private void getStreets(string IP)
+        private void Update_seals_list()
         {
-            string conString = "";
-            conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
-                
                 DataTable temp_table = new DataTable();
                 database.Open();
-                string SQLCommand = "SELECT \"Улица\" FROM \"Улица\" " +
-                "INNER JOIN \"Район\" ON \"Улица\".\"#Код района\" = \"Район\".\"#Код района\" " +
-                "WHERE \"Район\" = '" + DistrictName + "'";
+                string SQLCommand = "SELECT \"Номер\" FROM \"Пломбиратор\" ";
                 //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table.Load(cmd.ExecuteReader());
-                List<string> List_streets = new List<string>(temp_table.Rows.Count);
+                List<string> List_seals = new List<string>(temp_table.Rows.Count);
                 foreach (DataRow row in temp_table.Rows)
                 {
                     try
                     {
-                        List_streets.Add(row[0].ToString());
+                        List_seals.Add(row[0].ToString());
                     }
                     catch { }
                 }
-                combobox_streets.DataSource = new BindingSource(List_streets, null);
+                combobox_sealer_list.DataSource = new BindingSource(List_seals, null);
             }
             catch
             {
@@ -166,5 +146,9 @@ namespace Journal_Client
             }
         }
 
+        private void DatabaseSealsDirectory_Load(object sender, EventArgs e)
+        {
+            Update_seals_list();
+        }
     }
 }

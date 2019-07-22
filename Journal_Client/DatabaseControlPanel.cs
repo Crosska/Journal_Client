@@ -60,5 +60,23 @@ namespace Journal_Client
             DatabaseRegistryRequest registry_request_form = new DatabaseRegistryRequest(label_server.Text);
             registry_request_form.Show();
         }
+
+        private void Button_sealers_directory_Click(object sender, EventArgs e)
+        {
+            DatabaseSealsControllersLinks sealers_directory_form = new DatabaseSealsControllersLinks(label_server.Text);
+            sealers_directory_form.Show();
+        }
+
+        private void Button_controllers_directory_Click(object sender, EventArgs e)
+        {
+            DatabaseControllersDirectory controllers_directory_form = new DatabaseControllersDirectory(label_server.Text);
+            controllers_directory_form.Show();
+        }
+
+        private void Button_seales_directory_Click(object sender, EventArgs e)
+        {
+            DatabaseSealsDirectory seals_directory_form = new DatabaseSealsDirectory(label_server.Text);
+            seals_directory_form.Show();
+        }
     }
 }

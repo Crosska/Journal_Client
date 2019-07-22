@@ -68,6 +68,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseAddSealToController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseAddSealToController.Designer.cs">
+      <DependentUpon>DatabaseAddSealToController.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseAddStreet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,24 @@
     </Compile>
     <Compile Include="DatabaseConnection.Designer.cs">
       <DependentUpon>DatabaseConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseControllersDirectory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseControllersDirectory.Designer.cs">
+      <DependentUpon>DatabaseControllersDirectory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseDeleteSealFromController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseDeleteSealFromController.Designer.cs">
+      <DependentUpon>DatabaseDeleteSealFromController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseSealsControllersLinks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseSealsControllersLinks.Designer.cs">
+      <DependentUpon>DatabaseSealsControllersLinks.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseControlPanel.cs">
       <SubType>Form</SubType>
@@ -104,8 +128,17 @@
     <Compile Include="DatabaseRegistryRequest.Designer.cs">
       <DependentUpon>DatabaseRegistryRequest.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseSealsDirectory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseSealsDirectory.Designer.cs">
+      <DependentUpon>DatabaseSealsDirectory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DatabaseAddSealToController.resx">
+      <DependentUpon>DatabaseAddSealToController.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DatabaseAddStreet.resx">
       <DependentUpon>DatabaseAddStreet.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +148,15 @@
     <EmbeddedResource Include="DatabaseConnection.resx">
       <DependentUpon>DatabaseConnection.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseControllersDirectory.resx">
+      <DependentUpon>DatabaseControllersDirectory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseDeleteSealFromController.resx">
+      <DependentUpon>DatabaseDeleteSealFromController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseSealsControllersLinks.resx">
+      <DependentUpon>DatabaseSealsControllersLinks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DatabaseControlPanel.resx">
       <DependentUpon>DatabaseControlPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseRegistryRequest.resx">
       <DependentUpon>DatabaseRegistryRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseSealsDirectory.resx">
+      <DependentUpon>DatabaseSealsDirectory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
