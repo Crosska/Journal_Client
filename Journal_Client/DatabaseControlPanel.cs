@@ -79,6 +79,10 @@ namespace Journal_Client
             seals_directory_form.Show();
         }
 
+        private void Button_in_out_journal_Click(object sender, EventArgs e)
+        {
+            DatabaseInOutJournal in_out_journal_form = new DatabaseInOutJournal(label_server.Text); // Открыть форму справочника пломбираторов
+            in_out_journal_form.Show();
+        }
     }
-
 }

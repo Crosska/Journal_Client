@@ -104,6 +104,12 @@
     <Compile Include="DatabaseDeleteSealFromController.Designer.cs">
       <DependentUpon>DatabaseDeleteSealFromController.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseInOutJournal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseInOutJournal.Designer.cs">
+      <DependentUpon>DatabaseInOutJournal.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseSealsControllersLinks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseDeleteSealFromController.resx">
       <DependentUpon>DatabaseDeleteSealFromController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseInOutJournal.resx">
+      <DependentUpon>DatabaseInOutJournal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseSealsControllersLinks.resx">
       <DependentUpon>DatabaseSealsControllersLinks.cs</DependentUpon>

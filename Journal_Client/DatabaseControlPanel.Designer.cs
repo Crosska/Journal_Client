@@ -30,7 +30,7 @@
         {
             this.button_registry_area = new System.Windows.Forms.Button();
             this.button_registry_request = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button_in_out_journal = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,6 +39,7 @@
             this.button_seales_directory = new System.Windows.Forms.Button();
             this.button_controllers_directory = new System.Windows.Forms.Button();
             this.button_sealers_controllers_links = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -59,7 +60,7 @@
             // button_registry_request
             // 
             this.button_registry_request.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_registry_request.Location = new System.Drawing.Point(7, 96);
+            this.button_registry_request.Location = new System.Drawing.Point(7, 101);
             this.button_registry_request.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_registry_request.Name = "button_registry_request";
             this.button_registry_request.Size = new System.Drawing.Size(248, 65);
@@ -68,15 +69,17 @@
             this.button_registry_request.UseVisualStyleBackColor = true;
             this.button_registry_request.Click += new System.EventHandler(this.Button_registry_request_Click);
             // 
-            // button4
+            // button_in_out_journal
             // 
-            this.button4.Location = new System.Drawing.Point(6, 23);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(250, 65);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button_in_out_journal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_in_out_journal.Location = new System.Drawing.Point(6, 23);
+            this.button_in_out_journal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_in_out_journal.Name = "button_in_out_journal";
+            this.button_in_out_journal.Size = new System.Drawing.Size(250, 65);
+            this.button_in_out_journal.TabIndex = 3;
+            this.button_in_out_journal.Text = "Регистрация вводов и выводов";
+            this.button_in_out_journal.UseVisualStyleBackColor = true;
+            this.button_in_out_journal.Click += new System.EventHandler(this.Button_in_out_journal_Click);
             // 
             // groupBox1
             // 
@@ -87,20 +90,21 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(261, 264);
+            this.groupBox1.Size = new System.Drawing.Size(261, 174);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Формы";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button4);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.button_in_out_journal);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(279, 35);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(266, 264);
+            this.groupBox2.Size = new System.Drawing.Size(266, 174);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Отчеты";
@@ -131,7 +135,7 @@
             this.groupBox3.Controls.Add(this.button_controllers_directory);
             this.groupBox3.Controls.Add(this.button_sealers_controllers_links);
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 307);
+            this.groupBox3.Location = new System.Drawing.Point(12, 209);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -176,11 +180,22 @@
             this.button_sealers_controllers_links.UseVisualStyleBackColor = true;
             this.button_sealers_controllers_links.Click += new System.EventHandler(this.Button_sealers_directory_Click);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(6, 101);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(250, 65);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Регистрация инвентаризации";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // DatabaseControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 420);
+            this.ClientSize = new System.Drawing.Size(557, 322);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label_server);
             this.Controls.Add(this.label1);
@@ -204,7 +219,7 @@
 
         private System.Windows.Forms.Button button_registry_area;
         private System.Windows.Forms.Button button_registry_request;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_in_out_journal;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
@@ -213,5 +228,6 @@
         private System.Windows.Forms.Button button_sealers_controllers_links;
         private System.Windows.Forms.Button button_controllers_directory;
         private System.Windows.Forms.Button button_seales_directory;
+        private System.Windows.Forms.Button button1;
     }
 }
