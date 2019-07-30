@@ -1,12 +1,4 @@
-﻿using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace Journal_Client
@@ -17,17 +9,17 @@ namespace Journal_Client
 
         public DatabaseChooseRayon()
         {
-            InitializeComponent();
-            combobox_district.SelectedIndex = 0;
+            InitializeComponent();                                                       // Отображение всех элементов формы
+            combobox_district.SelectedIndex = 0;                                         // Выбор первого элемента из списка по стандарту
         }
 
         private void Button_ok_Click(object sender, EventArgs e)
         {
-            int chosen_district = combobox_district.SelectedIndex;
-            //MessageBox.Show(chosen_district.ToString());
-            this.Visible = false;
-            DatabaseConnection ConnectionForm = new DatabaseConnection(chosen_district);
-            ConnectionForm.Show();
+            int chosen_district = combobox_district.SelectedIndex;                       // Получение индекса выбранного элемента в списке
+            //MessageBox.Show(chosen_district.ToString());                               // Вывод индекса в сообщение
+            this.Visible = false;                                                        // Скрытие формы
+            DatabaseConnection ConnectionForm = new DatabaseConnection(chosen_district); // Подготовка к вызову новой формы (передача индекса в форму)
+            ConnectionForm.Show();                                                       // Вызов формы
         }
     }
 }

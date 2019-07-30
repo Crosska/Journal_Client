@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Journal_Client
@@ -19,7 +13,7 @@ namespace Journal_Client
         public DatabaseControlPanel(string ServerIP_received)
         {
             InitializeComponent();
-            ServerIP = ServerIP_received;
+            ServerIP = ServerIP_received; // Запись принятого IP в глобальную переменную
             //MessageBox.Show(ServerIP);
             switch (ServerIP)
             {
@@ -44,6 +38,17 @@ namespace Journal_Client
             }
         }
 
+        private void OnFrameChanged(object sender, EventArgs e)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke((Action)(() => OnFrameChanged(sender, e)));
+                return;
+            }
+            ImageAnimator.UpdateFrames();
+            Invalidate(false);
+        }
+
         private void form_closed(object sender, FormClosedEventArgs e) // Действие при закрытии формы (закрывает всю программу)
         {
             Application.Exit();
@@ -61,19 +66,19 @@ namespace Journal_Client
             registry_request_form.Show();
         }
 
-        private void Button_sealers_directory_Click(object sender, EventArgs e)
+        private void Button_sealers_directory_Click(object sender, EventArgs e) // Справочник пломбираторов
         {
             DatabaseSealsControllersLinks seals_controllers_links_form = new DatabaseSealsControllersLinks(label_server.Text); // Открыть форму связей контролера и пломбиратора
             seals_controllers_links_form.Show();
         }
 
-        private void Button_controllers_directory_Click(object sender, EventArgs e)
+        private void Button_controllers_directory_Click(object sender, EventArgs e) // Справочник контролеров
         {
             DatabaseControllersDirectory controllers_directory_form = new DatabaseControllersDirectory(label_server.Text); // Открыть форму справочника контролеров
             controllers_directory_form.Show();
         }
 
-        private void Button_seales_directory_Click(object sender, EventArgs e)
+        private void Button_seales_directory_Click(object sender, EventArgs e) // Справочник пломбираторов
         {
             DatabaseSealsDirectory seals_directory_form = new DatabaseSealsDirectory(label_server.Text); // Открыть форму справочника пломбираторов
             seals_directory_form.Show();
@@ -84,5 +89,6 @@ namespace Journal_Client
             DatabaseInOutJournal in_out_journal_form = new DatabaseInOutJournal(label_server.Text); // Открыть форму справочника пломбираторов
             in_out_journal_form.Show();
         }
+
     }
 }

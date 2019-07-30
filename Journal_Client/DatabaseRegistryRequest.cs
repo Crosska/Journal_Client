@@ -151,9 +151,9 @@ namespace Journal_Client
                 MessageBox.Show("Запись успешно добавлена.");
 
             }
-            catch
+            catch (Exception error)
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                MessageBox.Show(error.ToString());
             }
             finally
             {

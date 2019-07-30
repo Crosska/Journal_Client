@@ -41,23 +41,23 @@ namespace Journal_Client
             {
                 case "Гвардейский":
                     ConData.IP = "192.168.85.250"; // Гвардейский
-                    getStreets(ConData.IP);
+                    getStreets();
                     break;
                 case "Горняцкий":
                     ConData.IP = "192.168.82.250"; // Горняцкий
-                    getStreets(ConData.IP);
+                    getStreets();
                     break;
                 case "Кировский":
                     ConData.IP = "192.168.1.250"; // Кировский
-                    getStreets(ConData.IP);
+                    getStreets();
                     break;
                 case "Советский":
                     ConData.IP = "192.168.87.250"; // Советский
-                    getStreets(ConData.IP);
+                    getStreets();
                     break;
                 case "Центральный":
                     ConData.IP = "192.168.88.250"; // Центральный
-                    getStreets(ConData.IP);
+                    getStreets();
                     break;
                 default:
                     MessageBox.Show("Произошла ошибка при передаче выбранного сервера в форму добавления");
@@ -129,7 +129,7 @@ namespace Journal_Client
             return street_code;
         }
 
-        private void getStreets(string IP)
+        private void getStreets()
         {
             string conString = "";
             conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
