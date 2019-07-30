@@ -86,9 +86,14 @@ namespace Journal_Client
 
         private void Button_in_out_journal_Click(object sender, EventArgs e)
         {
-            DatabaseInOutJournal in_out_journal_form = new DatabaseInOutJournal(label_server.Text); // Открыть форму справочника пломбираторов
+            DatabaseInOutJournal in_out_journal_form = new DatabaseInOutJournal(label_server.Text); // Открыть форму журнала ввод/вывод
             in_out_journal_form.Show();
         }
 
+        private void Button_enter_data_Click(object sender, EventArgs e)
+        {
+            DatabaseEnterData in_out_enter_form = new DatabaseEnterData (label_server.Text); // Открыть форму ввода показаний
+            in_out_enter_form.Show();
+        }
     }
 }

@@ -45,6 +45,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button_enter_data = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Forms.SuspendLayout();
             this.Directories.SuspendLayout();
@@ -74,7 +75,7 @@
             this.button_registry_request.Name = "button_registry_request";
             this.button_registry_request.Size = new System.Drawing.Size(367, 74);
             this.button_registry_request.TabIndex = 1;
-            this.button_registry_request.Text = "Журнал регистрации заявок";
+            this.button_registry_request.Text = "Регистрации заявок";
             this.button_registry_request.UseVisualStyleBackColor = true;
             this.button_registry_request.Click += new System.EventHandler(this.Button_registry_request_Click);
             // 
@@ -163,6 +164,7 @@
             // Forms
             // 
             this.Forms.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Forms.Controls.Add(this.button_enter_data);
             this.Forms.Controls.Add(this.button_registry_request);
             this.Forms.Controls.Add(this.button_registry_area);
             this.Forms.Location = new System.Drawing.Point(4, 30);
@@ -252,10 +254,21 @@
             this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox4.Location = new System.Drawing.Point(12, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(294, 63);
+            this.groupBox4.Size = new System.Drawing.Size(377, 63);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Текущий сервер";
+            // 
+            // button_enter_data
+            // 
+            this.button_enter_data.Font = new System.Drawing.Font("Century Gothic", 15F);
+            this.button_enter_data.Location = new System.Drawing.Point(6, 170);
+            this.button_enter_data.Name = "button_enter_data";
+            this.button_enter_data.Size = new System.Drawing.Size(367, 74);
+            this.button_enter_data.TabIndex = 2;
+            this.button_enter_data.Text = "Занесение показаний";
+            this.button_enter_data.UseVisualStyleBackColor = true;
+            this.button_enter_data.Click += new System.EventHandler(this.Button_enter_data_Click);
             // 
             // DatabaseControlPanel
             // 
@@ -301,5 +314,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_enter_data;
     }
 }
