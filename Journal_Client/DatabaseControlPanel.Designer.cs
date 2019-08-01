@@ -38,6 +38,7 @@
             this.button_sealers_controllers_links = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Forms = new System.Windows.Forms.TabPage();
+            this.button_enter_data = new System.Windows.Forms.Button();
             this.Directories = new System.Windows.Forms.TabPage();
             this.Reports = new System.Windows.Forms.TabPage();
             this.Secrets = new System.Windows.Forms.TabPage();
@@ -45,7 +46,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button_enter_data = new System.Windows.Forms.Button();
+            this.button_unlock_secrets = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Forms.SuspendLayout();
             this.Directories.SuspendLayout();
@@ -57,7 +58,7 @@
             // 
             // button_registry_area
             // 
-            this.button_registry_area.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_registry_area.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_registry_area.Location = new System.Drawing.Point(6, 7);
             this.button_registry_area.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_registry_area.Name = "button_registry_area";
@@ -69,7 +70,7 @@
             // 
             // button_registry_request
             // 
-            this.button_registry_request.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_registry_request.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_registry_request.Location = new System.Drawing.Point(6, 89);
             this.button_registry_request.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_registry_request.Name = "button_registry_request";
@@ -81,7 +82,7 @@
             // 
             // button_in_out_journal
             // 
-            this.button_in_out_journal.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_in_out_journal.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_in_out_journal.Location = new System.Drawing.Point(6, 7);
             this.button_in_out_journal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_in_out_journal.Name = "button_in_out_journal";
@@ -93,7 +94,7 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(6, 102);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
@@ -114,7 +115,7 @@
             // 
             // button_seales_directory
             // 
-            this.button_seales_directory.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_seales_directory.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_seales_directory.Location = new System.Drawing.Point(6, 100);
             this.button_seales_directory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_seales_directory.Name = "button_seales_directory";
@@ -126,7 +127,7 @@
             // 
             // button_controllers_directory
             // 
-            this.button_controllers_directory.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_controllers_directory.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_controllers_directory.Location = new System.Drawing.Point(6, 200);
             this.button_controllers_directory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_controllers_directory.Name = "button_controllers_directory";
@@ -138,7 +139,7 @@
             // 
             // button_sealers_controllers_links
             // 
-            this.button_sealers_controllers_links.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_sealers_controllers_links.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_sealers_controllers_links.Location = new System.Drawing.Point(6, 7);
             this.button_sealers_controllers_links.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_sealers_controllers_links.Name = "button_sealers_controllers_links";
@@ -173,6 +174,17 @@
             this.Forms.Size = new System.Drawing.Size(379, 343);
             this.Forms.TabIndex = 0;
             this.Forms.Text = "Формы";
+            // 
+            // button_enter_data
+            // 
+            this.button_enter_data.Font = new System.Drawing.Font("Century Gothic", 16F);
+            this.button_enter_data.Location = new System.Drawing.Point(6, 170);
+            this.button_enter_data.Name = "button_enter_data";
+            this.button_enter_data.Size = new System.Drawing.Size(367, 74);
+            this.button_enter_data.TabIndex = 2;
+            this.button_enter_data.Text = "Занесение показаний";
+            this.button_enter_data.UseVisualStyleBackColor = true;
+            this.button_enter_data.Click += new System.EventHandler(this.Button_enter_data_Click);
             // 
             // Directories
             // 
@@ -259,22 +271,21 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Текущий сервер";
             // 
-            // button_enter_data
+            // button_unlock_secrets
             // 
-            this.button_enter_data.Font = new System.Drawing.Font("Century Gothic", 15F);
-            this.button_enter_data.Location = new System.Drawing.Point(6, 170);
-            this.button_enter_data.Name = "button_enter_data";
-            this.button_enter_data.Size = new System.Drawing.Size(367, 74);
-            this.button_enter_data.TabIndex = 2;
-            this.button_enter_data.Text = "Занесение показаний";
-            this.button_enter_data.UseVisualStyleBackColor = true;
-            this.button_enter_data.Click += new System.EventHandler(this.Button_enter_data_Click);
+            this.button_unlock_secrets.Location = new System.Drawing.Point(630, 12);
+            this.button_unlock_secrets.Name = "button_unlock_secrets";
+            this.button_unlock_secrets.Size = new System.Drawing.Size(11, 12);
+            this.button_unlock_secrets.TabIndex = 10;
+            this.button_unlock_secrets.Text = "o";
+            this.button_unlock_secrets.UseVisualStyleBackColor = true;
             // 
             // DatabaseControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 470);
+            this.ClientSize = new System.Drawing.Size(409, 470);
+            this.Controls.Add(this.button_unlock_secrets);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -315,5 +326,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button_enter_data;
+        private System.Windows.Forms.Button button_unlock_secrets;
     }
 }
