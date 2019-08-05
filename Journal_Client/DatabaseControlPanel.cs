@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Journal_Client
@@ -8,14 +7,13 @@ namespace Journal_Client
     public partial class DatabaseControlPanel : Form
     {
 
-        private string ServerIP = "";
+        private string ServerIP = "";                       // Глобальная переменная IP-адреса
 
         public DatabaseControlPanel(string ServerIP_received)
         {
             InitializeComponent();
-            ServerIP = ServerIP_received; // Запись принятого IP в глобальную переменную
-            //MessageBox.Show(ServerIP);
-            switch (ServerIP)
+            ServerIP = ServerIP_received;                   // Запись принятого IP в глобальную переменную
+            switch (ServerIP)                               // Свич на IP для выведения на экран названия сервера
             {
                 case "192.168.85.250":
                     label_server.Text = "Гвардейский";
@@ -33,23 +31,18 @@ namespace Journal_Client
                     label_server.Text = "Центральный";
                     break;
                 default:
-                    MessageBox.Show("Произошла ошибка при передаче IP адреса сервера в программу");
+                    MessageBox.Show("Ошибка при определении названия района по IP");
                     break;
             }
         }
 
-        private void form_closed(object sender, FormClosedEventArgs e) // Действие при закрытии формы (закрывает всю программу)
-        {
-            Application.Exit();
-        }
-
-        private void Button_registry_area_Click(object sender, EventArgs e)
+        private void Button_registry_area_Click(object sender, EventArgs e) // Форма регистрации участков
         {
             DatabaseRegistryArea registry_area_form = new DatabaseRegistryArea(ServerIP); // Открыть форму регистрации участка
             registry_area_form.Show();
         }
 
-        private void Button_registry_request_Click(object sender, EventArgs e)
+        private void Button_registry_request_Click(object sender, EventArgs e) // Форма регистрации заявок 
         {
             DatabaseRegistryRequest registry_request_form = new DatabaseRegistryRequest(ServerIP); // Открыть форму регистрации запроса
             registry_request_form.Show();
@@ -69,21 +62,26 @@ namespace Journal_Client
 
         private void Button_seales_directory_Click(object sender, EventArgs e) // Справочник пломбираторов
         {
-            DatabaseSealsDirectory seals_directory_form = new DatabaseSealsDirectory(label_server.Text); // Открыть форму справочника пломбираторов
+            DatabaseSealsDirectory seals_directory_form = new DatabaseSealsDirectory(ServerIP); // Открыть форму справочника пломбираторов
             seals_directory_form.Show();
         }
 
-        private void Button_in_out_journal_Click(object sender, EventArgs e)
+        private void Button_in_out_journal_Click(object sender, EventArgs e) // Журнал ввода/вывода 
         {
-            DatabaseInOutJournal in_out_journal_form = new DatabaseInOutJournal(label_server.Text); // Открыть форму журнала ввод/вывод
+            DatabaseInOutJournal in_out_journal_form = new DatabaseInOutJournal(ServerIP); // Открыть форму журнала ввод/вывод
             in_out_journal_form.Show();
         }
 
-        private void Button_enter_data_Click(object sender, EventArgs e)
+        private void Button_enter_data_Click(object sender, EventArgs e) // Форма показаний
         {
             DatabaseEnterData in_out_enter_form = new DatabaseEnterData(ServerIP); // Открыть форму ввода показаний
-            MessageBox.Show(ServerIP);
             in_out_enter_form.Show();
         }
+
+        private void form_closed(object sender, FormClosedEventArgs e) // Действие при закрытии формы (закрывает всю программу)
+        {
+            Application.Exit();
+        }
+
     }
 }

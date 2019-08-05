@@ -26,15 +26,14 @@ namespace Journal_Client
 
         private string DistrictName = "";
 
-        public DatabaseRegistryArea(string ServerIP_received)
+        public DatabaseRegistryArea(string IP)
         {
             InitializeComponent();
-            ConData.IP = ServerIP_received;
             ConData.Port = "5432";
             ConData.DatabaseName = "postgres";
             ConData.User = "root";
             ConData.Password = "Qwerty2";
-            datagridtable_streets.RowHeadersVisible = false;
+            ConData.IP = IP;
             switch (ConData.IP)
             {
                 case "192.168.85.250":

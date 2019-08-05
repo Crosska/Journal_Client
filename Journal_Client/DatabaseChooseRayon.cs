@@ -15,10 +15,8 @@ namespace Journal_Client
 
         private void Button_ok_Click(object sender, EventArgs e)
         {
-            int chosen_district = combobox_district.SelectedIndex;                       // Получение индекса выбранного элемента в списке
-            //MessageBox.Show(chosen_district.ToString());                               // Вывод индекса в сообщение
             this.Visible = false;                                                        // Скрытие формы
-            DatabaseConnection ConnectionForm = new DatabaseConnection(chosen_district); // Подготовка к вызову новой формы (передача индекса в форму)
+            DatabaseConnection ConnectionForm = new DatabaseConnection(combobox_district.SelectedIndex); // Подготовка к вызову новой формы (передача индекса в форму)
             ConnectionForm.Show();                                                       // Вызов формы
         }
     }

@@ -43,6 +43,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.Calendar);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(187, 203);
@@ -52,9 +53,15 @@
             // 
             // Calendar
             // 
+            this.Calendar.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
             this.Calendar.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Calendar.Location = new System.Drawing.Point(12, 29);
+            this.Calendar.MaxDate = new System.DateTime(2100, 1, 1, 0, 0, 0, 0);
+            this.Calendar.MaxSelectionCount = 1;
+            this.Calendar.MinDate = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             this.Calendar.Name = "Calendar";
+            this.Calendar.ShowToday = false;
+            this.Calendar.ShowTodayCircle = false;
             this.Calendar.TabIndex = 2;
             this.Calendar.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.date_changed);
             // 
@@ -63,6 +70,7 @@
             this.groupBox2.Controls.Add(this.datagridtable_streets);
             this.groupBox2.Controls.Add(this.datetime_show);
             this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(205, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(367, 252);
@@ -81,6 +89,7 @@
             this.datagridtable_streets.Location = new System.Drawing.Point(10, 59);
             this.datagridtable_streets.Name = "datagridtable_streets";
             this.datagridtable_streets.ReadOnly = true;
+            this.datagridtable_streets.RowHeadersVisible = false;
             this.datagridtable_streets.Size = new System.Drawing.Size(351, 187);
             this.datagridtable_streets.TabIndex = 2;
             // 
@@ -90,7 +99,7 @@
             this.datetime_show.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datetime_show.Location = new System.Drawing.Point(145, 29);
             this.datetime_show.Name = "datetime_show";
-            this.datetime_show.Size = new System.Drawing.Size(216, 24);
+            this.datetime_show.Size = new System.Drawing.Size(216, 27);
             this.datetime_show.TabIndex = 1;
             this.datetime_show.Value = new System.DateTime(2019, 7, 17, 10, 40, 25, 0);
             // 
@@ -98,7 +107,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14F);
-            this.label1.Location = new System.Drawing.Point(6, 29);
+            this.label1.Location = new System.Drawing.Point(6, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(133, 22);
             this.label1.TabIndex = 0;
@@ -119,6 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(584, 276);
             this.Controls.Add(this.button_add);
             this.Controls.Add(this.groupBox2);
