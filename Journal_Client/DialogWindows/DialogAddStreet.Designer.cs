@@ -1,6 +1,6 @@
 ﻿namespace Journal_Client
 {
-    partial class DatabaseAddStreet
+    partial class DialogAddStreet
     {
         /// <summary>
         /// Required designer variable.

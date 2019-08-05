@@ -35,6 +35,7 @@
             this.datetime_show = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.button_add = new System.Windows.Forms.Button();
+            this.button_delete = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridtable_streets)).BeginInit();
@@ -73,7 +74,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(205, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(367, 252);
+            this.groupBox2.Size = new System.Drawing.Size(367, 301);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Участки";
@@ -90,7 +91,7 @@
             this.datagridtable_streets.Name = "datagridtable_streets";
             this.datagridtable_streets.ReadOnly = true;
             this.datagridtable_streets.RowHeadersVisible = false;
-            this.datagridtable_streets.Size = new System.Drawing.Size(351, 187);
+            this.datagridtable_streets.Size = new System.Drawing.Size(351, 236);
             this.datagridtable_streets.TabIndex = 2;
             // 
             // datetime_show
@@ -115,21 +116,35 @@
             // 
             // button_add
             // 
+            this.button_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button_add.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_add.Location = new System.Drawing.Point(12, 221);
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(187, 43);
             this.button_add.TabIndex = 2;
-            this.button_add.Text = "Добавить запись";
-            this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.Text = "Добавить обход";
+            this.button_add.UseVisualStyleBackColor = false;
             this.button_add.Click += new System.EventHandler(this.Button_add_Click);
+            // 
+            // button_delete
+            // 
+            this.button_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button_delete.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_delete.Location = new System.Drawing.Point(12, 270);
+            this.button_delete.Name = "button_delete";
+            this.button_delete.Size = new System.Drawing.Size(187, 43);
+            this.button_delete.TabIndex = 3;
+            this.button_delete.Text = "Удалить обход";
+            this.button_delete.UseVisualStyleBackColor = false;
+            this.button_delete.Click += new System.EventHandler(this.Button_delete_Click);
             // 
             // DatabaseRegistryArea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(584, 276);
+            this.ClientSize = new System.Drawing.Size(584, 325);
+            this.Controls.Add(this.button_delete);
             this.Controls.Add(this.button_add);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -156,5 +171,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_add;
         private System.Windows.Forms.DataGridView datagridtable_streets;
+        private System.Windows.Forms.Button button_delete;
     }
 }

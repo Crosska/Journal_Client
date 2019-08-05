@@ -1,6 +1,6 @@
 ﻿namespace Journal_Client
 {
-    partial class DatabaseAddSealToController
+    partial class DialogAddSealToController
     {
         /// <summary>
         /// Required designer variable.

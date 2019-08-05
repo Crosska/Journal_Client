@@ -68,151 +68,160 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseAddMeter.cs">
+    <Compile Include="DialogWindows\DialogAddMeter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseAddMeter.Designer.cs">
-      <DependentUpon>DatabaseAddMeter.cs</DependentUpon>
+    <Compile Include="DialogWindows\DialogAddMeter.Designer.cs">
+      <DependentUpon>DialogAddMeter.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseAddSealToController.cs">
+    <Compile Include="DialogWindows\DialogAddSealToController.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseAddSealToController.Designer.cs">
-      <DependentUpon>DatabaseAddSealToController.cs</DependentUpon>
+    <Compile Include="DialogWindows\DialogAddSealToController.Designer.cs">
+      <DependentUpon>DialogAddSealToController.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseAddStreet.cs">
+    <Compile Include="DialogWindows\DialogAddStreet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseAddStreet.Designer.cs">
-      <DependentUpon>DatabaseAddStreet.cs</DependentUpon>
+    <Compile Include="DialogWindows\DialogAddStreet.Designer.cs">
+      <DependentUpon>DialogAddStreet.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseChangeMeter.cs">
+    <Compile Include="DialogWindows\DialogChangeMeter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseChangeMeter.Designer.cs">
-      <DependentUpon>DatabaseChangeMeter.cs</DependentUpon>
+    <Compile Include="DialogWindows\DialogChangeMeter.Designer.cs">
+      <DependentUpon>DialogChangeMeter.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseChooseRayon.cs">
+    <Compile Include="StartWindows\DatabaseChooseRayon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseChooseRayon.Designer.cs">
+    <Compile Include="StartWindows\DatabaseChooseRayon.Designer.cs">
       <DependentUpon>DatabaseChooseRayon.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseConnection.cs">
+    <Compile Include="StartWindows\DatabaseConnection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseConnection.Designer.cs">
+    <Compile Include="StartWindows\DatabaseConnection.Designer.cs">
       <DependentUpon>DatabaseConnection.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseControllersDirectory.cs">
+    <Compile Include="MainWindows\DatabaseControllersDirectory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseControllersDirectory.Designer.cs">
+    <Compile Include="MainWindows\DatabaseControllersDirectory.Designer.cs">
       <DependentUpon>DatabaseControllersDirectory.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseDeleteMeter.cs">
+    <Compile Include="DialogWindows\DialogDeleteMeter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseDeleteMeter.Designer.cs">
-      <DependentUpon>DatabaseDeleteMeter.cs</DependentUpon>
+    <Compile Include="DialogWindows\DialogDeleteMeter.Designer.cs">
+      <DependentUpon>DialogDeleteMeter.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseDeleteSealFromController.cs">
+    <Compile Include="DialogWindows\DialogDeleteSealFromController.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseDeleteSealFromController.Designer.cs">
-      <DependentUpon>DatabaseDeleteSealFromController.cs</DependentUpon>
+    <Compile Include="DialogWindows\DialogDeleteSealFromController.Designer.cs">
+      <DependentUpon>DialogDeleteSealFromController.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseEnterData.cs">
+    <Compile Include="MainWindows\DatabaseEnterData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseEnterData.Designer.cs">
+    <Compile Include="MainWindows\DatabaseEnterData.Designer.cs">
       <DependentUpon>DatabaseEnterData.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseInOutJournal.cs">
+    <Compile Include="MainWindows\DatabaseInOutJournal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseInOutJournal.Designer.cs">
+    <Compile Include="MainWindows\DatabaseInOutJournal.Designer.cs">
       <DependentUpon>DatabaseInOutJournal.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseSealsControllersLinks.cs">
+    <Compile Include="MainWindows\DatabaseSealsControllersLinks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseSealsControllersLinks.Designer.cs">
+    <Compile Include="MainWindows\DatabaseSealsControllersLinks.Designer.cs">
       <DependentUpon>DatabaseSealsControllersLinks.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseControlPanel.cs">
+    <Compile Include="MainWindows\DatabaseControlPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseControlPanel.Designer.cs">
+    <Compile Include="MainWindows\DatabaseControlPanel.Designer.cs">
       <DependentUpon>DatabaseControlPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseRegistryArea.cs">
+    <Compile Include="MainWindows\DatabaseRegistryArea.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseRegistryArea.Designer.cs">
+    <Compile Include="MainWindows\DatabaseRegistryArea.Designer.cs">
       <DependentUpon>DatabaseRegistryArea.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseRegistryRequest.cs">
+    <Compile Include="MainWindows\DatabaseRegistryRequest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseRegistryRequest.Designer.cs">
+    <Compile Include="MainWindows\DatabaseRegistryRequest.Designer.cs">
       <DependentUpon>DatabaseRegistryRequest.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseSealsDirectory.cs">
+    <Compile Include="MainWindows\DatabaseSealsDirectory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatabaseSealsDirectory.Designer.cs">
+    <Compile Include="MainWindows\DatabaseSealsDirectory.Designer.cs">
       <DependentUpon>DatabaseSealsDirectory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogWindows\DialogDeleteWalk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogWindows\DialogDeleteWalk.Designer.cs">
+      <DependentUpon>DialogDeleteWalk.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DatabaseAddMeter.resx">
-      <DependentUpon>DatabaseAddMeter.cs</DependentUpon>
+    <EmbeddedResource Include="DialogWindows\DialogAddMeter.resx">
+      <DependentUpon>DialogAddMeter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseAddSealToController.resx">
-      <DependentUpon>DatabaseAddSealToController.cs</DependentUpon>
+    <EmbeddedResource Include="DialogWindows\DialogAddSealToController.resx">
+      <DependentUpon>DialogAddSealToController.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseAddStreet.resx">
-      <DependentUpon>DatabaseAddStreet.cs</DependentUpon>
+    <EmbeddedResource Include="DialogWindows\DialogAddStreet.resx">
+      <DependentUpon>DialogAddStreet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseChangeMeter.resx">
-      <DependentUpon>DatabaseChangeMeter.cs</DependentUpon>
+    <EmbeddedResource Include="DialogWindows\DialogChangeMeter.resx">
+      <DependentUpon>DialogChangeMeter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseChooseRayon.resx">
+    <EmbeddedResource Include="StartWindows\DatabaseChooseRayon.resx">
       <DependentUpon>DatabaseChooseRayon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseConnection.resx">
+    <EmbeddedResource Include="StartWindows\DatabaseConnection.resx">
       <DependentUpon>DatabaseConnection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseControllersDirectory.resx">
+    <EmbeddedResource Include="MainWindows\DatabaseControllersDirectory.resx">
       <DependentUpon>DatabaseControllersDirectory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseDeleteMeter.resx">
-      <DependentUpon>DatabaseDeleteMeter.cs</DependentUpon>
+    <EmbeddedResource Include="DialogWindows\DialogDeleteMeter.resx">
+      <DependentUpon>DialogDeleteMeter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseDeleteSealFromController.resx">
-      <DependentUpon>DatabaseDeleteSealFromController.cs</DependentUpon>
+    <EmbeddedResource Include="DialogWindows\DialogDeleteSealFromController.resx">
+      <DependentUpon>DialogDeleteSealFromController.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseEnterData.resx">
+    <EmbeddedResource Include="MainWindows\DatabaseEnterData.resx">
       <DependentUpon>DatabaseEnterData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseInOutJournal.resx">
+    <EmbeddedResource Include="MainWindows\DatabaseInOutJournal.resx">
       <DependentUpon>DatabaseInOutJournal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseSealsControllersLinks.resx">
+    <EmbeddedResource Include="MainWindows\DatabaseSealsControllersLinks.resx">
       <DependentUpon>DatabaseSealsControllersLinks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseControlPanel.resx">
+    <EmbeddedResource Include="MainWindows\DatabaseControlPanel.resx">
       <DependentUpon>DatabaseControlPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseRegistryArea.resx">
+    <EmbeddedResource Include="MainWindows\DatabaseRegistryArea.resx">
       <DependentUpon>DatabaseRegistryArea.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseRegistryRequest.resx">
+    <EmbeddedResource Include="MainWindows\DatabaseRegistryRequest.resx">
       <DependentUpon>DatabaseRegistryRequest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DatabaseSealsDirectory.resx">
+    <EmbeddedResource Include="MainWindows\DatabaseSealsDirectory.resx">
       <DependentUpon>DatabaseSealsDirectory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogWindows\DialogDeleteWalk.resx">
+      <DependentUpon>DialogDeleteWalk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -237,12 +246,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\9ec4ea93ab9a440e8a293a87df6dc303.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\1j6F.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

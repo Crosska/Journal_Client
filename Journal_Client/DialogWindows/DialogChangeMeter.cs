@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Journal_Client
 {
-    public partial class DatabaseChangeMeter : Form
+    public partial class DialogChangeMeter : Form
     {
-        public DatabaseChangeMeter()
+        public DialogChangeMeter()
         {
             InitializeComponent();
         }

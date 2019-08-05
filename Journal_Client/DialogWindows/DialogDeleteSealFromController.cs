@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Journal_Client
 {
-    public partial class DatabaseDeleteSealFromController : Form
+    public partial class DialogDeleteSealFromController : Form
     {
 
         private string DistrictName;
@@ -27,7 +27,7 @@ namespace Journal_Client
         }
         private Database ConData = new Database();
 
-        public DatabaseDeleteSealFromController(string DistrictName_received, string Seal_number_received)
+        public DialogDeleteSealFromController(string DistrictName_received, string Seal_number_received)
         {
             InitializeComponent();
             Seal_number = Seal_number_received;

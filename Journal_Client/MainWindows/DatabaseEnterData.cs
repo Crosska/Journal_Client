@@ -118,19 +118,19 @@ namespace Journal_Client
 
         private void Button_add_Click(object sender, EventArgs e)
         {
-            DatabaseAddMeter add_meter_form = new DatabaseAddMeter();
+            DialogAddMeter add_meter_form = new DialogAddMeter();
             add_meter_form.ShowDialog();
         }
 
         private void Button_change_Click(object sender, EventArgs e)
         {
-            DatabaseChangeMeter change_meter_form = new DatabaseChangeMeter();
+            DialogChangeMeter change_meter_form = new DialogChangeMeter();
             change_meter_form.ShowDialog();
         }
 
         private void Button_delete_Click(object sender, EventArgs e)
         {
-            DatabaseDeleteMeter delete_meter_form = new DatabaseDeleteMeter(ConData.IP);
+            DialogDeleteMeter delete_meter_form = new DialogDeleteMeter(ConData.IP);
             delete_meter_form.ShowDialog();
         }
 

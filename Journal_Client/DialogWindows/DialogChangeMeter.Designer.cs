@@ -1,6 +1,6 @@
 ﻿namespace Journal_Client
 {
-    partial class DatabaseChangeMeter
+    partial class DialogChangeMeter
     {
         /// <summary>
         /// Required designer variable.

@@ -98,13 +98,13 @@ namespace Journal_Client
 
         private void Button_add_Click(object sender, EventArgs e)
         {
-            DatabaseAddSealToController temp_form_link = new DatabaseAddSealToController(DistrictName, combobox_controller.Text);
+            DialogAddSealToController temp_form_link = new DialogAddSealToController(DistrictName, combobox_controller.Text);
             temp_form_link.ShowDialog();
         }
 
         private void Button_delete_Click(object sender, EventArgs e)
         {
-            DatabaseDeleteSealFromController temp_form_link = new DatabaseDeleteSealFromController(DistrictName, listbox_sealers.SelectedItem.ToString());
+            DialogDeleteSealFromController temp_form_link = new DialogDeleteSealFromController(DistrictName, listbox_sealers.SelectedItem.ToString());
             temp_form_link.ShowDialog();
         }
 

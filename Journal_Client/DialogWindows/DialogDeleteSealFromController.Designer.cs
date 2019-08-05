@@ -1,6 +1,6 @@
 ﻿namespace Journal_Client
 {
-    partial class DatabaseDeleteSealFromController
+    partial class DialogDeleteSealFromController
     {
         /// <summary>
         /// Required designer variable.

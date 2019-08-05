@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Journal_Client
 {
-    public partial class DatabaseDeleteMeter : Form
+    public partial class DialogDeleteMeter : Form
     {
 
         private string DistrictName;
@@ -28,7 +28,7 @@ namespace Journal_Client
         NpgsqlConnection database;
         NpgsqlCommand cmd;
 
-        public DatabaseDeleteMeter(string IP)
+        public DialogDeleteMeter(string IP)
         {
             InitializeComponent();
             ConData.Port = "5432";

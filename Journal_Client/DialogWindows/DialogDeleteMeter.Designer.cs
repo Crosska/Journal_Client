@@ -1,6 +1,6 @@
 ﻿namespace Journal_Client
 {
-    partial class DatabaseDeleteMeter
+    partial class DialogDeleteMeter
     {
         /// <summary>
         /// Required designer variable.

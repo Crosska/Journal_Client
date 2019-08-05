@@ -142,13 +142,12 @@ namespace Journal_Client
                 "\"Дом\", \"Квартира\", \"Оплата\", \"Дата обработки\", \"Лицевой счет\", \"#Код вида заявки\") " +
                 "VALUES(" + district_code + ", '" + datetime_show.Value.ToShortDateString() + "', '" + textbox_fio.Text + "', '" + combobox_street.SelectedItem.ToString() + "'," +
                 " '" + textbox_house.Text + "', '" + textbox_flat.Text + "', '" + numericupdown_payment.Value.ToString().Replace(',', '.') + "' , '" + combobox_processing_date.SelectedItem.ToString() + "', " + textbox_personal_account.Text + ", " + application_type_code + ")";
-                //MessageBox.Show(SQLCommand);
+                MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd.Prepare();
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Запись успешно добавлена.");
-
             }
             catch (Exception error)
             {

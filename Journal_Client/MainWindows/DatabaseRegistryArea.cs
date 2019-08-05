@@ -100,13 +100,19 @@ namespace Journal_Client
 
         private void Button_add_Click(object sender, EventArgs e) // Действие при нажатии на кнопку "Добавить"
         {
-            DatabaseAddStreet AddStreetForm = new DatabaseAddStreet(datetime_show.Value, DistrictName);
+            DialogAddStreet AddStreetForm = new DialogAddStreet(datetime_show.Value, DistrictName);
             AddStreetForm.ShowDialog();
         }
 
         private void RefreshTable(object sender, EventArgs e) // Действия при обновлении таблицы
         {
             show_streets_for_date();
+        }
+
+        private void Button_delete_Click(object sender, EventArgs e)
+        {
+            DialogDeleteWalk DeleteWalkForm = new DialogDeleteWalk(datetime_show.Value.ToShortDateString(), datagridtable_streets.CurrentCell.Value.ToString());
+            DeleteWalkForm.ShowDialog();
         }
     }
 }
