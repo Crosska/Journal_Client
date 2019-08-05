@@ -93,7 +93,7 @@
             this.numeric_new_meter.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.numeric_new_meter.Location = new System.Drawing.Point(178, 73);
             this.numeric_new_meter.Name = "numeric_new_meter";
-            this.numeric_new_meter.Size = new System.Drawing.Size(180, 27);
+            this.numeric_new_meter.Size = new System.Drawing.Size(181, 27);
             this.numeric_new_meter.TabIndex = 6;
             // 
             // button_cancel
@@ -106,6 +106,7 @@
             this.button_cancel.TabIndex = 7;
             this.button_cancel.Text = "Отменить";
             this.button_cancel.UseVisualStyleBackColor = false;
+            this.button_cancel.Click += new System.EventHandler(this.Button_cancel_Click);
             // 
             // button_apply
             // 
@@ -134,6 +135,7 @@
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DatabaseChangeMeter";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменить показания";
             ((System.ComponentModel.ISupportInitialize)(this.numeric_new_meter)).EndInit();
             this.ResumeLayout(false);

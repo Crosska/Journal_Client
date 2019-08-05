@@ -38,17 +38,6 @@ namespace Journal_Client
             }
         }
 
-        private void OnFrameChanged(object sender, EventArgs e)
-        {
-            if (InvokeRequired)
-            {
-                BeginInvoke((Action)(() => OnFrameChanged(sender, e)));
-                return;
-            }
-            ImageAnimator.UpdateFrames();
-            Invalidate(false);
-        }
-
         private void form_closed(object sender, FormClosedEventArgs e) // Действие при закрытии формы (закрывает всю программу)
         {
             Application.Exit();
@@ -62,19 +51,19 @@ namespace Journal_Client
 
         private void Button_registry_request_Click(object sender, EventArgs e)
         {
-            DatabaseRegistryRequest registry_request_form = new DatabaseRegistryRequest(label_server.Text); // Открыть форму регистрации запроса
+            DatabaseRegistryRequest registry_request_form = new DatabaseRegistryRequest(ServerIP); // Открыть форму регистрации запроса
             registry_request_form.Show();
         }
 
         private void Button_sealers_directory_Click(object sender, EventArgs e) // Справочник пломбираторов
         {
-            DatabaseSealsControllersLinks seals_controllers_links_form = new DatabaseSealsControllersLinks(label_server.Text); // Открыть форму связей контролера и пломбиратора
+            DatabaseSealsControllersLinks seals_controllers_links_form = new DatabaseSealsControllersLinks(ServerIP); // Открыть форму связей контролера и пломбиратора
             seals_controllers_links_form.Show();
         }
 
         private void Button_controllers_directory_Click(object sender, EventArgs e) // Справочник контролеров
         {
-            DatabaseControllersDirectory controllers_directory_form = new DatabaseControllersDirectory(label_server.Text); // Открыть форму справочника контролеров
+            DatabaseControllersDirectory controllers_directory_form = new DatabaseControllersDirectory(ServerIP); // Открыть форму справочника контролеров
             controllers_directory_form.Show();
         }
 
@@ -92,7 +81,8 @@ namespace Journal_Client
 
         private void Button_enter_data_Click(object sender, EventArgs e)
         {
-            DatabaseEnterData in_out_enter_form = new DatabaseEnterData (label_server.Text); // Открыть форму ввода показаний
+            DatabaseEnterData in_out_enter_form = new DatabaseEnterData(ServerIP); // Открыть форму ввода показаний
+            MessageBox.Show(ServerIP);
             in_out_enter_form.Show();
         }
     }

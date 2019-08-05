@@ -14,7 +14,6 @@ namespace Journal_Client
     public partial class DatabaseEnterData : Form
     {
 
-        private string DistrictName;
         struct Database
         {
             public string IP;
@@ -28,37 +27,15 @@ namespace Journal_Client
         NpgsqlConnection database;
         NpgsqlCommand cmd;
 
-        public DatabaseEnterData(string DistrictName_received)
+        public DatabaseEnterData(string IP)
         {
             InitializeComponent();
             datagridtable_meter.DataSource = null;
-            DistrictName = DistrictName_received;
             ConData.Port = "5432";
             ConData.DatabaseName = "postgres";
             ConData.User = "root";
             ConData.Password = "Qwerty2";
-            switch (DistrictName)
-            {
-                case "Гвардейский":
-                    ConData.IP = "192.168.85.250"; // Гвардейский
-                    break;
-                case "Горняцкий":
-                    ConData.IP = "192.168.82.250"; // Горняцкий
-                    break;
-                case "Кировский":
-                    ConData.IP = "192.168.1.250"; // Кировский
-                    break;
-                case "Советский":
-                    ConData.IP = "192.168.87.250"; // Советский
-                    break;
-                case "Центральный":
-                    ConData.IP = "192.168.88.250"; // Центральный
-                    break;
-                default:
-                    MessageBox.Show("Произошла ошибка при передаче выбранного сервера в форму добавления");
-                    this.Close();
-                    break;
-            }
+            ConData.IP = IP;
             string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             try
             {
@@ -131,7 +108,7 @@ namespace Journal_Client
             }
             catch (Exception error)
             {
-                //MessageBox.Show(error.ToString());
+                MessageBox.Show(error.ToString());
             }
             finally
             {
@@ -153,8 +130,40 @@ namespace Journal_Client
 
         private void Button_delete_Click(object sender, EventArgs e)
         {
-            DatabaseDeleteMeter delete_meter_form = new DatabaseDeleteMeter();
+            DatabaseDeleteMeter delete_meter_form = new DatabaseDeleteMeter(ConData.IP);
             delete_meter_form.ShowDialog();
+        }
+
+        private void DatabaseEnterData_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                database.Open();
+                string SQLCommand = "select \"ФИО потребителя\",\"Улица\",\"Дом\",\"Квартира\",\"Лицевой счет\" from \"Журнал регистраций заявок\" " +
+                "where \"Лицевой счет\" || '' like '" + textbox_personal_account.Text + "%'";
+                //MessageBox.Show(SQLCommand);
+                cmd = new NpgsqlCommand(SQLCommand, database);
+                DataTable datatable;
+                datatable = new DataTable();
+                datatable.Load(cmd.ExecuteReader());
+                List<string> temp = new List<string>();
+                for (int i = 0; i < datatable.Rows.Count; i++)
+                {
+                    temp.Add(datatable.Rows[i].Field<string>(0) + " | " + datatable.Rows[i].Field<string>(1) + " | " + datatable.Rows[i].Field<string>(2) + " | " + datatable.Rows[i].Field<string>(3) + " = " + datatable.Rows[i].Field<string>(4));
+                }
+                for (int i = 0; i < temp.Count; i++)
+                {
+                    listbox_FIO_adress.Items.Add(temp.ElementAtOrDefault<string>(i));
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.ToString());
+            }
+            finally
+            {
+                database.Close();
+            }
         }
     }
 }

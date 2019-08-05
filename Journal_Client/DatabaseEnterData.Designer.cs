@@ -36,8 +36,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button_change = new System.Windows.Forms.Button();
             this.datagridtable_meter = new System.Windows.Forms.DataGridView();
+            this.button_change = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridtable_meter)).BeginInit();
@@ -132,19 +132,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Показания по лицевому счёту";
             // 
-            // button_change
-            // 
-            this.button_change.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button_change.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_change.Location = new System.Drawing.Point(138, 345);
-            this.button_change.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button_change.Name = "button_change";
-            this.button_change.Size = new System.Drawing.Size(132, 39);
-            this.button_change.TabIndex = 6;
-            this.button_change.Text = "Изменить";
-            this.button_change.UseVisualStyleBackColor = false;
-            this.button_change.Click += new System.EventHandler(this.Button_change_Click);
-            // 
             // datagridtable_meter
             // 
             this.datagridtable_meter.AllowUserToAddRows = false;
@@ -164,6 +151,19 @@
             this.datagridtable_meter.Size = new System.Drawing.Size(397, 315);
             this.datagridtable_meter.TabIndex = 7;
             // 
+            // button_change
+            // 
+            this.button_change.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button_change.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_change.Location = new System.Drawing.Point(138, 345);
+            this.button_change.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_change.Name = "button_change";
+            this.button_change.Size = new System.Drawing.Size(132, 39);
+            this.button_change.TabIndex = 6;
+            this.button_change.Text = "Изменить";
+            this.button_change.UseVisualStyleBackColor = false;
+            this.button_change.Click += new System.EventHandler(this.Button_change_Click);
+            // 
             // DatabaseEnterData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -176,6 +176,7 @@
             this.Name = "DatabaseEnterData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Внесение показаний";
+            this.Load += new System.EventHandler(this.DatabaseEnterData_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

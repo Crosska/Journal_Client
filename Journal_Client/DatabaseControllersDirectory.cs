@@ -13,7 +13,6 @@ namespace Journal_Client
 {
     public partial class DatabaseControllersDirectory : Form
     {
-        private string DistrictName;
 
         struct Database
         {
@@ -25,36 +24,14 @@ namespace Journal_Client
         }
         private Database ConData = new Database();
 
-        public DatabaseControllersDirectory(string DistrictName_received)
+        public DatabaseControllersDirectory(string IP)
         {
             InitializeComponent();
             ConData.Port = "5432";
             ConData.DatabaseName = "postgres";
             ConData.User = "root";
             ConData.Password = "Qwerty2";
-            DistrictName = DistrictName_received;
-            switch (DistrictName)
-            {
-                case "Гвардейский":
-                    ConData.IP = "192.168.85.250"; // Гвардейский
-                    break;
-                case "Горняцкий":
-                    ConData.IP = "192.168.82.250"; // Горняцкий
-                    break;
-                case "Кировский":
-                    ConData.IP = "192.168.1.250"; // Кировский
-                    break;
-                case "Советский":
-                    ConData.IP = "192.168.87.250"; // Советский
-                    break;
-                case "Центральный":
-                    ConData.IP = "192.168.88.250"; // Центральный
-                    break;
-                default:
-                    MessageBox.Show("Произошла ошибка при передаче выбранного сервера в форму добавления");
-                    this.Close();
-                    break;
-            }
+            ConData.IP = IP;
         }
 
         private void Button_add_controller_Click(object sender, EventArgs e)

@@ -26,34 +26,33 @@ namespace Journal_Client
         }
         private Database ConData = new Database();
 
-        public DatabaseRegistryRequest(string DistrictName_received)
+        public DatabaseRegistryRequest(string IP)
         {
             InitializeComponent();
             ConData.Port = "5432";
             ConData.DatabaseName = "postgres";
             ConData.User = "root";
             ConData.Password = "Qwerty2";
-            DistrictName = DistrictName_received;
-            switch (DistrictName)
+            ConData.IP = IP;
+            switch (ConData.IP)
             {
-                case "Гвардейский":
-                    ConData.IP = "192.168.85.250"; // Гвардейский
+                case "192.168.85.250":
+                    DistrictName = "Гвардейский";
                     break;
-                case "Горняцкий":
-                    ConData.IP = "192.168.82.250"; // Горняцкий
+                case "192.168.82.250":
+                    DistrictName = "Горняцкий";
                     break;
-                case "Кировский":
-                    ConData.IP = "192.168.1.250"; // Кировский
+                case "192.168.1.250":
+                    DistrictName = "Кировский";
                     break;
-                case "Советский":
-                    ConData.IP = "192.168.87.250"; // Советский
+                case "192.168.87.250":
+                    DistrictName = "Советский";
                     break;
-                case "Центральный":
-                    ConData.IP = "192.168.88.250"; // Центральный
+                case "192.168.88.250":
+                    DistrictName = "Центральный";
                     break;
                 default:
-                    MessageBox.Show("Произошла ошибка при передаче выбранного сервера в форму добавления");
-                    this.Close();
+                    MessageBox.Show("Произошла ошибка при передаче IP адреса сервера в программу");
                     break;
             }
             getStreets();

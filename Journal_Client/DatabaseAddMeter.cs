@@ -17,5 +17,9 @@ namespace Journal_Client
             InitializeComponent();
         }
 
+        private void Button_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

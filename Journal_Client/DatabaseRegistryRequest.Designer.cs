@@ -45,6 +45,8 @@
             this.textbox_fio = new System.Windows.Forms.TextBox();
             this.calendar_application_submission = new System.Windows.Forms.MonthCalendar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.textview_bypass = new System.Windows.Forms.TextBox();
             this.combobox_processing_date = new System.Windows.Forms.ComboBox();
             this.button_add = new System.Windows.Forms.Button();
@@ -52,8 +54,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.datetime_show = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericupdown_payment)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -231,6 +231,26 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Выбрать дату обработки";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(273, 28);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(117, 19);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Кол-во обходов";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(6, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 19);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Дата обработки";
+            // 
             // textview_bypass
             // 
             this.textview_bypass.Location = new System.Drawing.Point(396, 25);
@@ -252,7 +272,7 @@
             // button_add
             // 
             this.button_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button_add.Location = new System.Drawing.Point(260, 415);
+            this.button_add.Location = new System.Drawing.Point(263, 415);
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(228, 44);
             this.button_add.TabIndex = 2;
@@ -300,26 +320,6 @@
             this.label1.Size = new System.Drawing.Size(124, 19);
             this.label1.TabIndex = 17;
             this.label1.Text = "Выбранная дата";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(6, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 19);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Дата обработки";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(273, 28);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(117, 19);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Кол-во обходов";
             // 
             // DatabaseRegistryRequest
             // 
