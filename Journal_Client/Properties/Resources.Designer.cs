@@ -59,25 +59,5 @@ namespace Journal_Client.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _1j6F {
-            get {
-                object obj = ResourceManager.GetObject("1j6F", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _9ec4ea93ab9a440e8a293a87df6dc303 {
-            get {
-                object obj = ResourceManager.GetObject("9ec4ea93ab9a440e8a293a87df6dc303", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
