@@ -55,9 +55,9 @@ namespace Journal_Client
                     MessageBox.Show("Произошла ошибка при передаче IP адреса сервера в программу");
                     break;
             }
-            getStreets();
-            getApplicationType();
-            combobox_processing_date.DataSource = null;
+            getStreets();                                                                               // Вызов функции для заполенения выпадающего списка улиц
+            getApplicationType();                                                                       // Вызов функции для заполенения выпадающего списка видов заявок
+            combobox_processing_date.DataSource = null;                                                 // Очистка поля даты обработки
         }
 
         private void getApplicationType()
@@ -72,16 +72,16 @@ namespace Journal_Client
                 //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table.Load(cmd.ExecuteReader());
-                List<string> List_streets = new List<string>(temp_table.Rows.Count);
-                foreach (DataRow row in temp_table.Rows)
+                List<string> List_streets = new List<string>(temp_table.Rows.Count);                    // Создание списка с типом данных string с размеров = кол-ву строк из таблицы с результатами
+                foreach (DataRow row in temp_table.Rows)                                                // Цикл на каждую строку из таблицы с результатом запроса
                 {
                     try
                     {
-                        List_streets.Add(row[0].ToString());
+                        List_streets.Add(row[0].ToString());                                            // Добавление значения первой ячейки из строки таблицы в список
                     }
                     catch { }
                 }
-                combobox_type_application.DataSource = new BindingSource(List_streets, null);
+                combobox_type_application.DataSource = new BindingSource(List_streets, null);           // Заполенение выпадающего списка данными из списка List_streets
             }
             catch
             {
@@ -104,7 +104,7 @@ namespace Journal_Client
                 string SQLCommand = "select \"Улица\" from \"Улица\" " +
                 "inner join \"Район\" on \"Улица\".\"#Код района\" = \"Район\".\"#Код района\" " +
                 "where \"Район\" = '" + DistrictName + "' ";
-                MessageBox.Show(SQLCommand);
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table.Load(cmd.ExecuteReader());
                 List<string> List_streets = new List<string>(temp_table.Rows.Count);
@@ -116,7 +116,7 @@ namespace Journal_Client
                     }
                     catch { }
                 }
-                combobox_street.DataSource = new BindingSource(List_streets, null);
+                combobox_street.DataSource = new BindingSource(List_streets, null);                     // Заполенение выпадающего списка данными из списка List_streets
             }
             catch
             {
@@ -138,11 +138,11 @@ namespace Journal_Client
             {
                 DataTable temp_table = new DataTable();
                 database.Open();
-                string SQLCommand = "INSERT INTO \"Журнал регистраций\" (\"#Код участка\", \"Дата подачи заявки\", \"ФИО потребителя\", \"Улица\", " +
-                "\"Дом\", \"Квартира\", \"Оплата\", \"Дата обработки\", \"Лицевой счет\", \"#Код вида заявки\") " +
+                string SQLCommand = "INSERT INTO \"Журнал регистраций заявок\" (\"#Код участка\", \"Дата подачи заявки\", \"ФИО потребителя\", \"Улица\", " +
+                "\"Дом\", \"Квартира\", \"Оплата\", \"Лицевой счет\", \"#Код вида заявки\") " +
                 "VALUES(" + district_code + ", '" + datetime_show.Value.ToShortDateString() + "', '" + textbox_fio.Text + "', '" + combobox_street.SelectedItem.ToString() + "'," +
-                " '" + textbox_house.Text + "', '" + textbox_flat.Text + "', '" + numericupdown_payment.Value.ToString().Replace(',', '.') + "' , '" + combobox_processing_date.SelectedItem.ToString() + "', " + textbox_personal_account.Text + ", " + application_type_code + ")";
-                MessageBox.Show(SQLCommand);
+                " '" + textbox_house.Text + "', '" + textbox_flat.Text + "', '" + numericupdown_payment.Value.ToString().Replace(',', '.') + "' , " + textbox_personal_account.Text + ", " + application_type_code + ")";
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd.Prepare();
                 cmd.CommandType = CommandType.Text;
@@ -167,15 +167,15 @@ namespace Journal_Client
 
         private void selected_new_date(object sender, DateRangeEventArgs e)
         {
-            datetime_show.Value = calendar_application_submission.SelectionRange.Start;
+            datetime_show.Value = calendar_application_submission.SelectionRange.Start;                 // Присваивание даты из календаря в элемент с датой
         }
 
         private void street_changed(object sender, EventArgs e)
         {
-            get_dates_walks();
+            get_dates_walks();                                                                          // Вызов функции для получения дат обхода
         }
 
-        private int get_district_code()
+        private int get_district_code()                                                                 // Функция для получения кода участка (возвращает код)
         {
             string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
@@ -211,7 +211,7 @@ namespace Journal_Client
             return district_code;
         }
 
-        private int get_application_type_code()
+        private int get_application_type_code()                                                         // Функция для получения кода вида заявки (возвращает код)
         {
             string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
@@ -245,12 +245,12 @@ namespace Journal_Client
             return application_type_code;
         }
 
-        private void date_proccessing_changed(object sender, EventArgs e)
+        private void date_proccessing_changed(object sender, EventArgs e)                               // Действие при изменении даты обработки
         {
-            date_count_refresh();
+            date_count_refresh();                                                                       // Вызов функции обновления количества обходов
         }
 
-        private void date_count_refresh()
+        private void date_count_refresh()                                                               // Функция обновления количества обходов
         {
             string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
@@ -259,9 +259,11 @@ namespace Journal_Client
             {
                 DataTable temp_table = new DataTable();
                 database.Open();
-                string SQLCommand = "select count(\"#Код улицы\") from \"Участок\" " +
-                "where \"Дата обхода\" = '" + combobox_processing_date.SelectedItem.ToString() + "'";
-                MessageBox.Show(SQLCommand);
+                string SQLCommand = "select count(\"#Код заявки\") from \"Журнал регистраций заявок\" " +
+                "inner join \"Участок\" on \"Журнал регистраций заявок\".\"#Код участка\" = \"Участок\".\"#Код участка\" " +
+                "inner join \"Улица\" on \"Участок\".\"#Код улицы\" = \"Улица\".\"#Код улицы\" " +
+                "where \"Дата обхода\" = '" + combobox_processing_date.SelectedValue + "' and \"Журнал регистраций заявок\".\"Улица\" = '" + combobox_street.SelectedValue + "'";
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table.Load(cmd.ExecuteReader());
                 foreach (DataRow row in temp_table.Rows)

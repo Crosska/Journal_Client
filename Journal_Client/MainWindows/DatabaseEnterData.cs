@@ -140,8 +140,9 @@ namespace Journal_Client
             {
                 database.Open();
                 string SQLCommand = "select \"ФИО потребителя\",\"Улица\",\"Дом\",\"Квартира\",\"Лицевой счет\" from \"Журнал регистраций заявок\" " +
-                "where \"Лицевой счет\" || '' like '" + textbox_personal_account.Text + "%'";
-                //MessageBox.Show(SQLCommand);
+                "where \"Лицевой счет\" || '' like '" + textbox_personal_account.Text + "%' " +
+                "group by \"ФИО потребителя\",\"Улица\",\"Дом\",\"Квартира\",\"Лицевой счет\"";
+                MessageBox.Show(SQLCommand);
                 cmd = new NpgsqlCommand(SQLCommand, database);
                 DataTable datatable;
                 datatable = new DataTable();
