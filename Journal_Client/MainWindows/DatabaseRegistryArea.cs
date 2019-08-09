@@ -69,8 +69,7 @@ namespace Journal_Client
             //MessageBox.Show(chosen_date.ToString());
             datetime_show.Value = chosen_date;
             string chosen_date_sql = Calendar.SelectionRange.Start.ToShortDateString();
-            string conString = "";
-            conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
@@ -95,7 +94,6 @@ namespace Journal_Client
             {
                 database.Close();
             }
-
         }
 
         private void Button_add_Click(object sender, EventArgs e) // Действие при нажатии на кнопку "Добавить"
@@ -111,8 +109,16 @@ namespace Journal_Client
 
         private void Button_delete_Click(object sender, EventArgs e)
         {
-            DialogDeleteWalk DeleteWalkForm = new DialogDeleteWalk(datetime_show.Value.ToShortDateString(), datagridtable_streets.CurrentCell.Value.ToString());
-            DeleteWalkForm.ShowDialog();
+            try
+            {
+                DialogDeleteWalk DeleteWalkForm = new DialogDeleteWalk(datetime_show.Value.ToShortDateString(), datagridtable_streets.CurrentCell.Value.ToString(), ConData.IP);
+                DeleteWalkForm.ShowDialog();
+            }
+            catch
+            {
+                MessageBox.Show("Для удаления выберите какую-либо улицу из таблицы.");
+            }
         }
+
     }
 }
