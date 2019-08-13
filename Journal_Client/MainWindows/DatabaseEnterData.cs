@@ -133,7 +133,21 @@ namespace Journal_Client
 
         private void Button_delete_Click(object sender, EventArgs e)
         {
-            DialogDeleteMeter delete_meter_form = new DialogDeleteMeter(ConData.IP);
+            List<String> data_list = new List<string>();
+            foreach (DataGridViewRow row in datagridtable_meter.Rows)
+            {
+                try
+                {
+                    string temp_str = ( row.Cells[0].Value.ToString() + " | " + row.Cells[1].Value.ToString() + " | " + row.Cells[2].Value.ToString() + " | " + (Convert.ToDateTime(row.Cells[3].Value)).ToShortDateString() + " | " + row.Cells[4].Value.ToString());
+                    data_list.Add(temp_str);
+                }
+                catch { }
+            }
+            for (int i = 0; i < data_list.Count; i++)
+            {
+                MessageBox.Show(data_list.ElementAt(i));
+            }
+            DialogDeleteMeter delete_meter_form = new DialogDeleteMeter(ConData.IP, data_list, textbox_personal_account.Text);
             delete_meter_form.ShowDialog();
         }
 

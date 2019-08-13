@@ -14,7 +14,8 @@ namespace Journal_Client
     public partial class DialogDeleteMeter : Form
     {
 
-        private string DistrictName;
+        private string personal_account;
+
         struct Database
         {
             public string IP;
@@ -28,7 +29,7 @@ namespace Journal_Client
         NpgsqlConnection database;
         NpgsqlCommand cmd;
 
-        public DialogDeleteMeter(string IP)
+        public DialogDeleteMeter(string IP, List<string> data_list, string personal_account_received)
         {
             InitializeComponent();
             ConData.Port = "5432";
@@ -36,11 +37,29 @@ namespace Journal_Client
             ConData.User = "root";
             ConData.Password = "Qwerty2";
             ConData.IP = IP;
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";" ;
+            combobox_meter.DataSource = data_list;
+            personal_account = personal_account_received;
+        }
+
+        private void Button_delete_Click(object sender, EventArgs e)
+        {
             string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            string[] data_string = combobox_meter.SelectedItem.ToString().Split(new char[] { '|' }); // Деление строки по символу '|'
+            NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
-                database = new NpgsqlConnection(conString);
+                DataTable temp_table = new DataTable();
                 database.Open();
+                string SQLCommand = "delete from \"Журнал ввода/вывода\" " +
+                "where \"#Код заявки \" = " + getApplicationCode() + " and \"№ пломбы\" = " + data_string[2] + " and \"Задолженность\" = " + data_string[1] + " and \"#Код контролера\" = " + getControllerCode(data_string[2])  + " and \"Показания\" = " + data_string[0] + " ";
+                MessageBox.Show(SQLCommand);
+                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd.Prepare();
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Запись успешно удалена.");
             }
             catch (Exception error)
             {
@@ -50,11 +69,75 @@ namespace Journal_Client
             {
                 database.Close();
             }
+            this.Close();
         }
 
-        private void Button_delete_Click(object sender, EventArgs e)
+        private string getControllerCode(string FIO)
         {
+            string code = "";
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            database = new NpgsqlConnection(conString);
+            try
+            {
+                DataTable temp_table = new DataTable();
+                database.Open();
+                string SQLCommand = "select \"#Код контролера\" from \"Контролер\" " +
+                "where \"ФИО контролера\" = '" + FIO + "' ";
+                MessageBox.Show(SQLCommand);
+                cmd = new NpgsqlCommand(SQLCommand, database);
+                temp_table.Load(cmd.ExecuteReader());
+                foreach (DataRow row in temp_table.Rows)
+                {
+                    try
+                    {
+                        code = row[0].ToString();
+                    }
+                    catch { }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+            }
+            finally
+            {
+                database.Close();
+            }
+            return code;
+        }
 
+        private string getApplicationCode()
+        {
+            string code = "";
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            database = new NpgsqlConnection(conString);
+            try
+            {
+                DataTable temp_table = new DataTable();
+                database.Open();
+                string SQLCommand = "select \"#Код заявки\" from \"Журнал регистраций заявок\" " +
+                "where \"Лицевой счет\" = '" + personal_account + "' ";
+                MessageBox.Show(SQLCommand);
+                cmd = new NpgsqlCommand(SQLCommand, database);
+                temp_table.Load(cmd.ExecuteReader());
+                foreach (DataRow row in temp_table.Rows)
+                {
+                    try
+                    {
+                        code = row[0].ToString();
+                    }
+                    catch { }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+            }
+            finally
+            {
+                database.Close();
+            }
+            return code;
         }
 
         private void Button_cancel_Click(object sender, EventArgs e)

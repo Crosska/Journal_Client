@@ -37,7 +37,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.datagridtable_meter = new System.Windows.Forms.DataGridView();
-            this.button_change = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridtable_meter)).BeginInit();
@@ -50,7 +49,7 @@
             this.button_add.Location = new System.Drawing.Point(5, 345);
             this.button_add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_add.Name = "button_add";
-            this.button_add.Size = new System.Drawing.Size(201, 39);
+            this.button_add.Size = new System.Drawing.Size(285, 39);
             this.button_add.TabIndex = 0;
             this.button_add.Text = "Добавить";
             this.button_add.UseVisualStyleBackColor = false;
@@ -60,10 +59,10 @@
             // 
             this.button_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button_delete.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_delete.Location = new System.Drawing.Point(385, 345);
+            this.button_delete.Location = new System.Drawing.Point(296, 345);
             this.button_delete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_delete.Name = "button_delete";
-            this.button_delete.Size = new System.Drawing.Size(192, 39);
+            this.button_delete.Size = new System.Drawing.Size(281, 39);
             this.button_delete.TabIndex = 1;
             this.button_delete.Text = "Удалить";
             this.button_delete.UseVisualStyleBackColor = false;
@@ -122,7 +121,6 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.datagridtable_meter);
-            this.groupBox2.Controls.Add(this.button_change);
             this.groupBox2.Controls.Add(this.button_delete);
             this.groupBox2.Controls.Add(this.button_add);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -152,19 +150,6 @@
             this.datagridtable_meter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.datagridtable_meter.Size = new System.Drawing.Size(571, 315);
             this.datagridtable_meter.TabIndex = 7;
-            // 
-            // button_change
-            // 
-            this.button_change.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button_change.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_change.Location = new System.Drawing.Point(213, 345);
-            this.button_change.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button_change.Name = "button_change";
-            this.button_change.Size = new System.Drawing.Size(167, 39);
-            this.button_change.TabIndex = 6;
-            this.button_change.Text = "Изменить";
-            this.button_change.UseVisualStyleBackColor = false;
-            this.button_change.Click += new System.EventHandler(this.Button_change_Click);
             // 
             // DatabaseEnterData
             // 
@@ -198,7 +183,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button_change;
         private System.Windows.Forms.DataGridView datagridtable_meter;
     }
 }
