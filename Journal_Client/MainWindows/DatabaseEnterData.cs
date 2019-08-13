@@ -60,7 +60,8 @@ namespace Journal_Client
             {
                 database.Open();
                 string SQLCommand = "select \"ФИО потребителя\",\"Улица\",\"Дом\",\"Квартира\",\"Лицевой счет\" from \"Журнал регистраций заявок\" " +
-                "where \"Лицевой счет\" || '' like '" + textbox_personal_account.Text + "%'";
+                "where \"Лицевой счет\" || '' like '" + textbox_personal_account.Text + "%' " +
+                "group by \"ФИО потребителя\",\"Улица\",\"Дом\",\"Квартира\",\"Лицевой счет\"";
                 //MessageBox.Show(SQLCommand);
                 cmd = new NpgsqlCommand(SQLCommand, database);
                 DataTable datatable;
@@ -94,10 +95,10 @@ namespace Journal_Client
                 database.Open();
                 string[] personal_number_first = listbox_FIO_adress.SelectedItem.ToString().Split(new char[] { '=' }); // Деление строки по символу '='
                 string[] personal_number_second = personal_number_first[1].Split(new char[] { ' ' }); // Деление строки по символу ' '
-                string SQLCommand = "select \"Показания\", \"№ пломбы\", \"Дата обхода\" from \"Показания\" " +
-                "inner join \"Журнал ввода/вывода\" on \"Показания\".\"#Код показания\" = \"Журнал ввода/вывода\".\"#Код показания\" " +
+                string SQLCommand = "select \"Показания\",\"Задолженность\",\"№ пломбы\",\"Дата обхода\",\"ФИО контролера\" from \"Журнал ввода/вывода\" " +
                 "inner join \"Журнал регистраций заявок\" on \"Журнал ввода/вывода\".\"#Код заявки \" = \"Журнал регистраций заявок\".\"#Код заявки\" " +
                 "inner join \"Участок\" on \"Журнал регистраций заявок\".\"#Код участка\" = \"Участок\".\"#Код участка\" " +
+                "inner join \"Контролер\" on \"Журнал ввода/вывода\".\"#Код контролера\" = \"Контролер\".\"#Код контролера\" " +
                 "where \"Лицевой счет\" = '" + personal_number_second[1] + "'";
                 //MessageBox.Show(SQLCommand);
                 cmd = new NpgsqlCommand(SQLCommand, database);
@@ -118,7 +119,9 @@ namespace Journal_Client
 
         private void Button_add_Click(object sender, EventArgs e)
         {
-            DialogAddMeter add_meter_form = new DialogAddMeter();
+            string[] personal_number_first = listbox_FIO_adress.SelectedItem.ToString().Split(new char[] { '=' }); // Деление строки по символу '='
+            string[] personal_number_second = personal_number_first[1].Split(new char[] { ' ' }); // Деление строки по символу ' '
+            DialogAddMeter add_meter_form = new DialogAddMeter(personal_number_second[1], ConData.IP);
             add_meter_form.ShowDialog();
         }
 
@@ -160,6 +163,35 @@ namespace Journal_Client
             catch (Exception error)
             {
                 MessageBox.Show(error.ToString());
+            }
+            finally
+            {
+                database.Close();
+            }
+        }
+
+        private void tableRefresh(object sender, EventArgs e)
+        {
+            datagridtable_meter.DataSource = null;
+            try
+            {
+                database.Open();
+                string[] personal_number_first = listbox_FIO_adress.SelectedItem.ToString().Split(new char[] { '=' }); // Деление строки по символу '='
+                string[] personal_number_second = personal_number_first[1].Split(new char[] { ' ' }); // Деление строки по символу ' '
+                string SQLCommand = "select \"Показания\",\"Задолженность\",\"№ пломбы\",\"Дата обхода\",\"ФИО контролера\" from \"Журнал ввода/вывода\" " +
+                "inner join \"Журнал регистраций заявок\" on \"Журнал ввода/вывода\".\"#Код заявки \" = \"Журнал регистраций заявок\".\"#Код заявки\" " +
+                "inner join \"Участок\" on \"Журнал регистраций заявок\".\"#Код участка\" = \"Участок\".\"#Код участка\" " +
+                "inner join \"Контролер\" on \"Журнал ввода/вывода\".\"#Код контролера\" = \"Контролер\".\"#Код контролера\" " +
+                "where \"Лицевой счет\" = '" + personal_number_second[1] + "'";
+                //MessageBox.Show(SQLCommand);
+                cmd = new NpgsqlCommand(SQLCommand, database);
+                DataTable datatable;
+                datatable = new DataTable();
+                datatable.Load(cmd.ExecuteReader());
+                datagridtable_meter.DataSource = datatable;
+            }
+            catch
+            {
             }
             finally
             {

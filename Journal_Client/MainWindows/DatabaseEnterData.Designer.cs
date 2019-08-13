@@ -50,7 +50,7 @@
             this.button_add.Location = new System.Drawing.Point(5, 345);
             this.button_add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_add.Name = "button_add";
-            this.button_add.Size = new System.Drawing.Size(127, 39);
+            this.button_add.Size = new System.Drawing.Size(201, 39);
             this.button_add.TabIndex = 0;
             this.button_add.Text = "Добавить";
             this.button_add.UseVisualStyleBackColor = false;
@@ -60,10 +60,10 @@
             // 
             this.button_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button_delete.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_delete.Location = new System.Drawing.Point(276, 345);
+            this.button_delete.Location = new System.Drawing.Point(385, 345);
             this.button_delete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_delete.Name = "button_delete";
-            this.button_delete.Size = new System.Drawing.Size(127, 39);
+            this.button_delete.Size = new System.Drawing.Size(192, 39);
             this.button_delete.TabIndex = 1;
             this.button_delete.Text = "Удалить";
             this.button_delete.UseVisualStyleBackColor = false;
@@ -103,7 +103,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textbox_personal_account);
             this.groupBox1.Controls.Add(this.listbox_FIO_adress);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(11, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(467, 393);
             this.groupBox1.TabIndex = 6;
@@ -125,9 +125,10 @@
             this.groupBox2.Controls.Add(this.button_change);
             this.groupBox2.Controls.Add(this.button_delete);
             this.groupBox2.Controls.Add(this.button_add);
+            this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(485, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(409, 393);
+            this.groupBox2.Size = new System.Drawing.Size(583, 393);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Показания по лицевому счёту";
@@ -138,6 +139,7 @@
             this.datagridtable_meter.AllowUserToDeleteRows = false;
             this.datagridtable_meter.AllowUserToResizeColumns = false;
             this.datagridtable_meter.AllowUserToResizeRows = false;
+            this.datagridtable_meter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.datagridtable_meter.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.datagridtable_meter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridtable_meter.GridColor = System.Drawing.SystemColors.HighlightText;
@@ -148,17 +150,17 @@
             this.datagridtable_meter.RowHeadersVisible = false;
             this.datagridtable_meter.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.datagridtable_meter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.datagridtable_meter.Size = new System.Drawing.Size(397, 315);
+            this.datagridtable_meter.Size = new System.Drawing.Size(571, 315);
             this.datagridtable_meter.TabIndex = 7;
             // 
             // button_change
             // 
             this.button_change.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button_change.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_change.Location = new System.Drawing.Point(138, 345);
+            this.button_change.Location = new System.Drawing.Point(213, 345);
             this.button_change.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_change.Name = "button_change";
-            this.button_change.Size = new System.Drawing.Size(132, 39);
+            this.button_change.Size = new System.Drawing.Size(167, 39);
             this.button_change.TabIndex = 6;
             this.button_change.Text = "Изменить";
             this.button_change.UseVisualStyleBackColor = false;
@@ -168,7 +170,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 415);
+            this.ClientSize = new System.Drawing.Size(1080, 415);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -176,6 +178,7 @@
             this.Name = "DatabaseEnterData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Внесение показаний";
+            this.Activated += new System.EventHandler(this.tableRefresh);
             this.Load += new System.EventHandler(this.DatabaseEnterData_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

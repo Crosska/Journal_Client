@@ -38,7 +38,12 @@
             this.combobox_date = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textbox_seal_number = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.numeric_saldo = new System.Windows.Forms.NumericUpDown();
+            this.combobox_controller = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_meter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_saldo)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -65,7 +70,7 @@
             // 
             this.button_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button_cancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_cancel.Location = new System.Drawing.Point(11, 153);
+            this.button_cancel.Location = new System.Drawing.Point(11, 226);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(140, 40);
             this.button_cancel.TabIndex = 4;
@@ -77,12 +82,13 @@
             // 
             this.button_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button_add.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_add.Location = new System.Drawing.Point(158, 153);
+            this.button_add.Location = new System.Drawing.Point(158, 226);
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(133, 40);
             this.button_add.TabIndex = 5;
             this.button_add.Text = "Добавить";
             this.button_add.UseVisualStyleBackColor = false;
+            this.button_add.Click += new System.EventHandler(this.Button_add_Click);
             // 
             // label_personal_account
             // 
@@ -98,6 +104,11 @@
             // 
             this.numeric_meter.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.numeric_meter.Location = new System.Drawing.Point(127, 40);
+            this.numeric_meter.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.numeric_meter.Name = "numeric_meter";
             this.numeric_meter.Size = new System.Drawing.Size(164, 27);
             this.numeric_meter.TabIndex = 8;
@@ -139,11 +150,52 @@
             this.textbox_seal_number.Size = new System.Drawing.Size(164, 27);
             this.textbox_seal_number.TabIndex = 12;
             // 
-            // DatabaseAddMeter
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(8, 148);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 21);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Сальдо";
+            // 
+            // numeric_saldo
+            // 
+            this.numeric_saldo.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.numeric_saldo.Location = new System.Drawing.Point(127, 146);
+            this.numeric_saldo.Name = "numeric_saldo";
+            this.numeric_saldo.Size = new System.Drawing.Size(164, 27);
+            this.numeric_saldo.TabIndex = 14;
+            // 
+            // combobox_controller
+            // 
+            this.combobox_controller.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.combobox_controller.FormattingEnabled = true;
+            this.combobox_controller.Location = new System.Drawing.Point(127, 179);
+            this.combobox_controller.Name = "combobox_controller";
+            this.combobox_controller.Size = new System.Drawing.Size(164, 29);
+            this.combobox_controller.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(8, 182);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 21);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Контролер";
+            // 
+            // DialogAddMeter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 205);
+            this.ClientSize = new System.Drawing.Size(305, 278);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.combobox_controller);
+            this.Controls.Add(this.numeric_saldo);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.textbox_seal_number);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.combobox_date);
@@ -155,10 +207,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Name = "DatabaseAddMeter";
+            this.Name = "DialogAddMeter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить показания";
+            this.Load += new System.EventHandler(this.DialogAddMeter_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numeric_meter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_saldo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,5 +230,9 @@
         private System.Windows.Forms.ComboBox combobox_date;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textbox_seal_number;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown numeric_saldo;
+        private System.Windows.Forms.ComboBox combobox_controller;
+        private System.Windows.Forms.Label label6;
     }
 }
