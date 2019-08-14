@@ -49,11 +49,19 @@ namespace Journal_Client
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
-                DataTable temp_table = new DataTable();
+                string SQLCommand = "";
+                if (data_string[0] == " ")
+                {
+                    SQLCommand = "delete from \"Журнал ввода/вывода\" " +
+                "where \"#Код заявки \" = " + getApplicationCode(data_string) + " and \"№ пломбы\" = " + data_string[2] + " and \"Задолженность\" = " + data_string[1] + " and \"#Код контролера\" = " + getControllerCode(data_string[4]) + " and \"Показания\" is null ";
+                }
+                else
+                {
+                    SQLCommand = "delete from \"Журнал ввода/вывода\" " +
+                "where \"#Код заявки \" = " + getApplicationCode(data_string) + " and \"№ пломбы\" = " + data_string[2] + " and \"Задолженность\" = " + data_string[1] + " and \"#Код контролера\" = " + getControllerCode(data_string[4]) + " and \"Показания\" = " + data_string[0] + " ";
+                }
                 database.Open();
-                string SQLCommand = "delete from \"Журнал ввода/вывода\" " +
-                "where \"#Код заявки \" = " + getApplicationCode() + " and \"№ пломбы\" = " + data_string[2] + " and \"Задолженность\" = " + data_string[1] + " and \"#Код контролера\" = " + getControllerCode(data_string[2])  + " and \"Показания\" = " + data_string[0] + " ";
-                MessageBox.Show(SQLCommand);
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd.Prepare();
@@ -82,8 +90,8 @@ namespace Journal_Client
                 DataTable temp_table = new DataTable();
                 database.Open();
                 string SQLCommand = "select \"#Код контролера\" from \"Контролер\" " +
-                "where \"ФИО контролера\" = '" + FIO + "' ";
-                MessageBox.Show(SQLCommand);
+                "where \"ФИО контролера\" = '" + FIO.TrimStart() + "' ";
+                //MessageBox.Show(SQLCommand);
                 cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table.Load(cmd.ExecuteReader());
                 foreach (DataRow row in temp_table.Rows)
@@ -95,30 +103,31 @@ namespace Journal_Client
                     catch { }
                 }
             }
-            catch
+            catch (Exception error)
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                MessageBox.Show(error.ToString());
             }
             finally
             {
                 database.Close();
             }
+            MessageBox.Show(code);
             return code;
         }
 
-        private string getApplicationCode()
+        private string getApplicationCode(string[] data_string)
         {
             string code = "";
             string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            database = new NpgsqlConnection(conString);
+            NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
                 database.Open();
-                string SQLCommand = "select \"#Код заявки\" from \"Журнал регистраций заявок\" " +
-                "where \"Лицевой счет\" = '" + personal_account + "' ";
-                MessageBox.Show(SQLCommand);
-                cmd = new NpgsqlCommand(SQLCommand, database);
+                string SQLCommand = "select \"#Код заявки \" from \"Журнал ввода/вывода\" " +
+                "where \"№ пломбы\" = " + data_string[2] + " and \"Задолженность\" = " + data_string[1] + " and \"#Код контролера\" = " + getControllerCode(data_string[4]) + " and \"Показания\" = " + data_string[0] + " ";
+                //MessageBox.Show(SQLCommand);
+                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table.Load(cmd.ExecuteReader());
                 foreach (DataRow row in temp_table.Rows)
                 {
@@ -129,9 +138,9 @@ namespace Journal_Client
                     catch { }
                 }
             }
-            catch
+            catch (Exception error)
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                MessageBox.Show(error.ToString());
             }
             finally
             {

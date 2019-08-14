@@ -143,11 +143,13 @@ namespace Journal_Client
                 }
                 catch { }
             }
-            for (int i = 0; i < data_list.Count; i++)
+            /*for (int i = 0; i < data_list.Count; i++)
             {
                 MessageBox.Show(data_list.ElementAt(i));
-            }
-            DialogDeleteMeter delete_meter_form = new DialogDeleteMeter(ConData.IP, data_list, textbox_personal_account.Text);
+            }*/
+            string[] personal_number_first = listbox_FIO_adress.SelectedItem.ToString().Split(new char[] { '=' }); // Деление строки по символу '='
+            string[] personal_number_second = personal_number_first[1].Split(new char[] { ' ' }); // Деление строки по символу ' '
+            DialogDeleteMeter delete_meter_form = new DialogDeleteMeter(ConData.IP, data_list, personal_number_second[1]);
             delete_meter_form.ShowDialog();
         }
 

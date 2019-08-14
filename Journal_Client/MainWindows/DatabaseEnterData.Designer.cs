@@ -57,6 +57,7 @@
             // 
             // button_delete
             // 
+            this.button_delete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button_delete.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_delete.Location = new System.Drawing.Point(296, 345);
@@ -129,7 +130,7 @@
             this.groupBox2.Size = new System.Drawing.Size(583, 393);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Показания по лицевому счёту";
+            this.groupBox2.Text = "Данные по лицевому счёту";
             // 
             // datagridtable_meter
             // 
@@ -155,6 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1080, 415);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
