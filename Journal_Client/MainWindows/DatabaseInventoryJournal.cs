@@ -55,8 +55,8 @@ namespace Journal_Client
 
         private void Radiobutton_all_CheckedChanged(object sender, EventArgs e)
         {
-            combobox_personal_account.Enabled = true;
-            calendar.Enabled = true;
+            combobox_personal_account.Enabled = false;
+            calendar.Enabled = false;
             select_type = 2;
         }
 
@@ -111,9 +111,9 @@ namespace Journal_Client
         private void Button_do_select_Click(object sender, EventArgs e)
         {
             string SQLCommand = "select \"Лицевой счет\", \"Задолженность\", \"Улица\", \"Дом\", \"Квартира\", \"Дата обхода\", \"ФИО контролера\" from \"Журнал регистраций заявок\" " +
-            "inner join \"Журнал ввода/вывода\" on \"Журнал регистраций заявок\".\"#Код заявки\" = \"Журнал ввода/вывода\".\"#Код заявки \" " +
+            "left join \"Журнал ввода/вывода\" on \"Журнал регистраций заявок\".\"#Код заявки\" = \"Журнал ввода/вывода\".\"#Код заявки \" " +
             "inner join \"Участок\" on \"Журнал регистраций заявок\".\"#Код участка\" = \"Участок\".\"#Код участка\" " +
-            "inner join \"Контролер\" on \"Журнал ввода/вывода\".\"#Код контролера\" = \"Контролер\".\"#Код контролера\" ";
+            "left join \"Контролер\" on \"Журнал ввода/вывода\".\"#Код контролера\" = \"Контролер\".\"#Код контролера\" ";
             make_select(SQLCommand);
 
         }
@@ -129,13 +129,13 @@ namespace Journal_Client
                 switch (select_type)
                 {
                     case 0:
-                        sql_rule = "where \"Дата обхода\" = '" + datetime_show.Value.ToString() + "'";
+                        sql_rule = "where \"Дата обхода\" = '" + datetime_show.Value.ToString() + "' and \"#Код вида заявки\" = 3";
                         break;
                     case 1:
-                        sql_rule = "where \"Лицевой счет\" = '" + combobox_personal_account.SelectedItem.ToString() + "'";
+                        sql_rule = "where \"Лицевой счет\" = '" + combobox_personal_account.SelectedItem.ToString() + "' and  \"#Код вида заявки\" = 3";
                         break;
                     case 2:
-                        sql_rule = "";
+                        sql_rule = "where \"#Код вида заявки\" = 3";
                         break;
                     default:
                         MessageBox.Show("Ошибка на этапе формирования условий запроса");

@@ -42,6 +42,7 @@
             this.Directories = new System.Windows.Forms.TabPage();
             this.Reports = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button_jurnal_reg = new System.Windows.Forms.Button();
             this.tab_control.SuspendLayout();
             this.Forms.SuspendLayout();
             this.Directories.SuspendLayout();
@@ -203,6 +204,7 @@
             // Reports
             // 
             this.Reports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Reports.Controls.Add(this.button_jurnal_reg);
             this.Reports.Controls.Add(this.button_inventory_journal);
             this.Reports.Controls.Add(this.button_in_out_journal);
             this.Reports.Location = new System.Drawing.Point(4, 36);
@@ -222,6 +224,18 @@
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Текущий сервер";
+            // 
+            // button_jurnal_reg
+            // 
+            this.button_jurnal_reg.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_jurnal_reg.Location = new System.Drawing.Point(6, 187);
+            this.button_jurnal_reg.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_jurnal_reg.Name = "button_jurnal_reg";
+            this.button_jurnal_reg.Size = new System.Drawing.Size(367, 77);
+            this.button_jurnal_reg.TabIndex = 5;
+            this.button_jurnal_reg.Text = "Регистрации заявок";
+            this.button_jurnal_reg.UseVisualStyleBackColor = true;
+            this.button_jurnal_reg.Click += new System.EventHandler(this.Button_jurnal_reg_Click);
             // 
             // DatabaseControlPanel
             // 
@@ -262,5 +276,6 @@
         private System.Windows.Forms.Button button_enter_data;
         private System.Windows.Forms.Button button_registry_request;
         private System.Windows.Forms.Button button_registry_area;
+        private System.Windows.Forms.Button button_jurnal_reg;
     }
 }

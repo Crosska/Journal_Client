@@ -96,5 +96,11 @@ namespace Journal_Client
             DatabaseInventoryJournal inventory_form = new DatabaseInventoryJournal(ServerIP);
             inventory_form.Show();
         }
+
+        private void Button_jurnal_reg_Click(object sender, EventArgs e)
+        {
+            DatabaseJournalAllReg journal_reg_form = new DatabaseJournalAllReg(ServerIP);
+            journal_reg_form.Show();
+        }
     }
 }
