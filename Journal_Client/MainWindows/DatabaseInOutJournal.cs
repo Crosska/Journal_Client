@@ -28,36 +28,38 @@ namespace Journal_Client
         private bool select_in = true;
         private int select_type = 0;
 
-        public DatabaseInOutJournal(String DistrictName_received)
+        public DatabaseInOutJournal(String server_ip)
         {
             InitializeComponent();
             ConData.Port = "5432";
             ConData.DatabaseName = "postgres";
             ConData.User = "root";
             ConData.Password = "Qwerty2";
-            DistrictName = DistrictName_received;
-            switch (DistrictName)
+            ConData.IP = server_ip;
+            // DistrictName = DistrictName_received;
+            // MessageBox.Show(DistrictName_received);
+            switch (server_ip)                               // Свич на IP для выведения на экран названия сервера
             {
-                case "Гвардейский":
-                    ConData.IP = "192.168.85.250"; // Гвардейский
+                case "192.168.85.250":
+                    DistrictName = "Гвардейский";
                     break;
-                case "Горняцкий":
-                    ConData.IP = "192.168.82.250"; // Горняцкий
+                case "192.168.82.250":
+                    DistrictName = "Горняцкий";
                     break;
-                case "Кировский":
-                    ConData.IP = "192.168.1.250"; // Кировский
+                case "192.168.1.250":
+                    DistrictName = "Кировский";
                     break;
-                case "Советский":
-                    ConData.IP = "192.168.87.250"; // Советский
+                case "192.168.87.250":
+                    DistrictName = "Советский";
                     break;
-                case "Центральный":
-                    ConData.IP = "192.168.88.250"; // Центральный
+                case "192.168.88.250":
+                    DistrictName = "Центральный";
                     break;
                 default:
-                    MessageBox.Show("Произошла ошибка при передаче выбранного сервера в форму добавления");
-                    this.Close();
+                    MessageBox.Show("Ошибка при определении названия района по IP");
                     break;
             }
+
             datagridview.RowHeadersVisible = false;
             getFIO();
         }
@@ -76,10 +78,10 @@ namespace Journal_Client
             select_type = 1;
         }
 
-        private void radiobutton_date_and_controller_checked(object sender, EventArgs e)
+        private void radiobutton_all_checked(object sender, EventArgs e)
         {
-            calendar.Enabled = true;
-            combobox_controller.Enabled = true;
+            calendar.Enabled = false;
+            combobox_controller.Enabled = false;
             select_type = 2;
         }
 
@@ -98,14 +100,19 @@ namespace Journal_Client
             switch (select_in)
             {
                 case false:
-                    string SQLCommand = "select \"Лицевой счет\",\"Улица\",\"Дом\",\"Квартира\",\"Дата обработки\",\"Вид заявки\",\"Показания водомера\",\"№ пломбы\",\"Контроллер\".\"ФИО контролера\" from \"Журнал регистраций заявок\" " +
+                    string SQLCommand = "select \"Журнал регистраций заявок\".\"Лицевой счет\", \"Улица\", \"Дом\", \"Квартира\", \"Дата обхода\", \"Показания\", \"№ пломбы\", \"ФИО контролера\" from \"Журнал регистраций заявок\" " +
+                    "inner join \"Журнал ввода/вывода\" on \"Журнал регистраций заявок\".\"#Код заявки\" = \"Журнал ввода/вывода\".\"#Код заявки \" " +
+                    "inner join \"Участок\" on \"Журнал регистраций заявок\".\"#Код участка\" = \"Участок\".\"#Код участка\" " +
                     "inner join \"Вид заявки\" on \"Журнал регистраций заявок\".\"#Код вида заявки\" = \"Вид заявки\".\"#Код вида заявки\" " +
-                    "inner join \"Журнал ввода/вывода\" on \"Журнал регистраций заявок\".\"#Код заявки\" = \"Журнал ввода/вывода\".\"#Код заявки \" ";
+                    "inner join \"Контролер\" on \"Журнал ввода/вывода\".\"#Код контролера\" = \"Контролер\".\"#Код контролера\" ";
                     make_select(SQLCommand);
                     break;
                 case true:
-                    SQLCommand = "SELECT \"Лицевой счет\",\"Улица\",\"Дом\",\"Квартира\",\"Дата обработки\",\"Показания водомера\",\"№ пломбы\",\"Контроллер\".\"ФИО контролера\" FROM \"Журнал регистраций заявок\" " +
-                    "inner join \"Журнал ввода/вывода\" on \"Журнал регистраций заявок\".\"#Код заявки\" = \"Журнал ввода/вывода\".\"#Код заявки \" ";
+                    SQLCommand = "select \"Журнал регистраций заявок\".\"Лицевой счет\", \"Улица\", \"Дом\", \"Квартира\", \"Дата обхода\", \"Показания\", \"№ пломбы\", \"ФИО контролера\" from \"Журнал регистраций заявок\" " +
+                    "inner join \"Журнал ввода/вывода\" on \"Журнал регистраций заявок\".\"#Код заявки\" = \"Журнал ввода/вывода\".\"#Код заявки \" " +
+                    "inner join \"Участок\" on \"Журнал регистраций заявок\".\"#Код участка\" = \"Участок\".\"#Код участка\" " +
+                    "inner join \"Вид заявки\" on \"Журнал регистраций заявок\".\"#Код вида заявки\" = \"Вид заявки\".\"#Код вида заявки\" " +
+                    "inner join \"Контролер\" on \"Журнал ввода/вывода\".\"#Код контролера\" = \"Контролер\".\"#Код контролера\" ";
                     make_select(SQLCommand);
                     break;
                 default:
@@ -123,19 +130,21 @@ namespace Journal_Client
             {
                 DataTable temp_table = new DataTable();
                 database.Open();
+                string type = "Вывод";
+                if (radiobutton_select_in.Checked)
+                {
+                    type = "Ввод";
+                }
                 switch (select_type)
                 {
                     case 0:
-                        sql_rule = " \ninner join \"Контролер\" on \"Журнал ввода/вывода\".\"#Код контролера\" = \"Контролер\".\"#Код контролера\" " +
-                        "where \"Дата обработки\" = '" + datetime_show.Value.ToString() + "'";
+                        sql_rule = "where \"Дата обхода\" = '" + datetime_show.Value.ToString() + "' and \"Вид заявки\".\"Вид заявки\" = '" + type + "'";
                         break;
                     case 1:
-                        sql_rule = "\ninner join \"Контролер\" on \"Журнал ввода/вывода\".\"#Код контролера\" = \"Контролер\".\"#Код контролера\" " +
-                        "where \"Контролер\".\"ФИО контролера\" = '" + combobox_controller.SelectedItem.ToString() + "'";
+                        sql_rule = "where \"Контролер\".\"ФИО контролера\" = '" + combobox_controller.SelectedItem.ToString() + "'";
                         break;
                     case 2:
-                        sql_rule = "\ninner join \"Контролер\" on \"Журнал ввода/вывода\".\"#Код контролера\" = \"Контролер\".\"#Код контролера\" " +
-                        "where \"Контролер\".\"ФИО контролера\" = '" + combobox_controller.SelectedItem.ToString() + "' and \"Дата обработки\" = '" + datetime_show.Value.ToString() + "'";
+                        sql_rule = "where \"Вид заявки\".\"Вид заявки\" = '" + type + "'";
                         break;
                     default:
                         MessageBox.Show("Ошибка на этапе формирования условий запроса");
@@ -199,5 +208,6 @@ namespace Journal_Client
             }
         }
 
+        
     }
 }

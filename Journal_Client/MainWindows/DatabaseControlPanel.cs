@@ -62,7 +62,7 @@ namespace Journal_Client
 
         private void Button_seales_directory_Click(object sender, EventArgs e) // Справочник пломбираторов
         {
-            DatabaseSealsDirectory seals_directory_form = new DatabaseSealsDirectory(ServerIP); // Открыть форму справочника пломбираторов
+            DatabaseSealsDirectory seals_directory_form = new DatabaseSealsDirectory(label_server.Text); // Открыть форму справочника пломбираторов
             seals_directory_form.Show();
         }
 
@@ -83,5 +83,10 @@ namespace Journal_Client
             Application.Exit();
         }
 
+        private void Button_inventory_journal_Click(object sender, EventArgs e)
+        {
+            //da in_out_enter_form = new DatabaseEnterData(ServerIP); // Открыть форму ввода показаний
+            //in_out_enter_form.Show();
+        }
     }
 }

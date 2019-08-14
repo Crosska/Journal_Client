@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.button_in_out_journal = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_inventory_journal = new System.Windows.Forms.Button();
             this.label_server = new System.Windows.Forms.Label();
             this.button_seales_directory = new System.Windows.Forms.Button();
             this.button_controllers_directory = new System.Windows.Forms.Button();
@@ -61,16 +61,17 @@
             this.button_in_out_journal.UseVisualStyleBackColor = true;
             this.button_in_out_journal.Click += new System.EventHandler(this.Button_in_out_journal_Click);
             // 
-            // button1
+            // button_inventory_journal
             // 
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(6, 102);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(367, 77);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Инвентаризация";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_inventory_journal.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_inventory_journal.Location = new System.Drawing.Point(6, 102);
+            this.button_inventory_journal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_inventory_journal.Name = "button_inventory_journal";
+            this.button_inventory_journal.Size = new System.Drawing.Size(367, 77);
+            this.button_inventory_journal.TabIndex = 4;
+            this.button_inventory_journal.Text = "Инвентаризация";
+            this.button_inventory_journal.UseVisualStyleBackColor = true;
+            this.button_inventory_journal.Click += new System.EventHandler(this.Button_inventory_journal_Click);
             // 
             // label_server
             // 
@@ -202,7 +203,7 @@
             // Reports
             // 
             this.Reports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.Reports.Controls.Add(this.button1);
+            this.Reports.Controls.Add(this.button_inventory_journal);
             this.Reports.Controls.Add(this.button_in_out_journal);
             this.Reports.Location = new System.Drawing.Point(4, 36);
             this.Reports.Name = "Reports";
@@ -252,7 +253,7 @@
         private System.Windows.Forms.Button button_sealers_controllers_links;
         private System.Windows.Forms.Button button_controllers_directory;
         private System.Windows.Forms.Button button_seales_directory;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_inventory_journal;
         private System.Windows.Forms.TabControl tab_control;
         private System.Windows.Forms.TabPage Directories;
         private System.Windows.Forms.TabPage Reports;

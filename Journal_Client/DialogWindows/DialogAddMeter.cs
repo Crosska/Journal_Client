@@ -89,7 +89,7 @@ namespace Journal_Client
                 database.Open();
                 string SQLCommand = "select \"Дата обхода\" from \"Участок\" " +
                 "inner join \"Журнал регистраций заявок\" on \"Участок\".\"#Код участка\" = \"Журнал регистраций заявок\".\"#Код участка\" " +
-                "where \"Лицевой счет\" = '" + label_personal_account.Text + "'";
+                "where \"Лицевой счет\" = '" + label_personal_account.Text + "' group by \"Дата обхода\"";
                 //MessageBox.Show(SQLCommand);
                 cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table.Load(cmd.ExecuteReader());

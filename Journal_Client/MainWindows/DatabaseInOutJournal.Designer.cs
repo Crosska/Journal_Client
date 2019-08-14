@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radiobutton_select_for_date_and_controller = new System.Windows.Forms.RadioButton();
+            this.radiobutton_all = new System.Windows.Forms.RadioButton();
             this.radiobutton_select_for_controller = new System.Windows.Forms.RadioButton();
             this.radiobutton_select_for_date = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -53,7 +53,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radiobutton_select_for_date_and_controller);
+            this.groupBox1.Controls.Add(this.radiobutton_all);
             this.groupBox1.Controls.Add(this.radiobutton_select_for_controller);
             this.groupBox1.Controls.Add(this.radiobutton_select_for_date);
             this.groupBox1.Location = new System.Drawing.Point(16, 16);
@@ -65,17 +65,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Выборка по:";
             // 
-            // radiobutton_select_for_date_and_controller
+            // radiobutton_all
             // 
-            this.radiobutton_select_for_date_and_controller.AutoSize = true;
-            this.radiobutton_select_for_date_and_controller.Location = new System.Drawing.Point(8, 66);
-            this.radiobutton_select_for_date_and_controller.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radiobutton_select_for_date_and_controller.Name = "radiobutton_select_for_date_and_controller";
-            this.radiobutton_select_for_date_and_controller.Size = new System.Drawing.Size(162, 23);
-            this.radiobutton_select_for_date_and_controller.TabIndex = 2;
-            this.radiobutton_select_for_date_and_controller.Text = "Дата и контроллер";
-            this.radiobutton_select_for_date_and_controller.UseVisualStyleBackColor = true;
-            this.radiobutton_select_for_date_and_controller.CheckedChanged += new System.EventHandler(this.radiobutton_date_and_controller_checked);
+            this.radiobutton_all.AutoSize = true;
+            this.radiobutton_all.Location = new System.Drawing.Point(8, 66);
+            this.radiobutton_all.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.radiobutton_all.Name = "radiobutton_all";
+            this.radiobutton_all.Size = new System.Drawing.Size(80, 23);
+            this.radiobutton_all.TabIndex = 2;
+            this.radiobutton_all.Text = "Общее";
+            this.radiobutton_all.UseVisualStyleBackColor = true;
+            this.radiobutton_all.CheckedChanged += new System.EventHandler(this.radiobutton_all_checked);
             // 
             // radiobutton_select_for_controller
             // 
@@ -277,7 +277,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radiobutton_select_for_date_and_controller;
+        private System.Windows.Forms.RadioButton radiobutton_all;
         private System.Windows.Forms.RadioButton radiobutton_select_for_controller;
         private System.Windows.Forms.RadioButton radiobutton_select_for_date;
         private System.Windows.Forms.GroupBox groupBox2;
