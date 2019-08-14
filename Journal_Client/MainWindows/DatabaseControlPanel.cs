@@ -1,4 +1,12 @@
-﻿using System;
+﻿using Npgsql;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Journal_Client
@@ -85,8 +93,8 @@ namespace Journal_Client
 
         private void Button_inventory_journal_Click(object sender, EventArgs e)
         {
-            //da in_out_enter_form = new DatabaseEnterData(ServerIP); // Открыть форму ввода показаний
-            //in_out_enter_form.Show();
+            DatabaseRegistryRequestdat inventory_form = new DatabaseInventoryJournal(ServerIP); // Открыть форму ввода показаний
+            inventory_form.Show();
         }
     }
 }
