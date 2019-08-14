@@ -45,6 +45,7 @@
             this.datagridview = new System.Windows.Forms.DataGridView();
             this.button_export = new System.Windows.Forms.Button();
             this.button_do_select = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -237,6 +238,7 @@
             this.button_export.TabIndex = 6;
             this.button_export.Text = "Экспорт в excel файл";
             this.button_export.UseVisualStyleBackColor = true;
+            this.button_export.Click += new System.EventHandler(this.Button_export_Click);
             // 
             // button_do_select
             // 
@@ -293,5 +295,6 @@
         private System.Windows.Forms.DataGridView datagridview;
         private System.Windows.Forms.Button button_export;
         private System.Windows.Forms.Button button_do_select;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
