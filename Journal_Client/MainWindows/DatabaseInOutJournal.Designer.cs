@@ -211,6 +211,8 @@
             this.calendar.MaxSelectionCount = 1;
             this.calendar.MinDate = new System.DateTime(2000, 12, 31, 0, 0, 0, 0);
             this.calendar.Name = "calendar";
+            this.calendar.ShowToday = false;
+            this.calendar.ShowTodayCircle = false;
             this.calendar.TabIndex = 0;
             this.calendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.date_changed);
             // 
@@ -232,9 +234,10 @@
             // 
             // button_export
             // 
-            this.button_export.Location = new System.Drawing.Point(779, 478);
+            this.button_export.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_export.Location = new System.Drawing.Point(742, 478);
             this.button_export.Name = "button_export";
-            this.button_export.Size = new System.Drawing.Size(191, 40);
+            this.button_export.Size = new System.Drawing.Size(228, 40);
             this.button_export.TabIndex = 6;
             this.button_export.Text = "Экспорт в excel файл";
             this.button_export.UseVisualStyleBackColor = true;
@@ -242,6 +245,7 @@
             // 
             // button_do_select
             // 
+            this.button_do_select.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_do_select.Location = new System.Drawing.Point(214, 478);
             this.button_do_select.Name = "button_do_select";
             this.button_do_select.Size = new System.Drawing.Size(191, 40);
@@ -254,6 +258,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(982, 532);
             this.Controls.Add(this.button_do_select);
             this.Controls.Add(this.button_export);
@@ -264,6 +269,7 @@
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DatabaseInOutJournal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Журнал регистрации вводов и выводов";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

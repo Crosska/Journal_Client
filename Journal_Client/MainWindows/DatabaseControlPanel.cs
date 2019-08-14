@@ -93,7 +93,7 @@ namespace Journal_Client
 
         private void Button_inventory_journal_Click(object sender, EventArgs e)
         {
-            DatabaseRegistryRequestdat inventory_form = new DatabaseInventoryJournal(ServerIP); // Открыть форму ввода показаний
+            DatabaseInventoryJournal inventory_form = new DatabaseInventoryJournal(ServerIP);
             inventory_form.Show();
         }
     }

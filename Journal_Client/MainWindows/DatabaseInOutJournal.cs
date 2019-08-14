@@ -27,7 +27,6 @@ namespace Journal_Client
         }
         private Database ConData = new Database();
 
-        private string DistrictName = "";
         private bool select_in = true;
         private int select_type = 0;
 
@@ -41,27 +40,7 @@ namespace Journal_Client
             ConData.IP = server_ip;
             // DistrictName = DistrictName_received;
             // MessageBox.Show(DistrictName_received);
-            switch (server_ip)                               // Свич на IP для выведения на экран названия сервера
-            {
-                case "192.168.85.250":
-                    DistrictName = "Гвардейский";
-                    break;
-                case "192.168.82.250":
-                    DistrictName = "Горняцкий";
-                    break;
-                case "192.168.1.250":
-                    DistrictName = "Кировский";
-                    break;
-                case "192.168.87.250":
-                    DistrictName = "Советский";
-                    break;
-                case "192.168.88.250":
-                    DistrictName = "Центральный";
-                    break;
-                default:
-                    MessageBox.Show("Ошибка при определении названия района по IP");
-                    break;
-            }
+            
 
             datagridview.RowHeadersVisible = false;
             getFIO();
@@ -144,7 +123,7 @@ namespace Journal_Client
                         sql_rule = "where \"Дата обхода\" = '" + datetime_show.Value.ToString() + "' and \"Вид заявки\".\"Вид заявки\" = '" + type + "'";
                         break;
                     case 1:
-                        sql_rule = "where \"Контролер\".\"ФИО контролера\" = '" + combobox_controller.SelectedItem.ToString() + "'";
+                        sql_rule = "where \"Контролер\".\"ФИО контролера\" = '" + combobox_controller.SelectedItem.ToString() + "' and \"Вид заявки\".\"Вид заявки\" = '" + type + "'";
                         break;
                     case 2:
                         sql_rule = "where \"Вид заявки\".\"Вид заявки\" = '" + type + "'";

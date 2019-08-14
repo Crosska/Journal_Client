@@ -68,6 +68,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainWindows\DatabaseInventoryJournal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindows\DatabaseInventoryJournal.Designer.cs">
+      <DependentUpon>DatabaseInventoryJournal.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogWindows\DialogAddMeter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,12 +97,6 @@
     </Compile>
     <Compile Include="DialogWindows\DialogChangeMeter.Designer.cs">
       <DependentUpon>DialogChangeMeter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindows\DatabaseInventoryJournal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainWindows\DatabaseInventoryJournal.Designer.cs">
-      <DependentUpon>DatabaseInventoryJournal.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -183,6 +183,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MainWindows\DatabaseInventoryJournal.resx">
+      <DependentUpon>DatabaseInventoryJournal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DialogWindows\DialogAddMeter.resx">
       <DependentUpon>DialogAddMeter.cs</DependentUpon>
     </EmbeddedResource>
