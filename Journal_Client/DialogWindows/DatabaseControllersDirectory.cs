@@ -59,6 +59,49 @@ namespace Journal_Client
             {
                 database.Close();
             }
+            refresh_list_controller();
         }
+
+        private void DatabaseControllersDirectory_Load(object sender, EventArgs e)
+        {
+            refresh_list_controller();
+        }
+
+        private void refresh_list_controller()
+        {
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            NpgsqlConnection database = new NpgsqlConnection(conString);
+            try
+            {
+                System.Data.DataTable temp_table = new System.Data.DataTable();
+                database.Open();
+                string SQLCommand = "select \"ФИО контролера\" from \"Контролер\" " +
+                "group by \"ФИО контролера\" "+
+                "order by \"ФИО контролера\" ";
+                MessageBox.Show(SQLCommand);
+                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                temp_table = new System.Data.DataTable();
+                temp_table.Load(cmd.ExecuteReader());
+                List<string> templist = new List<string>();
+                foreach (DataRow row in temp_table.Rows)
+                {
+                    try
+                    {
+                        templist.Add(row[0].ToString());
+                    }
+                    catch { }
+                }
+                listbox_controllers.DataSource = new BindingSource(templist, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                database.Close();
+            }
+        }
+
     }
 }
