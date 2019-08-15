@@ -43,7 +43,7 @@ namespace Journal_Client
                 DataTable temp_table = new DataTable();
                 database.Open();
                 string SQLCommand = "INSERT INTO \"Контролер\" (\"ФИО контролера\") VALUES ('" + textbox_fio_controller.Text + "')";
-                MessageBox.Show(SQLCommand);
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd.Prepare();
@@ -78,7 +78,7 @@ namespace Journal_Client
                 string SQLCommand = "select \"ФИО контролера\" from \"Контролер\" " +
                 "group by \"ФИО контролера\" "+
                 "order by \"ФИО контролера\" ";
-                MessageBox.Show(SQLCommand);
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table = new System.Data.DataTable();
                 temp_table.Load(cmd.ExecuteReader());

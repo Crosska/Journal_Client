@@ -164,6 +164,11 @@
             // 
             this.numeric_saldo.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.numeric_saldo.Location = new System.Drawing.Point(127, 146);
+            this.numeric_saldo.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.numeric_saldo.Name = "numeric_saldo";
             this.numeric_saldo.Size = new System.Drawing.Size(164, 27);
             this.numeric_saldo.TabIndex = 14;

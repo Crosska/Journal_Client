@@ -133,7 +133,7 @@ namespace Journal_Client
                         break;
                 }
                 string SQLCommand = main_sql + sql_rule;
-                MessageBox.Show(SQLCommand);
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table = new System.Data.DataTable();
                 temp_table.Load(cmd.ExecuteReader());

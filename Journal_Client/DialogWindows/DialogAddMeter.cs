@@ -45,32 +45,55 @@ namespace Journal_Client
 
         private void Button_add_Click(object sender, EventArgs e)
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
+            bool error = check_all();
+            if (!error)
+            {
+                string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+                NpgsqlConnection database = new NpgsqlConnection(conString);
+                try
+                {
+                    DataTable temp_table = new DataTable();
+                    database.Open();
+                    string SQLCommand = "insert into \"Журнал ввода/вывода\" " +
+                    "(\"#Код заявки \", \"№ пломбы\", \"Задолженность\", \"#Код контролера\", \"Показания\") " +
+                    "values( " + getApplicationCode() + ", " + textbox_seal_number.Text + " , " + numeric_saldo.Value + " , " + getControllerCode() + " , " + numeric_meter.Value + " )";
+                    //MessageBox.Show(SQLCommand);
+                    NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                    cmd = new NpgsqlCommand(SQLCommand, database);
+                    cmd.Prepare();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Показания успешно добавлены.");
+                }
+                catch (Exception error_str)
+                {
+                    MessageBox.Show(error_str.ToString());
+                }
+                finally
+                {
+                    database.Close();
+                }
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Проверьте правильность вводимых данных");
+            }
+        }
+
+        private bool check_all()
+        {
+            bool error = false;
             try
             {
-                DataTable temp_table = new DataTable();
-                database.Open();
-                string SQLCommand = "insert into \"Журнал ввода/вывода\" " +
-                "(\"#Код заявки \", \"№ пломбы\", \"Задолженность\", \"#Код контролера\", \"Показания\") " +
-                "values( " + getApplicationCode() + ", " + textbox_seal_number.Text + " , " + numeric_saldo.Value + " , " + getControllerCode() + " , " + numeric_meter.Value + " )";
-                MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
-                cmd = new NpgsqlCommand(SQLCommand, database);
-                cmd.Prepare();
-                cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Показания успешно добавлены.");
+                string temp_string = textbox_seal_number.Text;
+                int temp_int = Convert.ToInt32(temp_string);
             }
-            catch (Exception error)
+            catch
             {
-                MessageBox.Show(error.ToString());
+                error = true;
             }
-            finally
-            {
-                database.Close();
-            }
-            this.Close();
+            return error;
         }
 
         private void DialogAddMeter_Load(object sender, EventArgs e)

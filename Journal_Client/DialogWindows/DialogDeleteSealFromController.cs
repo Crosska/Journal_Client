@@ -75,7 +75,7 @@ namespace Journal_Client
                 DataTable temp_table = new DataTable();
                 database.Open();
                 string SQLCommand = "UPDATE \"Пломбиратор\" SET \"#Код контролера\" = null  WHERE \"Номер\" = '" + Seal_number + "';";
-                MessageBox.Show(SQLCommand);
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd.Prepare();

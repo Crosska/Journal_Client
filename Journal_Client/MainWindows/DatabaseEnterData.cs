@@ -119,10 +119,17 @@ namespace Journal_Client
 
         private void Button_add_Click(object sender, EventArgs e)
         {
-            string[] personal_number_first = listbox_FIO_adress.SelectedItem.ToString().Split(new char[] { '=' }); // Деление строки по символу '='
-            string[] personal_number_second = personal_number_first[1].Split(new char[] { ' ' }); // Деление строки по символу ' '
-            DialogAddMeter add_meter_form = new DialogAddMeter(personal_number_second[1], ConData.IP);
-            add_meter_form.ShowDialog();
+            try
+            {
+                string[] personal_number_first = listbox_FIO_adress.SelectedItem.ToString().Split(new char[] { '=' }); // Деление строки по символу '='
+                string[] personal_number_second = personal_number_first[1].Split(new char[] { ' ' }); // Деление строки по символу ' '
+                DialogAddMeter add_meter_form = new DialogAddMeter(personal_number_second[1], ConData.IP);
+                add_meter_form.ShowDialog();
+            }
+            catch
+            {
+                MessageBox.Show("Выберите лицевой счет.");
+            }
         }
 
         private void Button_change_Click(object sender, EventArgs e)
@@ -133,24 +140,31 @@ namespace Journal_Client
 
         private void Button_delete_Click(object sender, EventArgs e)
         {
-            List<String> data_list = new List<string>();
-            foreach (DataGridViewRow row in datagridtable_meter.Rows)
+            try
             {
-                try
+                List<String> data_list = new List<string>();
+                foreach (DataGridViewRow row in datagridtable_meter.Rows)
                 {
-                    string temp_str = ( row.Cells[0].Value.ToString() + " | " + row.Cells[1].Value.ToString() + " | " + row.Cells[2].Value.ToString() + " | " + (Convert.ToDateTime(row.Cells[3].Value)).ToShortDateString() + " | " + row.Cells[4].Value.ToString());
-                    data_list.Add(temp_str);
+                    try
+                    {
+                        string temp_str = (row.Cells[0].Value.ToString() + " | " + row.Cells[1].Value.ToString() + " | " + row.Cells[2].Value.ToString() + " | " + (Convert.ToDateTime(row.Cells[3].Value)).ToShortDateString() + " | " + row.Cells[4].Value.ToString());
+                        data_list.Add(temp_str);
+                    }
+                    catch { }
                 }
-                catch { }
+                /*for (int i = 0; i < data_list.Count; i++)
+                {
+                    MessageBox.Show(data_list.ElementAt(i));
+                }*/
+                string[] personal_number_first = listbox_FIO_adress.SelectedItem.ToString().Split(new char[] { '=' }); // Деление строки по символу '='
+                string[] personal_number_second = personal_number_first[1].Split(new char[] { ' ' }); // Деление строки по символу ' '
+                DialogDeleteMeter delete_meter_form = new DialogDeleteMeter(ConData.IP, data_list, personal_number_second[1]);
+                delete_meter_form.ShowDialog();
             }
-            /*for (int i = 0; i < data_list.Count; i++)
+            catch
             {
-                MessageBox.Show(data_list.ElementAt(i));
-            }*/
-            string[] personal_number_first = listbox_FIO_adress.SelectedItem.ToString().Split(new char[] { '=' }); // Деление строки по символу '='
-            string[] personal_number_second = personal_number_first[1].Split(new char[] { ' ' }); // Деление строки по символу ' '
-            DialogDeleteMeter delete_meter_form = new DialogDeleteMeter(ConData.IP, data_list, personal_number_second[1]);
-            delete_meter_form.ShowDialog();
+                MessageBox.Show("Выберите лицевой счет.");
+            } 
         }
 
         private void DatabaseEnterData_Load(object sender, EventArgs e)
@@ -161,7 +175,7 @@ namespace Journal_Client
                 string SQLCommand = "select \"ФИО потребителя\",\"Улица\",\"Дом\",\"Квартира\",\"Лицевой счет\" from \"Журнал регистраций заявок\" " +
                 "where \"Лицевой счет\" || '' like '" + textbox_personal_account.Text + "%' " +
                 "group by \"ФИО потребителя\",\"Улица\",\"Дом\",\"Квартира\",\"Лицевой счет\"";
-                MessageBox.Show(SQLCommand);
+                //MessageBox.Show(SQLCommand);
                 cmd = new NpgsqlCommand(SQLCommand, database);
                 DataTable datatable;
                 datatable = new DataTable();

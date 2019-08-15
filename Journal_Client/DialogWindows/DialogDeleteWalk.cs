@@ -66,7 +66,7 @@ namespace Journal_Client
             {
                 database.Open();
                 string SQLCommand = "DELETE FROM \"Участок\" WHERE \"#Код улицы\" = " + getStreetCode() + " AND \"Дата обхода\" = '" + label_date.Text + "'";
-                MessageBox.Show(SQLCommand);
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd.Prepare();
@@ -95,7 +95,7 @@ namespace Journal_Client
                 database.Open();
                 string SQLCommand = "select \"#Код улицы\" from \"Улица\" " +
                 "where \"Улица\" = '" + label_street.Text + "' ";
-                MessageBox.Show(SQLCommand);
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd;
                 cmd = new NpgsqlCommand(SQLCommand, database);
                 DataTable datatable;

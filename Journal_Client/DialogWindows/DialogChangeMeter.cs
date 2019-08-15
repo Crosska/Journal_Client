@@ -21,5 +21,10 @@ namespace Journal_Client
         {
             this.Close();
         }
+
+        private void Button_apply_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

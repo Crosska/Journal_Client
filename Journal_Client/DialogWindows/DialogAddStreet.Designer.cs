@@ -118,15 +118,16 @@
             this.combobox_streets.Size = new System.Drawing.Size(269, 29);
             this.combobox_streets.TabIndex = 0;
             // 
-            // DatabaseAddStreet
+            // DialogAddStreet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(477, 196);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "DatabaseAddStreet";
+            this.Name = "DialogAddStreet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление улицы";
             this.groupBox1.ResumeLayout(false);

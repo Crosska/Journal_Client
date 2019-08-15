@@ -45,10 +45,10 @@ namespace Journal_Client
         private void Button_delete_Click(object sender, EventArgs e)
         {
             string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            string[] data_string = combobox_meter.SelectedItem.ToString().Split(new char[] { '|' }); // Деление строки по символу '|'
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
+                string[] data_string = combobox_meter.SelectedItem.ToString().Split(new char[] { '|' }); // Деление строки по символу '|'
                 string SQLCommand = "";
                 if (data_string[0] == " ")
                 {
@@ -69,9 +69,9 @@ namespace Journal_Client
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Запись успешно удалена.");
             }
-            catch (Exception error)
+            catch
             {
-                MessageBox.Show(error.ToString());
+                MessageBox.Show("Проверьте правильность вводимых данных");
             }
             finally
             {

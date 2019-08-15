@@ -78,10 +78,11 @@
             this.label_seal_number.TabIndex = 5;
             this.label_seal_number.Text = "---";
             // 
-            // DatabaseDeleteSealFromController
+            // DialogDeleteSealFromController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(467, 109);
             this.Controls.Add(this.label_seal_number);
             this.Controls.Add(this.button_cancel);
@@ -89,7 +90,7 @@
             this.Controls.Add(this.button_delete_link);
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "DatabaseDeleteSealFromController";
+            this.Name = "DialogDeleteSealFromController";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Подтверждение отвязки пломбиратора";
             this.ResumeLayout(false);

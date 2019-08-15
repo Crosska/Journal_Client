@@ -86,7 +86,7 @@ namespace Journal_Client
                     DataTable temp_table = new DataTable();
                     database.Open();
                     string SQLCommand = "INSERT INTO \"Участок\" (\"#Код улицы\", \"Дата обхода\") VALUES (" + street_code + ", '" + date + "' )";
-                    MessageBox.Show(SQLCommand);
+                    //MessageBox.Show(SQLCommand);
                     NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                     cmd = new NpgsqlCommand(SQLCommand, database);
                     cmd.Prepare();
@@ -103,7 +103,7 @@ namespace Journal_Client
                     database.Close();
                 }
             }
-            getStreets();
+
         }
 
         private bool check_area(string street_code, string date)
@@ -129,7 +129,6 @@ namespace Journal_Client
                     }
                     catch { }
                 }
-                combobox_streets.DataSource = new BindingSource(List_streets, null);
                 if(List_streets.Count != 0)
                 {
                     error = true;

@@ -130,34 +130,53 @@ namespace Journal_Client
 
         private void Button_add_Click(object sender, EventArgs e)
         {
-            int district_code = get_district_code();
-            int application_type_code = get_application_type_code();
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
+            bool error = check_all();
+            if (!error)
+            {
+                int district_code = get_district_code();
+                int application_type_code = get_application_type_code();
+                string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+                NpgsqlConnection database = new NpgsqlConnection(conString);
+                try
+                {
+                    DataTable temp_table = new DataTable();
+                    database.Open();
+                    string SQLCommand = "INSERT INTO \"Журнал регистраций заявок\" (\"#Код участка\", \"Дата подачи заявки\", \"ФИО потребителя\", \"Улица\", " +
+                    "\"Дом\", \"Квартира\", \"Оплата\", \"Лицевой счет\", \"#Код вида заявки\") " +
+                    "VALUES(" + district_code + ", '" + datetime_show.Value.ToShortDateString() + "', '" + textbox_fio.Text + "', '" + combobox_street.SelectedItem.ToString() + "'," +
+                    " '" + textbox_house.Text + "', '" + textbox_flat.Text + "', '" + numericupdown_payment.Value.ToString().Replace(',', '.') + "' , " + textbox_personal_account.Text + ", " + application_type_code + ")";
+                    //MessageBox.Show(SQLCommand);
+                    NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                    cmd.Prepare();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Запись успешно добавлена.");
+                }
+                catch
+                {
+                    MessageBox.Show("Проверьте правильность вводимых данных");
+                }
+                finally
+                {
+                    database.Close();
+                }
+                date_count_refresh();
+            }
+        }
+
+        private bool check_all()
+        {
+            bool error = false;
             try
             {
-                DataTable temp_table = new DataTable();
-                database.Open();
-                string SQLCommand = "INSERT INTO \"Журнал регистраций заявок\" (\"#Код участка\", \"Дата подачи заявки\", \"ФИО потребителя\", \"Улица\", " +
-                "\"Дом\", \"Квартира\", \"Оплата\", \"Лицевой счет\", \"#Код вида заявки\") " +
-                "VALUES(" + district_code + ", '" + datetime_show.Value.ToShortDateString() + "', '" + textbox_fio.Text + "', '" + combobox_street.SelectedItem.ToString() + "'," +
-                " '" + textbox_house.Text + "', '" + textbox_flat.Text + "', '" + numericupdown_payment.Value.ToString().Replace(',', '.') + "' , " + textbox_personal_account.Text + ", " + application_type_code + ")";
-                //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
-                cmd.Prepare();
-                cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Запись успешно добавлена.");
+                int temp = Convert.ToInt32(textbox_fio.Text);
+                MessageBox.Show("Проверьте правильность вводимых данных");
+                error = true;
             }
-            catch (Exception error)
+            catch
             {
-                MessageBox.Show(error.ToString());
             }
-            finally
-            {
-                database.Close();
-            }
-            date_count_refresh();
+            return error;
         }
 
         private void Button_close_Click(object sender, EventArgs e)

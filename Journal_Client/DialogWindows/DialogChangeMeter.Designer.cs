@@ -118,11 +118,13 @@
             this.button_apply.TabIndex = 8;
             this.button_apply.Text = "Применить";
             this.button_apply.UseVisualStyleBackColor = false;
+            this.button_apply.Click += new System.EventHandler(this.Button_apply_Click);
             // 
-            // DatabaseChangeMeter
+            // DialogChangeMeter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(370, 163);
             this.Controls.Add(this.button_apply);
             this.Controls.Add(this.button_cancel);
@@ -134,7 +136,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "DatabaseChangeMeter";
+            this.Name = "DialogChangeMeter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменить показания";
             ((System.ComponentModel.ISupportInitialize)(this.numeric_new_meter)).EndInit();

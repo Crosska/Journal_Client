@@ -71,7 +71,7 @@ namespace Journal_Client
                 DataTable temp_table = new DataTable();
                 database.Open();
                 string SQLCommand = "UPDATE \"Пломбиратор\" SET \"#Код контролера\" = " + code + "  WHERE \"Номер\" = '" + combobox_seal_number.Text + "';";
-                MessageBox.Show(SQLCommand);
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd.Prepare();
@@ -99,7 +99,7 @@ namespace Journal_Client
                 DataTable temp_table = new DataTable();
                 database.Open();
                 string SQLCommand = "SELECT \"#Код контролера\" from \"Контролер\" where \"ФИО контролера\" = '" + FIO + "'";
-                MessageBox.Show(SQLCommand);
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 temp_table.Load(cmd.ExecuteReader());
                 List<string> List_controllers = new List<string>(temp_table.Rows.Count);

@@ -59,20 +59,83 @@ namespace Journal_Client
 
         private void Button_add_seal_Click(object sender, EventArgs e)
         {
+            bool main_error = check_main();
+            if (!main_error)
+            {
+                bool error = check_all(textbox_number_seal.Text);
+                if (!error)
+                {
+                    string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+                    NpgsqlConnection database = new NpgsqlConnection(conString);
+                    try
+                    {
+                        DataTable temp_table = new DataTable();
+                        database.Open();
+                        string SQLCommand = "INSERT INTO \"Пломбиратор\" (\"Номер\") VALUES ( " + textbox_number_seal.Text + " )";
+                        //MessageBox.Show(SQLCommand);
+                        NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                        cmd = new NpgsqlCommand(SQLCommand, database);
+                        cmd.Prepare();
+                        cmd.CommandType = CommandType.Text;
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Запись успешно добавлена.");
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                    }
+                    finally
+                    {
+                        database.Close();
+                    }
+                    Update_seals_list();
+                }
+            }
+        }
+
+        private bool check_main()
+        {
+            bool error = false;
+            try
+            {
+                int temp = Convert.ToInt32(textbox_number_seal.Text);
+            }
+            catch
+            {
+                error = true;
+                MessageBox.Show("Проверьте правильность введенных данных.");
+            }
+            return error;
+        }
+
+        private bool check_all(string text)
+        {
+            bool error = false;
             string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
                 database.Open();
-                string SQLCommand = "INSERT INTO \"Пломбиратор\" (\"Номер\") VALUES ( " + textbox_number_seal.Text + " )";
-                MessageBox.Show(SQLCommand);
+                string SQLCommand = "select * from \"Пломбиратор\" " +
+                "where \"Номер\" = 123 ";
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
-                cmd = new NpgsqlCommand(SQLCommand, database);
-                cmd.Prepare();
-                cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Запись успешно добавлена.");
+                temp_table.Load(cmd.ExecuteReader());
+                List<string> List_streets = new List<string>(temp_table.Rows.Count);
+                foreach (DataRow row in temp_table.Rows)
+                {
+                    try
+                    {
+                        List_streets.Add(row[0].ToString());
+                    }
+                    catch { }
+                }
+                if (List_streets.Count != 0)
+                {
+                    error = true;
+                    MessageBox.Show("Пломбиратор с данным номером уже существует");
+                }
             }
             catch
             {
@@ -82,7 +145,7 @@ namespace Journal_Client
             {
                 database.Close();
             }
-            Update_seals_list();
+            return error;
         }
 
         private void Button_delete_seal_Click(object sender, EventArgs e)
@@ -94,7 +157,7 @@ namespace Journal_Client
                 DataTable temp_table = new DataTable();
                 database.Open();
                 string SQLCommand = "DELETE FROM \"Пломбиратор\" where \"Номер\" = '" + combobox_sealer_list.SelectedItem.ToString() + "'";
-                MessageBox.Show(SQLCommand);
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd = new NpgsqlCommand(SQLCommand, database);
                 cmd.Prepare();
