@@ -76,20 +76,65 @@ namespace Journal_Client
         {
             string street_code = get_street_code();
             string date = date_active.Value.ToShortDateString();
+            bool error = check_area(street_code, date);
+            if (!error)
+            {
+                string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+                NpgsqlConnection database = new NpgsqlConnection(conString);
+                try
+                {
+                    DataTable temp_table = new DataTable();
+                    database.Open();
+                    string SQLCommand = "INSERT INTO \"Участок\" (\"#Код улицы\", \"Дата обхода\") VALUES (" + street_code + ", '" + date + "' )";
+                    MessageBox.Show(SQLCommand);
+                    NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                    cmd = new NpgsqlCommand(SQLCommand, database);
+                    cmd.Prepare();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Запись успешно добавлена.");
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                }
+                finally
+                {
+                    database.Close();
+                }
+            }
+            getStreets();
+        }
+
+        private bool check_area(string street_code, string date)
+        {
+            bool error = false;
             string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
                 database.Open();
-                string SQLCommand = "INSERT INTO \"Участок\" (\"#Код улицы\", \"Дата обхода\") VALUES (" + street_code + ", '" + date + "' )";
-                MessageBox.Show(SQLCommand);
+                string SQLCommand = "select * from \"Участок\" " +
+                "where \"#Код улицы\" = " + street_code + " and \"Дата обхода\" = '" + date + "'";
+                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
-                cmd = new NpgsqlCommand(SQLCommand, database);
-                cmd.Prepare();
-                cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Запись успешно добавлена.");
+                temp_table.Load(cmd.ExecuteReader());
+                List<string> List_streets = new List<string>(temp_table.Rows.Count);
+                foreach (DataRow row in temp_table.Rows)
+                {
+                    try
+                    {
+                        List_streets.Add(row[0].ToString());
+                    }
+                    catch { }
+                }
+                combobox_streets.DataSource = new BindingSource(List_streets, null);
+                if(List_streets.Count != 0)
+                {
+                    error = true;
+                    MessageBox.Show("Улица с данным названием уже добавлена");
+                }
             }
             catch
             {
@@ -99,6 +144,7 @@ namespace Journal_Client
             {
                 database.Close();
             }
+            return error;
         }
 
         private string get_street_code()
@@ -131,8 +177,7 @@ namespace Journal_Client
 
         private void getStreets()
         {
-            string conString = "";
-            conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
