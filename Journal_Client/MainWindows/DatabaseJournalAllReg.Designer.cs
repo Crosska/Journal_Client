@@ -30,6 +30,7 @@
         {
             this.datagridview = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radiobutton_date_obhoda = new System.Windows.Forms.RadioButton();
             this.radiobutton_all = new System.Windows.Forms.RadioButton();
             this.radiobutton_fio = new System.Windows.Forms.RadioButton();
             this.radiobutton_personal_account = new System.Windows.Forms.RadioButton();
@@ -42,9 +43,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.combobox_personal_account = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.datetime_show = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
             this.date_сalendar = new System.Windows.Forms.MonthCalendar();
+            this.label3 = new System.Windows.Forms.Label();
+            this.datetime_show = new System.Windows.Forms.DateTimePicker();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.datagridview)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -60,11 +61,12 @@
             this.datagridview.Margin = new System.Windows.Forms.Padding(4);
             this.datagridview.Name = "datagridview";
             this.datagridview.RowHeadersVisible = false;
-            this.datagridview.Size = new System.Drawing.Size(740, 481);
+            this.datagridview.Size = new System.Drawing.Size(740, 514);
             this.datagridview.TabIndex = 0;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radiobutton_date_obhoda);
             this.groupBox1.Controls.Add(this.radiobutton_all);
             this.groupBox1.Controls.Add(this.radiobutton_fio);
             this.groupBox1.Controls.Add(this.radiobutton_personal_account);
@@ -73,15 +75,27 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(197, 143);
+            this.groupBox1.Size = new System.Drawing.Size(197, 166);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Выборка по";
             // 
+            // radiobutton_date_obhoda
+            // 
+            this.radiobutton_date_obhoda.AutoSize = true;
+            this.radiobutton_date_obhoda.Location = new System.Drawing.Point(8, 53);
+            this.radiobutton_date_obhoda.Margin = new System.Windows.Forms.Padding(4);
+            this.radiobutton_date_obhoda.Name = "radiobutton_date_obhoda";
+            this.radiobutton_date_obhoda.Size = new System.Drawing.Size(113, 21);
+            this.radiobutton_date_obhoda.TabIndex = 4;
+            this.radiobutton_date_obhoda.Text = "Дата обхода";
+            this.radiobutton_date_obhoda.UseVisualStyleBackColor = true;
+            this.radiobutton_date_obhoda.CheckedChanged += new System.EventHandler(this.Radiobutton_date_obhoda_CheckedChanged);
+            // 
             // radiobutton_all
             // 
             this.radiobutton_all.AutoSize = true;
-            this.radiobutton_all.Location = new System.Drawing.Point(9, 111);
+            this.radiobutton_all.Location = new System.Drawing.Point(9, 140);
             this.radiobutton_all.Margin = new System.Windows.Forms.Padding(4);
             this.radiobutton_all.Name = "radiobutton_all";
             this.radiobutton_all.Size = new System.Drawing.Size(75, 21);
@@ -93,7 +107,7 @@
             // radiobutton_fio
             // 
             this.radiobutton_fio.AutoSize = true;
-            this.radiobutton_fio.Location = new System.Drawing.Point(9, 82);
+            this.radiobutton_fio.Location = new System.Drawing.Point(9, 111);
             this.radiobutton_fio.Margin = new System.Windows.Forms.Padding(4);
             this.radiobutton_fio.Name = "radiobutton_fio";
             this.radiobutton_fio.Size = new System.Drawing.Size(58, 21);
@@ -105,7 +119,7 @@
             // radiobutton_personal_account
             // 
             this.radiobutton_personal_account.AutoSize = true;
-            this.radiobutton_personal_account.Location = new System.Drawing.Point(8, 53);
+            this.radiobutton_personal_account.Location = new System.Drawing.Point(8, 82);
             this.radiobutton_personal_account.Margin = new System.Windows.Forms.Padding(4);
             this.radiobutton_personal_account.Name = "radiobutton_personal_account";
             this.radiobutton_personal_account.Size = new System.Drawing.Size(113, 21);
@@ -131,7 +145,7 @@
             // button_do_select
             // 
             this.button_do_select.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_do_select.Location = new System.Drawing.Point(245, 507);
+            this.button_do_select.Location = new System.Drawing.Point(245, 540);
             this.button_do_select.Margin = new System.Windows.Forms.Padding(4);
             this.button_do_select.Name = "button_do_select";
             this.button_do_select.Size = new System.Drawing.Size(180, 30);
@@ -143,7 +157,7 @@
             // button_export
             // 
             this.button_export.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_export.Location = new System.Drawing.Point(810, 507);
+            this.button_export.Location = new System.Drawing.Point(810, 540);
             this.button_export.Margin = new System.Windows.Forms.Padding(4);
             this.button_export.Name = "button_export";
             this.button_export.Size = new System.Drawing.Size(175, 30);
@@ -193,7 +207,7 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.combobox_fio);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(24, 166);
+            this.groupBox2.Location = new System.Drawing.Point(24, 199);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(197, 371);
             this.groupBox2.TabIndex = 10;
@@ -221,25 +235,6 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Лицевой счет";
             // 
-            // datetime_show
-            // 
-            this.datetime_show.Enabled = false;
-            this.datetime_show.Location = new System.Drawing.Point(8, 335);
-            this.datetime_show.Margin = new System.Windows.Forms.Padding(4);
-            this.datetime_show.Name = "datetime_show";
-            this.datetime_show.Size = new System.Drawing.Size(164, 23);
-            this.datetime_show.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 314);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 17);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Выбранная дата";
-            // 
             // date_сalendar
             // 
             this.date_сalendar.Location = new System.Drawing.Point(8, 144);
@@ -253,12 +248,31 @@
             this.date_сalendar.TabIndex = 3;
             this.date_сalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.date_select);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 314);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(117, 17);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Выбранная дата";
+            // 
+            // datetime_show
+            // 
+            this.datetime_show.Enabled = false;
+            this.datetime_show.Location = new System.Drawing.Point(8, 335);
+            this.datetime_show.Margin = new System.Windows.Forms.Padding(4);
+            this.datetime_show.Name = "datetime_show";
+            this.datetime_show.Size = new System.Drawing.Size(164, 23);
+            this.datetime_show.TabIndex = 2;
+            // 
             // DatabaseJournalAllReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(999, 550);
+            this.ClientSize = new System.Drawing.Size(999, 585);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button_export);
             this.Controls.Add(this.button_do_select);
@@ -299,5 +313,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker datetime_show;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.RadioButton radiobutton_date_obhoda;
     }
 }

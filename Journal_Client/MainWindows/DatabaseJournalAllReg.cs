@@ -44,7 +44,7 @@ namespace Journal_Client
             combobox_personal_account.Enabled = false;
             select_type = 0;
         }
-
+       
         private void Radiobutton_personal_account_CheckedChanged(object sender, EventArgs e)
         {
             combobox_fio.Enabled = false;
@@ -77,6 +77,13 @@ namespace Journal_Client
             select_type = 0;
             GetPersonalAccount();
             GetFIO();
+        }
+        private void Radiobutton_date_obhoda_CheckedChanged(object sender, EventArgs e)
+        {
+            combobox_fio.Enabled = false;
+            date_сalendar.Enabled = true;
+            combobox_personal_account.Enabled = false;
+            select_type = 4;
         }
         private void GetPersonalAccount()
         {
@@ -254,6 +261,9 @@ namespace Journal_Client
                     case 3:
                         sql_rule = " ";
                         break;
+                    case 4:
+                        sql_rule = "where \"Дата обхода\" = '" + datetime_show.Value.ToShortDateString() + "'";
+                        break;
                     default:
                         MessageBox.Show("Ошибка на этапе формирования условий запроса");
                         break;
@@ -275,5 +285,7 @@ namespace Journal_Client
             }
 
         }
+
+       
     }
 }
