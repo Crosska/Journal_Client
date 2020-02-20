@@ -43,7 +43,7 @@ namespace Journal_Client
                     DistrictName = "Советский";
                     break;
                 case "192.168.88.250":
-                    DistrictName = "Центральный";
+                    DistrictName = "Центрально-городской";
                     break;
                 default:
                     MessageBox.Show("Произошла ошибка при определении района по IP адресу");

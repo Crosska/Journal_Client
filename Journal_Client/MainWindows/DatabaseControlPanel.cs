@@ -36,7 +36,7 @@ namespace Journal_Client
                     label_server.Text = "Советский";
                     break;
                 case "192.168.88.250":
-                    label_server.Text = "Центральный";
+                    label_server.Text = "Центрально-городской";
                     break;
                 default:
                     MessageBox.Show("Ошибка при определении названия района по IP");

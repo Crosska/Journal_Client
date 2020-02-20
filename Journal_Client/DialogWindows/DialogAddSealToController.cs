@@ -50,7 +50,7 @@ namespace Journal_Client
                 case "Советский":
                     ConData.IP = "192.168.87.250"; // Советский
                     break;
-                case "Центральный":
+                case "Центрально-городской":
                     ConData.IP = "192.168.88.250"; // Центральный
                     break;
                 default:

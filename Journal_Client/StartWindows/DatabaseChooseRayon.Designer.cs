@@ -42,7 +42,7 @@
             "Горняцкий",
             "Кировский",
             "Советский",
-            "Центральный"});
+            "Центрально-городской"});
             this.combobox_district.Location = new System.Drawing.Point(12, 44);
             this.combobox_district.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.combobox_district.Name = "combobox_district";
