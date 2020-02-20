@@ -41,8 +41,8 @@
             this.button_registry_area = new System.Windows.Forms.Button();
             this.Directories = new System.Windows.Forms.TabPage();
             this.Reports = new System.Windows.Forms.TabPage();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button_jurnal_reg = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tab_control.SuspendLayout();
             this.Forms.SuspendLayout();
             this.Directories.SuspendLayout();
@@ -214,17 +214,6 @@
             this.Reports.TabIndex = 2;
             this.Reports.Text = "Отчеты";
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label_server);
-            this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox4.Location = new System.Drawing.Point(12, 12);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(383, 63);
-            this.groupBox4.TabIndex = 9;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Текущий сервер";
-            // 
             // button_jurnal_reg
             // 
             this.button_jurnal_reg.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -236,6 +225,17 @@
             this.button_jurnal_reg.Text = "Регистрации заявок";
             this.button_jurnal_reg.UseVisualStyleBackColor = true;
             this.button_jurnal_reg.Click += new System.EventHandler(this.Button_jurnal_reg_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label_server);
+            this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox4.Location = new System.Drawing.Point(12, 12);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(383, 63);
+            this.groupBox4.TabIndex = 9;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Текущий район";
             // 
             // DatabaseControlPanel
             // 

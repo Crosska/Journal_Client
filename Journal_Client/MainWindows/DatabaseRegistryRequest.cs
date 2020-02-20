@@ -62,7 +62,7 @@ namespace Journal_Client
 
         private void getApplicationType()
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
@@ -95,7 +95,7 @@ namespace Journal_Client
 
         private void getStreets()
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
@@ -135,7 +135,7 @@ namespace Journal_Client
             {
                 int district_code = get_district_code();
                 int application_type_code = get_application_type_code();
-                string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+                string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
                 NpgsqlConnection database = new NpgsqlConnection(conString);
                 try
                 {
@@ -196,7 +196,7 @@ namespace Journal_Client
 
         private int get_district_code()                                                                 // Функция для получения кода участка (возвращает код)
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             int district_code = -1;
             try
@@ -232,7 +232,7 @@ namespace Journal_Client
 
         private int get_application_type_code()                                                         // Функция для получения кода вида заявки (возвращает код)
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             int application_type_code = -1;
             try
@@ -271,7 +271,7 @@ namespace Journal_Client
 
         private void date_count_refresh()                                                               // Функция обновления количества обходов
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             int count = 0;
             try
@@ -309,7 +309,7 @@ namespace Journal_Client
         {
             combobox_processing_date.DataSource = null;
             string street = combobox_street.SelectedItem.ToString();
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {

@@ -36,7 +36,7 @@ namespace Journal_Client
             ConData.User = "root";
             ConData.Password = "Qwerty2";
             ConData.IP = IP;
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
             try
             {
                 database = new NpgsqlConnection(conString);

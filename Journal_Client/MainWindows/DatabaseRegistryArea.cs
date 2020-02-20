@@ -68,7 +68,7 @@ namespace Journal_Client
             DateTime chosen_date = Calendar.SelectionRange.Start;                                               // Создание переменной типа 'дата' и берется выбранной значение из календаря 
             datetime_show.Value = chosen_date;                                                                  // Выбранная дата ставится в элемент datetime_show для удобного отображения
             string chosen_date_sql = Calendar.SelectionRange.Start.ToShortDateString();                         // Создается строка с выбранной датой в форме 'краткой даты'
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.100" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";" ; // Строка подключения к бд
+            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";" ; // Строка подключения к бд
             NpgsqlConnection database = new NpgsqlConnection(conString);                                        // Создание подключения со строкой подключения
             try
             {
