@@ -1,6 +1,6 @@
 ﻿namespace Journal_Client
 {
-    partial class DatabaseControlPanel
+    partial class WorkerWorkspace
     {
         /// <summary>
         /// Required designer variable.
@@ -237,7 +237,7 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Текущий район";
             // 
-            // DatabaseControlPanel
+            // WorkerWorkspace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -247,10 +247,11 @@
             this.Controls.Add(this.tab_control);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "DatabaseControlPanel";
+            this.Name = "WorkerWorkspace";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Главная панель";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.form_closed);
+            this.Load += new System.EventHandler(this.WorkerWorkspace_Load);
             this.tab_control.ResumeLayout(false);
             this.Forms.ResumeLayout(false);
             this.Directories.ResumeLayout(false);

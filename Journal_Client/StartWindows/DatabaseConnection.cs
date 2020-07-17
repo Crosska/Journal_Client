@@ -46,8 +46,8 @@ namespace Journal_Client
             {
                 timer_fake_progress.Stop();           // Остановка таймера
                 this.Visible = false;                 // Скрытие формы
-                DatabaseControlPanel ControlForm = new DatabaseControlPanel(ServerIP); // Создание обьекта формы и передача в него IP
-                ControlForm.Show();                   // Показ формы
+                //WorkerWorkspace ControlForm = new WorkerWorkspace(ServerIP); // Создание обьекта формы и передача в него IP
+                //ControlForm.Show();                   // Показ формы
             }
         }
 

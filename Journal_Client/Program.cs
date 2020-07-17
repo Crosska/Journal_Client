@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Journal_Client.StartWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Journal_Client
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DatabaseChooseRayon());
+            Application.Run(new Login_Form());
         }
     }
 }

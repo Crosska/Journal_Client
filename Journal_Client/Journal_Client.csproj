@@ -103,6 +103,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminWindows\AdminWorkspace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminWindows\AdminWorkspace.Designer.cs">
+      <DependentUpon>AdminWorkspace.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindows\DatabaseJournalAllReg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,11 +198,11 @@
     <Compile Include="MainWindows\DatabaseSealsControllersLinks.Designer.cs">
       <DependentUpon>DatabaseSealsControllersLinks.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindows\DatabaseControlPanel.cs">
+    <Compile Include="MainWindows\WorkerWorkspace.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindows\DatabaseControlPanel.Designer.cs">
-      <DependentUpon>DatabaseControlPanel.cs</DependentUpon>
+    <Compile Include="MainWindows\WorkerWorkspace.Designer.cs">
+      <DependentUpon>WorkerWorkspace.cs</DependentUpon>
     </Compile>
     <Compile Include="MainWindows\DatabaseRegistryArea.cs">
       <SubType>Form</SubType>
@@ -230,6 +236,9 @@
     <Compile Include="StartWindows\Login_Form.Designer.cs">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminWindows\AdminWorkspace.resx">
+      <DependentUpon>AdminWorkspace.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindows\DatabaseJournalAllReg.resx">
       <DependentUpon>DatabaseJournalAllReg.cs</DependentUpon>
     </EmbeddedResource>
@@ -272,8 +281,8 @@
     <EmbeddedResource Include="MainWindows\DatabaseSealsControllersLinks.resx">
       <DependentUpon>DatabaseSealsControllersLinks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindows\DatabaseControlPanel.resx">
-      <DependentUpon>DatabaseControlPanel.cs</DependentUpon>
+    <EmbeddedResource Include="MainWindows\WorkerWorkspace.resx">
+      <DependentUpon>WorkerWorkspace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindows\DatabaseRegistryArea.resx">
       <DependentUpon>DatabaseRegistryArea.cs</DependentUpon>

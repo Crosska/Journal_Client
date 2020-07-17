@@ -12,15 +12,17 @@ using System.Windows.Forms;
 namespace Journal_Client
 {
 
-    public partial class DatabaseControlPanel : Form
+    public partial class WorkerWorkspace : Form
     {
 
         private string ServerIP = "";                       // Глобальная переменная IP-адреса
+        Form prev_form;
 
-        public DatabaseControlPanel(string ServerIP_received)
+        public WorkerWorkspace(string ServerIP_received, string DistrictName, Form prev, NpgsqlConnection con_received)
         {
             InitializeComponent();
             ServerIP = ServerIP_received;                   // Запись принятого IP в глобальную переменную
+            prev_form = prev;
             switch (ServerIP)                               // Свич на IP для выведения на экран названия сервера
             {
                 case "192.168.85.250":
@@ -88,7 +90,7 @@ namespace Journal_Client
 
         private void form_closed(object sender, FormClosedEventArgs e) // Действие при закрытии формы (закрывает всю программу)
         {
-            Application.Exit();
+            prev_form.Visible = true;
         }
 
         private void Button_inventory_journal_Click(object sender, EventArgs e)
@@ -101,6 +103,11 @@ namespace Journal_Client
         {
             DatabaseJournalAllReg journal_reg_form = new DatabaseJournalAllReg(ServerIP);
             journal_reg_form.Show();
+        }
+
+        private void WorkerWorkspace_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
