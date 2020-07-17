@@ -87,6 +87,7 @@
             this.Name = "DatabaseChooseRayon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Выбор сервера";
+            this.Load += new System.EventHandler(this.DatabaseChooseRayon_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

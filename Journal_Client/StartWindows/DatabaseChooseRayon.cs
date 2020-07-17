@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Journal_Client.StartWindows;
+using System;
 using System.Windows.Forms;
 
 namespace Journal_Client
@@ -18,6 +19,12 @@ namespace Journal_Client
             this.Visible = false;                                                        // Скрытие формы
             DatabaseConnection ConnectionForm = new DatabaseConnection(combobox_district.SelectedIndex); // Подготовка к вызову новой формы (передача индекса в форму)
             ConnectionForm.Show();                                                       // Вызов формы
+        }
+
+        private void DatabaseChooseRayon_Load(object sender, EventArgs e)
+        {
+            Login_Form form = new Login_Form();
+            form.ShowDialog();
         }
     }
 }
