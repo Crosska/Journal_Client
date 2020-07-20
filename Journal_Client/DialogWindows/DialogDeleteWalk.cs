@@ -8,71 +8,65 @@ namespace Journal_Client
     public partial class DialogDeleteWalk : Form
     {
 
-        struct Database
-        {
-            public string IP;
-            public string Port;
-            public string DatabaseName;
-            public string User;
-            public string Password;
-        }
-        private Database ConData = new Database();
+        NpgsqlConnection con;
+        NpgsqlCommand cmd;
 
-        private string DistrictName = "";
-
-        public DialogDeleteWalk(string date, string street, string IP)
+        public DialogDeleteWalk(string date, string street, NpgsqlConnection con_received)
         {
-            InitializeComponent();
-            ConData.Port = "5432";
-            ConData.DatabaseName = "postgres";
-            ConData.User = "root";
-            ConData.Password = "Qwerty2";
-            ConData.IP = IP;
-            switch (ConData.IP)
-            {
-                case "192.168.85.250":
-                    DistrictName = "Гвардейский";
-                    break;
-                case "192.168.82.250":
-                    DistrictName = "Горняцкий";
-                    break;
-                case "192.168.1.250":
-                    DistrictName = "Кировский";
-                    break;
-                case "192.168.87.250":
-                    DistrictName = "Советский";
-                    break;
-                case "192.168.88.250":
-                    DistrictName = "Центрально-городской";
-                    break;
-                default:
-                    MessageBox.Show("Произошла ошибка при определении района по IP адресу");
-                    break;
-            }
+            InitializeComponent(); 
+            con = con_received;
             label_date.Text = date;
             label_street.Text = street;
         }
 
-        private void Button_cancel_Click(object sender, EventArgs e)
+        private void Button_delete_Click(object sender, EventArgs e)
         {
+            if (check_walk_on_empty()) 
+            {
+                try
+                {
+                    con.Open();
+                    string SQLCommand = "DELETE FROM \"Участок\" WHERE \"#Код улицы\" = " + getStreetCode() + " AND \"Дата обхода\" = '" + label_date.Text + "'";
+                    //MessageBox.Show(SQLCommand);
+                    cmd = new NpgsqlCommand(SQLCommand, con);
+                    cmd.Prepare();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка удаления обхода");
+                }
+                finally
+                {
+                    con.Close();
+                }
+            } else
+            {
+                MessageBox.Show("Обход нельзя удалить, с ним связаны одна или несколько записей.");
+            }
             this.Close();
         }
 
-        private void Button_delete_Click(object sender, EventArgs e)
+        private bool check_walk_on_empty()
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
-                database.Open();
-                string SQLCommand = "DELETE FROM \"Участок\" WHERE \"#Код улицы\" = " + getStreetCode() + " AND \"Дата обхода\" = '" + label_date.Text + "'";
-                //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
-                cmd = new NpgsqlCommand(SQLCommand, database);
-                cmd.Prepare();
-                cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Обход успешно удален.");
+                con.Open();
+                string SQLCommand = "select count(\"#Код заявки\") from \"Журнал регистраций заявок\" " +
+                "inner join \"Участок\" on \"Журнал регистраций заявок\".\"#Код участка\" = \"Участок\".\"#Код участка\" " +
+                "inner join \"Улица\" on \"Участок\".\"#Код улицы\" = \"Улица\".\"#Код улицы\" " +
+                "where \"Дата обхода\" = '" + label_date.Text + "' and \"Журнал регистраций заявок\".\"Улица\" = '" + label_street.Text + "'";
+                cmd = new NpgsqlCommand(SQLCommand, con);
+                DataTable datatable = new DataTable();
+                datatable.Load(cmd.ExecuteReader());
+                con.Close();
+                if(datatable.Rows.Count==0)
+                {
+                    return true;
+                }
+                return false;
             }
             catch
             {
@@ -80,26 +74,21 @@ namespace Journal_Client
             }
             finally
             {
-                database.Close();
+                con.Close();
             }
-            this.Close();
+            return false;
         }
 
         private string getStreetCode()
         {
             string street_code = "";
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
-                database.Open();
                 string SQLCommand = "select \"#Код улицы\" from \"Улица\" " +
                 "where \"Улица\" = '" + label_street.Text + "' ";
                 //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd;
-                cmd = new NpgsqlCommand(SQLCommand, database);
-                DataTable datatable;
-                datatable = new DataTable();
+                cmd = new NpgsqlCommand(SQLCommand, con);
+                DataTable datatable = new DataTable();
                 datatable.Load(cmd.ExecuteReader());
                 foreach (DataRow row in datatable.Rows)
                 {
@@ -110,16 +99,16 @@ namespace Journal_Client
                     catch { }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Ошибка при получении кода улицы.");
-            }
-            finally
-            {
-                database.Close();
+                MessageBox.Show("Ошибка при определении кода улицы");
             }
             return street_code;
         }
 
+        private void button_cancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

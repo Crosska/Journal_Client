@@ -106,14 +106,12 @@
             this.combobox_district.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combobox_district.FormattingEnabled = true;
             this.combobox_district.Items.AddRange(new object[] {
-            "Тестовый",
-            "Кировский",
+            "Гвардейский",
             "Горняцкий",
-            "Центрально-городской",
+            "Кировский",
             "Советский",
-            "Гвардейский"});
+            "Центрально-городской"});
             this.combobox_district.Location = new System.Drawing.Point(12, 194);
-            this.combobox_district.MaxDropDownItems = 6;
             this.combobox_district.Name = "combobox_district";
             this.combobox_district.Size = new System.Drawing.Size(275, 29);
             this.combobox_district.TabIndex = 6;
@@ -121,10 +119,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 170);
+            this.label3.Location = new System.Drawing.Point(12, 170);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 21);
-            this.label3.TabIndex = 7;
+            this.label3.TabIndex = 4;
             this.label3.Text = "Район";
             // 
             // Login_Form

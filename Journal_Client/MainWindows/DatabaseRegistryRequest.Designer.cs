@@ -297,6 +297,7 @@
             this.combobox_processing_date.Size = new System.Drawing.Size(200, 30);
             this.combobox_processing_date.TabIndex = 0;
             this.combobox_processing_date.SelectedIndexChanged += new System.EventHandler(this.date_proccessing_changed);
+            this.combobox_processing_date.SelectedValueChanged += new System.EventHandler(this.date_proccessing_changed);
             // 
             // button_add
             // 

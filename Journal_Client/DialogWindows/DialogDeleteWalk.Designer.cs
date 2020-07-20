@@ -48,7 +48,7 @@
             this.button_cancel.TabIndex = 0;
             this.button_cancel.Text = "Отмена";
             this.button_cancel.UseVisualStyleBackColor = false;
-            this.button_cancel.Click += new System.EventHandler(this.Button_cancel_Click);
+            this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
             // 
             // button_delete
             // 
@@ -137,7 +137,7 @@
             this.Controls.Add(this.button_delete);
             this.Controls.Add(this.button_cancel);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DialogDeleteWalk";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Удаление обхода";

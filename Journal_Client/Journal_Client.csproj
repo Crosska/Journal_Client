@@ -109,6 +109,12 @@
     <Compile Include="AdminWindows\AdminWorkspace.Designer.cs">
       <DependentUpon>AdminWorkspace.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminWindows\LogViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminWindows\LogViewer.Designer.cs">
+      <DependentUpon>LogViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindows\DatabaseJournalAllReg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,8 +242,12 @@
     <Compile Include="StartWindows\Login_Form.Designer.cs">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="SystemInfoLogger.cs" />
     <EmbeddedResource Include="AdminWindows\AdminWorkspace.resx">
       <DependentUpon>AdminWorkspace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminWindows\LogViewer.resx">
+      <DependentUpon>LogViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindows\DatabaseJournalAllReg.resx">
       <DependentUpon>DatabaseJournalAllReg.cs</DependentUpon>

@@ -83,6 +83,7 @@
             // 
             this.datagridtable_streets.AllowUserToAddRows = false;
             this.datagridtable_streets.AllowUserToDeleteRows = false;
+            this.datagridtable_streets.AllowUserToResizeRows = false;
             this.datagridtable_streets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datagridtable_streets.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.datagridtable_streets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

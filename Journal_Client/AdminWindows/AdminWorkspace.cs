@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +17,14 @@ namespace Journal_Client.AdminWindows
     {
         NpgsqlConnection con;
         NpgsqlCommand cmd;
+        Form previous;
 
-        public AdminWorkspace(NpgsqlConnection con_received)
+        public AdminWorkspace(NpgsqlConnection con_received, Form previous_received)
         {
             InitializeComponent();
             con = con_received;
+            previous = previous_received;
+            refresh_table();
         }
 
         private void radiobutton_users_checked(object sender, EventArgs e)
@@ -39,7 +44,29 @@ namespace Journal_Client.AdminWindows
                 temp_table.Load(cmd.ExecuteReader());
                 datagridview.DataSource = temp_table;
             }
+            con.Close();
         }
 
+        private void form_closed(object sender, FormClosedEventArgs e)
+        {
+            previous.Visible = true;
+        }
+
+        private void button_open_log_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"data.lg");
+        }
+
+        private void button_clear_log_Click(object sender, EventArgs e)
+        {
+            StreamWriter stream = new StreamWriter(@"data.lg", false);
+            stream.Close();
+        }
+
+        private void button_open_prg_log_Click(object sender, EventArgs e)
+        {
+            LogViewer window = new LogViewer(con);
+            window.ShowDialog();
+        }
     }
 }
