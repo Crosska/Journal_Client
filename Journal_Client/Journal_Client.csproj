@@ -156,18 +156,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="StartWindows\DatabaseChooseRayon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StartWindows\DatabaseChooseRayon.Designer.cs">
-      <DependentUpon>DatabaseChooseRayon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StartWindows\DatabaseConnection.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StartWindows\DatabaseConnection.Designer.cs">
-      <DependentUpon>DatabaseConnection.cs</DependentUpon>
-    </Compile>
     <Compile Include="DialogWindows\DatabaseControllersDirectory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,12 +254,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DialogWindows\DialogChangeMeter.resx">
       <DependentUpon>DialogChangeMeter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StartWindows\DatabaseChooseRayon.resx">
-      <DependentUpon>DatabaseChooseRayon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StartWindows\DatabaseConnection.resx">
-      <DependentUpon>DatabaseConnection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialogWindows\DatabaseControllersDirectory.resx">
       <DependentUpon>DatabaseControllersDirectory.cs</DependentUpon>

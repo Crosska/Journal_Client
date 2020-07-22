@@ -65,7 +65,7 @@ namespace Journal_Client.AdminWindows
 
         private void button_open_prg_log_Click(object sender, EventArgs e)
         {
-            LogViewer window = new LogViewer(con);
+            LogViewer window = new LogViewer();
             window.ShowDialog();
         }
     }

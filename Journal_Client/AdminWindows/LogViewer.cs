@@ -1,26 +1,15 @@
-﻿using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Journal_Client.AdminWindows
 {
     public partial class LogViewer : Form
     {
-        NpgsqlConnection con;
-        NpgsqlCommand cmd;
 
-        public LogViewer(NpgsqlConnection con_received)
+        public LogViewer()
         {
             InitializeComponent();
-            con = con_received;
         }
 
         private void LogViewer_Load(object sender, EventArgs e)

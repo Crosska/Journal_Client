@@ -99,7 +99,7 @@ namespace Journal_Client
                     catch { }
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Ошибка при определении кода улицы");
             }

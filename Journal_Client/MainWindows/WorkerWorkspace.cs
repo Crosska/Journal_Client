@@ -1,12 +1,5 @@
 ﻿using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Journal_Client
@@ -15,10 +8,9 @@ namespace Journal_Client
     public partial class WorkerWorkspace : Form
     {
 
-        private string login;                       // Глобальная переменная IP-адреса
+        private string login;
         private Form prev_form;
         private NpgsqlConnection con;
-        private NpgsqlCommand cmd;
         private string district;
 
         public WorkerWorkspace(string login_received, string district_received, Form prev, NpgsqlConnection con_received)
