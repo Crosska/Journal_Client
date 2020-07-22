@@ -25,13 +25,13 @@ namespace Journal_Client
 
         private void Button_registry_area_Click(object sender, EventArgs e) // Форма регистрации участков
         {
-            DatabaseRegistryArea registry_area_form = new DatabaseRegistryArea(district, con); // Открыть форму регистрации участка
+            DatabaseRegistryArea registry_area_form = new DatabaseRegistryArea(district, con, login); // Открыть форму регистрации участка
             registry_area_form.Show();
         }
 
         private void Button_registry_request_Click(object sender, EventArgs e) // Форма регистрации заявок 
         {
-            DatabaseRegistryRequest registry_request_form = new DatabaseRegistryRequest(district, con); // Открыть форму регистрации запроса
+            DatabaseRegistryRequest registry_request_form = new DatabaseRegistryRequest(district, con, login); // Открыть форму регистрации запроса
             registry_request_form.Show();
         }
 
@@ -61,7 +61,7 @@ namespace Journal_Client
 
         private void Button_enter_data_Click(object sender, EventArgs e) // Форма показаний
         {
-            DatabaseEnterData in_out_enter_form = new DatabaseEnterData("192.168.23.99"); // Открыть форму ввода показаний
+            DatabaseEnterData in_out_enter_form = new DatabaseEnterData(con, login); // Открыть форму ввода показаний
             in_out_enter_form.Show();
         }
 

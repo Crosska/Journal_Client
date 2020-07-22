@@ -17,12 +17,14 @@ namespace Journal_Client
         private NpgsqlCommand cmd;
         private NpgsqlConnection con;
         private string district;
+        private string login;
 
-        public DatabaseRegistryArea(string district_received, NpgsqlConnection con_received)
+        public DatabaseRegistryArea(string district_received, NpgsqlConnection con_received, string login_received)
         {
             InitializeComponent();
             con = con_received;
             district = district_received;
+            login = login_received;
             show_streets_for_date();
         }
 
@@ -61,7 +63,7 @@ namespace Journal_Client
 
         private void Button_add_Click(object sender, EventArgs e)                                               // Действие при нажатии на кнопку "Добавить"
         {
-            DialogAddStreet AddStreetForm = new DialogAddStreet(datetime_show.Value, district);             // Создание обьекта формы с передачей даты и названия района
+            DialogAddStreet AddStreetForm = new DialogAddStreet(datetime_show.Value, district, con, login);             // Создание обьекта формы с передачей даты и названия района
             AddStreetForm.ShowDialog();                                                                         // Вызов обьекта формы
         }
 
@@ -74,7 +76,7 @@ namespace Journal_Client
         {
             try
             {
-                DialogDeleteWalk DeleteWalkForm = new DialogDeleteWalk(datetime_show.Value.ToShortDateString(), datagridtable_streets.CurrentCell.Value.ToString(), con); // Создание обьекта формы с передачей данных
+                DialogDeleteWalk DeleteWalkForm = new DialogDeleteWalk(datetime_show.Value.ToShortDateString(), datagridtable_streets.CurrentCell.Value.ToString(), con, login); // Создание обьекта формы с передачей данных
                 DeleteWalkForm.ShowDialog();                                                                    // Вызов обьекта формы
             }
             catch

@@ -38,7 +38,6 @@ namespace Journal_Client.StartWindows
                 {
                     con.Open();
                     con.Close();
-                    string IP = "";
                     if (search_user_post(textbox_login.Text) == 1)
                     {
                         logger.WriteNewDataline(textbox_login.Text, "Вошел в систему, район " + combobox_district.SelectedItem.ToString());

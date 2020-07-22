@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.datagridview_log_file = new System.Windows.Forms.DataGridView();
-            this.button_refresh = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_refresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridview_log_file)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,6 +41,10 @@
             this.datagridview_log_file.AllowUserToAddRows = false;
             this.datagridview_log_file.AllowUserToDeleteRows = false;
             this.datagridview_log_file.AllowUserToResizeRows = false;
+            this.datagridview_log_file.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.datagridview_log_file.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.datagridview_log_file.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.datagridview_log_file.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridview_log_file.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -57,9 +61,32 @@
             this.datagridview_log_file.Size = new System.Drawing.Size(750, 434);
             this.datagridview_log_file.TabIndex = 0;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Время события";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 106;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Логин сотрудника";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 123;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Выполненное действие";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 148;
+            // 
             // button_refresh
             // 
-            this.button_refresh.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_refresh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_refresh.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_refresh.Location = new System.Drawing.Point(14, 455);
             this.button_refresh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_refresh.Name = "button_refresh";
@@ -68,26 +95,6 @@
             this.button_refresh.Text = "Обновить лог";
             this.button_refresh.UseVisualStyleBackColor = true;
             this.button_refresh.Click += new System.EventHandler(this.button_refresh_Click);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Время события";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 145;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Логин сотрудника";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Выполненное действие";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 500;
             // 
             // LogViewer
             // 

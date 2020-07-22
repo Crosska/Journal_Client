@@ -99,9 +99,9 @@
             this.label10.Location = new System.Drawing.Point(8, 28);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(137, 22);
+            this.label10.Size = new System.Drawing.Size(151, 22);
             this.label10.TabIndex = 16;
-            this.label10.Text = "Лицевой счет";
+            this.label10.Text = "Лицевой счет *";
             // 
             // label9
             // 
@@ -173,9 +173,9 @@
             this.label5.Location = new System.Drawing.Point(8, 208);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 22);
+            this.label5.Size = new System.Drawing.Size(67, 22);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Дом";
+            this.label5.Text = "Дом *";
             // 
             // textbox_house
             // 
@@ -213,9 +213,9 @@
             this.label3.Location = new System.Drawing.Point(8, 88);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 22);
+            this.label3.Size = new System.Drawing.Size(194, 22);
             this.label3.TabIndex = 3;
-            this.label3.Text = "ФИО потребителя";
+            this.label3.Text = "ФИО потребителя *";
             // 
             // textbox_fio
             // 

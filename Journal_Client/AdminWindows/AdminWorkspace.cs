@@ -1,5 +1,7 @@
-﻿using Npgsql;
+﻿using Journal_Client.DialogWindows;
+using Npgsql;
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +9,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -59,8 +62,8 @@ namespace Journal_Client.AdminWindows
 
         private void button_clear_log_Click(object sender, EventArgs e)
         {
-            StreamWriter stream = new StreamWriter(@"data.lg", false);
-            stream.Close();
+            DialogLogClear dialog = new DialogLogClear();
+            dialog.ShowDialog();
         }
 
         private void button_open_prg_log_Click(object sender, EventArgs e)

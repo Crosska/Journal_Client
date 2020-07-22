@@ -10,13 +10,15 @@ namespace Journal_Client
 
         NpgsqlConnection con;
         NpgsqlCommand cmd;
+        private string login;
 
-        public DialogDeleteWalk(string date, string street, NpgsqlConnection con_received)
+        public DialogDeleteWalk(string date, string street, NpgsqlConnection con_received, string login_received)
         {
             InitializeComponent(); 
             con = con_received;
             label_date.Text = date;
             label_street.Text = street;
+            login = login_received;
         }
 
         private void Button_delete_Click(object sender, EventArgs e)
@@ -27,11 +29,12 @@ namespace Journal_Client
                 {
                     con.Open();
                     string SQLCommand = "DELETE FROM \"Участок\" WHERE \"#Код улицы\" = " + getStreetCode() + " AND \"Дата обхода\" = '" + label_date.Text + "'";
-                    //MessageBox.Show(SQLCommand);
                     cmd = new NpgsqlCommand(SQLCommand, con);
                     cmd.Prepare();
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
+                    SystemInfoLogger logger = new SystemInfoLogger();
+                    logger.WriteNewDataline(login, "Удалил обход улицы " + label_street.Text + " на дату " + label_date.Text);
                     con.Close();
                 }
                 catch
@@ -62,7 +65,7 @@ namespace Journal_Client
                 DataTable datatable = new DataTable();
                 datatable.Load(cmd.ExecuteReader());
                 con.Close();
-                if(datatable.Rows.Count==0)
+                if(Convert.ToInt32(datatable.Rows[0][0]) == 0)
                 {
                     return true;
                 }
@@ -90,13 +93,13 @@ namespace Journal_Client
                 cmd = new NpgsqlCommand(SQLCommand, con);
                 DataTable datatable = new DataTable();
                 datatable.Load(cmd.ExecuteReader());
-                foreach (DataRow row in datatable.Rows)
+                try
                 {
-                    try
-                    {
-                        street_code = row[0].ToString();
-                    }
-                    catch { }
+                    street_code =datatable.Rows[0][0].ToString();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.StackTrace);
                 }
             }
             catch
@@ -110,5 +113,6 @@ namespace Journal_Client
         {
             Close();
         }
+
     }
 }

@@ -1,12 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Journal_Client
@@ -14,33 +9,22 @@ namespace Journal_Client
     public partial class DialogAddMeter : Form
     {
 
-        struct Database
-        {
-            public string IP;
-            public string Port;
-            public string DatabaseName;
-            public string User;
-            public string Password;
-        }
-        private Database ConData = new Database();
+        private string login;
 
-        NpgsqlConnection database;
+        NpgsqlConnection con;
         NpgsqlCommand cmd;
 
-        public DialogAddMeter(string personal_account, string IP)
+        public DialogAddMeter(string personal_account, NpgsqlConnection con_received, string login_received)
         {
             InitializeComponent();
             label_personal_account.Text = personal_account;
-            ConData.Port = "5432";
-            ConData.DatabaseName = "postgres";
-            ConData.User = "root";
-            ConData.Password = "Qwerty2";
-            ConData.IP = IP;
+            con = con_received;
+            login = login_received;
         }
 
         private void Button_cancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void Button_add_Click(object sender, EventArgs e)
@@ -48,32 +32,31 @@ namespace Journal_Client
             bool error = check_all();
             if (!error)
             {
-                string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-                NpgsqlConnection database = new NpgsqlConnection(conString);
                 try
                 {
                     DataTable temp_table = new DataTable();
-                    database.Open();
+                    con.Open();
                     string SQLCommand = "insert into \"Журнал ввода/вывода\" " +
                     "(\"#Код заявки \", \"№ пломбы\", \"Задолженность\", \"#Код контролера\", \"Показания\") " +
                     "values( " + getApplicationCode() + ", " + textbox_seal_number.Text + " , " + numeric_saldo.Value + " , " + getControllerCode() + " , " + numeric_meter.Value + " )";
-                    //MessageBox.Show(SQLCommand);
-                    NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
-                    cmd = new NpgsqlCommand(SQLCommand, database);
+                    cmd = new NpgsqlCommand(SQLCommand, con);
                     cmd.Prepare();
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
+                    con.Close();
+                    SystemInfoLogger logger = new SystemInfoLogger();
+                    logger.WriteNewDataline(login, "Добавил на лицевой счет " + label_personal_account.Text + " показания " + numeric_meter.Value);
                     MessageBox.Show("Показания успешно добавлены.");
                 }
                 catch (Exception error_str)
                 {
-                    MessageBox.Show(error_str.ToString());
+                    MessageBox.Show(error_str.StackTrace);
                 }
                 finally
                 {
-                    database.Close();
+                    con.Close();
                 }
-                this.Close();
+                Close();
             }
             else
             {
@@ -83,17 +66,16 @@ namespace Journal_Client
 
         private bool check_all()
         {
-            bool error = false;
             try
             {
                 string temp_string = textbox_seal_number.Text;
                 int temp_int = Convert.ToInt32(temp_string);
+                return false;
             }
             catch
             {
-                error = true;
+                return true;
             }
-            return error;
         }
 
         private void DialogAddMeter_Load(object sender, EventArgs e)
@@ -104,18 +86,16 @@ namespace Journal_Client
 
         private void getWalksDate()
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
-                database.Open();
+                con.Open();
                 string SQLCommand = "select \"Дата обхода\" from \"Участок\" " +
                 "inner join \"Журнал регистраций заявок\" on \"Участок\".\"#Код участка\" = \"Журнал регистраций заявок\".\"#Код участка\" " +
                 "where \"Лицевой счет\" = '" + label_personal_account.Text + "' group by \"Дата обхода\"";
-                //MessageBox.Show(SQLCommand);
-                cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
+                con.Close();
                 List<string> date_list = new List<string>();
                 foreach (DataRow row in temp_table.Rows)
                 {
@@ -129,26 +109,24 @@ namespace Journal_Client
             }
             catch
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                MessageBox.Show("Ошибка при получении списка дат обходов.");
             }
             finally
             {
-                database.Close();
+                con.Close();
             }
         }
 
         private void getControllerFIO()
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
-                database.Open();
+                con.Open();
                 string SQLCommand = "select \"ФИО контролера\" from \"Контролер\" ";
-                //MessageBox.Show(SQLCommand);
-                cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
+                con.Close();
                 List<string> FIO_list = new List<string>();
                 foreach (DataRow row in temp_table.Rows)
                 {
@@ -162,27 +140,24 @@ namespace Journal_Client
             }
             catch
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                MessageBox.Show("Ошибка при получении ФИО контроллеров.");
             }
             finally
             {
-                database.Close();
+                con.Close();
             }
         }
 
         private string getApplicationCode()
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            database = new NpgsqlConnection(conString);
             string code = "";
             try
             {
                 DataTable temp_table = new DataTable();
-                database.Open();
+                MessageBox.Show(con.State.ToString());
                 string SQLCommand = "select \"#Код заявки\" from \"Журнал регистраций заявок\" " +
                 "where \"Лицевой счет\" = '" + label_personal_account.Text + "' ";
-                //MessageBox.Show(SQLCommand);
-                cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
                 foreach (DataRow row in temp_table.Rows)
                 {
@@ -193,30 +168,22 @@ namespace Journal_Client
                     catch { }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
-            }
-            finally
-            {
-                database.Close();
+                MessageBox.Show(ex.StackTrace);
             }
             return code;
         }
 
         private string getControllerCode()
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            database = new NpgsqlConnection(conString);
             string code = "";
             try
             {
                 DataTable temp_table = new DataTable();
-                database.Open();
                 string SQLCommand = "select \"#Код контролера\" from \"Контролер\" " +
-                "where \"ФИО контролера\" = '" + combobox_controller.SelectedItem + "' ";
-                //MessageBox.Show(SQLCommand);
-                cmd = new NpgsqlCommand(SQLCommand, database);
+                "where \"ФИО контролера\" = '" + combobox_controller.SelectedItem + "'";
+                cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
                 foreach (DataRow row in temp_table.Rows)
                 {
@@ -229,11 +196,7 @@ namespace Journal_Client
             }
             catch
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
-            }
-            finally
-            {
-                database.Close();
+                MessageBox.Show("Ошибка при получении кода контроллера.");
             }
             return code;
         }

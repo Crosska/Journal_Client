@@ -9,18 +9,20 @@ namespace Journal_Client
     public partial class DatabaseRegistryRequest : Form
     {
 
+        private string login;
         private string district;
         private NpgsqlConnection con;
         private NpgsqlCommand cmd;
 
-        public DatabaseRegistryRequest(string district_received, NpgsqlConnection con_received)
+        public DatabaseRegistryRequest(string district_received, NpgsqlConnection con_received, string login_received)
         {
             InitializeComponent();
             con = con_received;
+            login = login_received;
             district = district_received;
             combobox_processing_date.DataSource = null;
-            getStreets();                                                                               // Вызов функции для заполенения выпадающего списка улиц
-            getApplicationType();                                                                       // Вызов функции для заполенения выпадающего списка видов заявок
+            getStreets();
+            getApplicationType();
         }
 
         private void getApplicationType()
@@ -30,24 +32,27 @@ namespace Journal_Client
                 DataTable temp_table = new DataTable();
                 con.Open();
                 string SQLCommand = "SELECT \"Вид заявки\" FROM \"Вид заявки\" ";
-                //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
                 con.Close();
-                List<string> List_streets = new List<string>(temp_table.Rows.Count);                    // Создание списка с типом данных string с размеров = кол-ву строк из таблицы с результатами
-                foreach (DataRow row in temp_table.Rows)                                                // Цикл на каждую строку из таблицы с результатом запроса
+                List<string> List_streets = new List<string>(temp_table.Rows.Count);                // Создание списка с типом данных string с размеров = кол-ву строк из таблицы с результатами
+                foreach (DataRow row in temp_table.Rows)                                                         // Цикл на каждую строку из таблицы с результатом запроса
                 {
                     try
                     {
-                        List_streets.Add(row[0].ToString());                                            // Добавление значения первой ячейки из строки таблицы в список
+                        List_streets.Add(row[0].ToString());                                                                                // Добавление значения первой ячейки из строки таблицы в список
                     }
                     catch { }
                 }
-                combobox_type_application.DataSource = new BindingSource(List_streets, null);           // Заполенение выпадающего списка данными из списка List_streets
+                combobox_type_application.DataSource = new BindingSource(List_streets, null);               // Заполенение выпадающего списка данными из списка List_streets
             }
             catch
             {
                 MessageBox.Show("Ошибка при подключении к локальному серверу.");
+            }
+            finally
+            {
+                con.Close();
             }
         }
 
@@ -79,12 +84,17 @@ namespace Journal_Client
             {
                 MessageBox.Show("Ошибка при подключении к локальному серверу. 1");
             }
+            finally
+            {
+                con.Close();
+            }
         }
 
         private void Button_add_Click(object sender, EventArgs e)
         {
-            bool error = check_all();
-            if (!error)
+            bool error_first = check_date_exist();
+            bool error_second = check_all_textbox();
+            if (!error_first && !error_second)
             {
                 int district_code = get_district_code();
                 int application_type_code = get_application_type_code();
@@ -102,17 +112,41 @@ namespace Journal_Client
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                     con.Close();
+                    SystemInfoLogger logger = new SystemInfoLogger();
+                    logger.WriteNewDataline(login, "Добавил заявку по лицевому счету " + textbox_personal_account.Text + " по улице " + combobox_street.SelectedItem
+                        + " по дате подачи заявки " + datetime_show.Value + " по дате обработки " + combobox_processing_date.Text);
                     MessageBox.Show("Запись успешно добавлена.");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
+                finally
+                {
+                    con.Close();
+                }
                 date_count_refresh();
+            }
+            else
+            {
+                MessageBox.Show("Для добавления заявки необходимо заполнить все важные поля (со звездочкой) и выбрать дату обработки.");
             }
         }
 
-        private bool check_all()
+        private bool check_date_exist()
+        {
+            try
+            {
+                string temp = combobox_processing_date.SelectedItem.ToString();
+                return false;
+            }
+            catch
+            {
+                return true;
+            }
+        }
+
+        private bool check_all_textbox()
         {
             if (textbox_fio.Text.Length != 0)
             {
@@ -172,6 +206,10 @@ namespace Journal_Client
             {
                 MessageBox.Show("Ошибка при определении участка.");
             }
+            finally
+            {
+                con.Close();
+            }
             return district_code;
         }
 
@@ -194,7 +232,10 @@ namespace Journal_Client
                     {
                         application_type_code = Convert.ToInt32(row[0]);
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.StackTrace);
+                    }
                 }
             }
             catch
@@ -223,13 +264,17 @@ namespace Journal_Client
                 //MessageBox.Show(SQLCommand);
                 NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
+                con.Close();
                 foreach (DataRow row in temp_table.Rows)
                 {
                     try
                     {
                         count = Convert.ToInt32(row[0]);
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.StackTrace);
+                    }
                 }
             }
             catch
@@ -255,9 +300,9 @@ namespace Journal_Client
                 "INNER JOIN \"Улица\" ON \"Участок\".\"#Код улицы\" = \"Улица\".\"#Код улицы\" " +
                 "INNER JOIN \"Район\" ON \"Улица\".\"#Код района\" = \"Район\".\"#Код района\" " +
                 "WHERE \"Район\".\"Район\" = '" + district + "' AND \"Улица\" = '" + street + "'";
-                //MessageBox.Show(SQLCommand);
                 cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
+                con.Close();
                 List<string> List_streets = new List<string>(temp_table.Rows.Count);
                 foreach (DataRow row in temp_table.Rows)
                 {

@@ -115,6 +115,12 @@
     <Compile Include="AdminWindows\LogViewer.Designer.cs">
       <DependentUpon>LogViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogWindows\DialogLogClear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogWindows\DialogLogClear.Designer.cs">
+      <DependentUpon>DialogLogClear.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindows\DatabaseJournalAllReg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,10 +162,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="DialogWindows\DatabaseControllersDirectory.cs">
+    <Compile Include="MainWindows\DatabaseControllersDirectory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DialogWindows\DatabaseControllersDirectory.Designer.cs">
+    <Compile Include="MainWindows\DatabaseControllersDirectory.Designer.cs">
       <DependentUpon>DatabaseControllersDirectory.cs</DependentUpon>
     </Compile>
     <Compile Include="DialogWindows\DialogDeleteMeter.cs">
@@ -237,6 +243,9 @@
     <EmbeddedResource Include="AdminWindows\LogViewer.resx">
       <DependentUpon>LogViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DialogWindows\DialogLogClear.resx">
+      <DependentUpon>DialogLogClear.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindows\DatabaseJournalAllReg.resx">
       <DependentUpon>DatabaseJournalAllReg.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,7 +264,7 @@
     <EmbeddedResource Include="DialogWindows\DialogChangeMeter.resx">
       <DependentUpon>DialogChangeMeter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DialogWindows\DatabaseControllersDirectory.resx">
+    <EmbeddedResource Include="MainWindows\DatabaseControllersDirectory.resx">
       <DependentUpon>DatabaseControllersDirectory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialogWindows\DialogDeleteMeter.resx">

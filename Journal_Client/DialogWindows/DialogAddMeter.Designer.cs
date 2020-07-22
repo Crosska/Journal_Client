@@ -69,10 +69,10 @@
             // button_cancel
             // 
             this.button_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button_cancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_cancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_cancel.Location = new System.Drawing.Point(11, 226);
             this.button_cancel.Name = "button_cancel";
-            this.button_cancel.Size = new System.Drawing.Size(140, 40);
+            this.button_cancel.Size = new System.Drawing.Size(182, 40);
             this.button_cancel.TabIndex = 4;
             this.button_cancel.Text = "Отменить";
             this.button_cancel.UseVisualStyleBackColor = false;
@@ -81,10 +81,10 @@
             // button_add
             // 
             this.button_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button_add.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_add.Location = new System.Drawing.Point(158, 226);
+            this.button_add.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_add.Location = new System.Drawing.Point(199, 226);
             this.button_add.Name = "button_add";
-            this.button_add.Size = new System.Drawing.Size(133, 40);
+            this.button_add.Size = new System.Drawing.Size(182, 40);
             this.button_add.TabIndex = 5;
             this.button_add.Text = "Добавить";
             this.button_add.UseVisualStyleBackColor = false;
@@ -110,7 +110,7 @@
             0,
             0});
             this.numeric_meter.Name = "numeric_meter";
-            this.numeric_meter.Size = new System.Drawing.Size(164, 27);
+            this.numeric_meter.Size = new System.Drawing.Size(254, 27);
             this.numeric_meter.TabIndex = 8;
             // 
             // label3
@@ -129,7 +129,7 @@
             this.combobox_date.FormattingEnabled = true;
             this.combobox_date.Location = new System.Drawing.Point(127, 74);
             this.combobox_date.Name = "combobox_date";
-            this.combobox_date.Size = new System.Drawing.Size(164, 29);
+            this.combobox_date.Size = new System.Drawing.Size(254, 29);
             this.combobox_date.TabIndex = 10;
             // 
             // label4
@@ -147,7 +147,7 @@
             this.textbox_seal_number.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textbox_seal_number.Location = new System.Drawing.Point(127, 110);
             this.textbox_seal_number.Name = "textbox_seal_number";
-            this.textbox_seal_number.Size = new System.Drawing.Size(164, 27);
+            this.textbox_seal_number.Size = new System.Drawing.Size(254, 27);
             this.textbox_seal_number.TabIndex = 12;
             // 
             // label5
@@ -170,7 +170,7 @@
             0,
             0});
             this.numeric_saldo.Name = "numeric_saldo";
-            this.numeric_saldo.Size = new System.Drawing.Size(164, 27);
+            this.numeric_saldo.Size = new System.Drawing.Size(254, 27);
             this.numeric_saldo.TabIndex = 14;
             // 
             // combobox_controller
@@ -179,7 +179,7 @@
             this.combobox_controller.FormattingEnabled = true;
             this.combobox_controller.Location = new System.Drawing.Point(127, 179);
             this.combobox_controller.Name = "combobox_controller";
-            this.combobox_controller.Size = new System.Drawing.Size(164, 29);
+            this.combobox_controller.Size = new System.Drawing.Size(254, 29);
             this.combobox_controller.TabIndex = 15;
             // 
             // label6
@@ -197,7 +197,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(305, 278);
+            this.ClientSize = new System.Drawing.Size(393, 278);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.combobox_controller);
             this.Controls.Add(this.numeric_saldo);
