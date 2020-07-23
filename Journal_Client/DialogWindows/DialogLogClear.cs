@@ -22,6 +22,8 @@ namespace Journal_Client.DialogWindows
         {
             StreamWriter stream = new StreamWriter(@"data.lg", false);
             stream.Close();
+            SystemInfoLogger logger = new SystemInfoLogger();
+            logger.WriteNewDataline("Системное сообщение", "Произведена очистка лог файла");
             Close();
         }
 

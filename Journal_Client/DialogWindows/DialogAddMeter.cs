@@ -154,7 +154,6 @@ namespace Journal_Client
             try
             {
                 DataTable temp_table = new DataTable();
-                MessageBox.Show(con.State.ToString());
                 string SQLCommand = "select \"#Код заявки\" from \"Журнал регистраций заявок\" " +
                 "where \"Лицевой счет\" = '" + label_personal_account.Text + "' ";
                 cmd = new NpgsqlCommand(SQLCommand, con);

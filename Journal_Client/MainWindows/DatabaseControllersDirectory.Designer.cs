@@ -89,7 +89,7 @@
             this.groupBox2.Size = new System.Drawing.Size(342, 293);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "ФИО контроллеров";
+            this.groupBox2.Text = "Список контролеров";
             // 
             // listbox_controllers
             // 

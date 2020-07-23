@@ -92,6 +92,7 @@ namespace Journal_Client.AdminWindows
                         SystemInfoLogger logger = new SystemInfoLogger();
                         logger.WriteNewDataline(login, "Создал сотрудника " + textbox_new_login.Text);
                         con.Close();
+                        refresh_table();
                     }
                     catch (Exception ex)
                     {
@@ -119,6 +120,7 @@ namespace Journal_Client.AdminWindows
                         SystemInfoLogger logger = new SystemInfoLogger();
                         logger.WriteNewDataline(login, "Создал администратора " + textbox_new_login.Text);
                         con.Close();
+                        refresh_table();
                     }
                     catch (Exception ex)
                     {

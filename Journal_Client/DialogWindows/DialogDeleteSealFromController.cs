@@ -1,12 +1,6 @@
 ﻿using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Journal_Client
@@ -14,84 +8,52 @@ namespace Journal_Client
     public partial class DialogDeleteSealFromController : Form
     {
 
-        private string DistrictName;
-        private string Seal_number;
+        private string seal_number;
+        private string login;
+        private string controler;
+        private NpgsqlCommand cmd;
+        private NpgsqlConnection con;
 
-        struct Database
-        {
-            public string IP;
-            public string Port;
-            public string DatabaseName;
-            public string User;
-            public string Password;
-        }
-        private Database ConData = new Database();
-
-        public DialogDeleteSealFromController(string DistrictName_received, string Seal_number_received)
+        public DialogDeleteSealFromController(string seal_number_received, string login_received, NpgsqlConnection con_received, string controler_received)
         {
             InitializeComponent();
-            Seal_number = Seal_number_received;
-            ConData.Port = "5432";
-            ConData.DatabaseName = "postgres";
-            ConData.User = "root";
-            ConData.Password = "Qwerty2";
-            DistrictName = DistrictName_received;
-            switch (DistrictName)
-            {
-                case "Гвардейский":
-                    ConData.IP = "192.168.85.250"; // Гвардейский
-                    break;
-                case "Горняцкий":
-                    ConData.IP = "192.168.82.250"; // Горняцкий
-                    break;
-                case "Кировский":
-                    ConData.IP = "192.168.1.250"; // Кировский
-                    break;
-                case "Советский":
-                    ConData.IP = "192.168.87.250"; // Советский
-                    break;
-                case "Центрально-городской":
-                    ConData.IP = "192.168.88.250"; // Центральный
-                    break;
-                default:
-                    MessageBox.Show("Произошла ошибка при передаче выбранного сервера в форму добавления");
-                    this.Close();
-                    break;
-            }
-            label_seal_number.Text = Seal_number;
+            con = con_received;
+            seal_number = seal_number_received;
+            login = login_received;
+            controler = controler_received;
+            label_seal_number.Text = seal_number;
         }
 
         private void Button_cancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void Button_delete_link_Click(object sender, EventArgs e)
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
-                database.Open();
-                string SQLCommand = "UPDATE \"Пломбиратор\" SET \"#Код контролера\" = null  WHERE \"Номер\" = '" + Seal_number + "';";
-                //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
-                cmd = new NpgsqlCommand(SQLCommand, database);
+                con.Open();
+                string SQLCommand = "UPDATE \"Пломбиратор\" SET \"#Код контролера\" = null  WHERE \"Номер\" = '" + seal_number + "';";
+                cmd = new NpgsqlCommand(SQLCommand, con);
                 cmd.Prepare();
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Запись успешно удалена.");
+                con.Close();
+                SystemInfoLogger logger = new SystemInfoLogger();
+                logger.WriteNewDataline(login, "Отвязал пломбиратор с номером " + seal_number + " от контролера " + controler);
+                MessageBox.Show("Пломбиратор успешно отвязан.");
             }
             catch
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                MessageBox.Show("Ошибка при отвязке пломбиратора.");
             }
             finally
             {
-                database.Close();
+                con.Close();
             }
-            this.Close();
+            Close();
         }
 
     }

@@ -106,7 +106,6 @@ namespace Journal_Client
                     "\"Дом\", \"Квартира\", \"Оплата\", \"Лицевой счет\", \"#Код вида заявки\") " +
                     "VALUES(" + district_code + ", '" + datetime_show.Value.ToShortDateString() + "', '" + textbox_fio.Text + "', '" + combobox_street.SelectedItem.ToString() + "'," +
                     " '" + textbox_house.Text + "', '" + textbox_flat.Text + "', '" + numericupdown_payment.Value.ToString().Replace(',', '.') + "' , " + textbox_personal_account.Text + ", " + application_type_code + ")";
-                    MessageBox.Show(SQLCommand);
                     cmd = new NpgsqlCommand(SQLCommand, con);
                     cmd.Prepare();
                     cmd.CommandType = CommandType.Text;

@@ -1,42 +1,24 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Journal_Client
 {
     public partial class DatabaseInventoryJournal : Form
     {
-        private int select_type;
-        struct Database
-        {
-            public string IP;
-            public string Port;
-            public string DatabaseName;
-            public string User;
-            public string Password;
-        }
-        private Database ConData = new Database();
 
-        public DatabaseInventoryJournal(string server_ip)
+        private int select_type;
+        private NpgsqlConnection con;
+        private NpgsqlCommand cmd;
+
+        public DatabaseInventoryJournal(NpgsqlConnection con_received)
         {
             InitializeComponent();
-            ConData.Port = "5432";
-            ConData.DatabaseName = "postgres";
-            ConData.User = "root";
-            ConData.Password = "Qwerty2";
-            ConData.IP = server_ip;
-            // DistrictName = DistrictName_received;
-            // MessageBox.Show(DistrictName_received);
-            
+            con = con_received;
         }
 
         private void Radiobutton_date_CheckedChanged(object sender, EventArgs e)
@@ -69,18 +51,16 @@ namespace Journal_Client
 
         private void GetPersonalAccount()
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
-                System.Data.DataTable temp_table = new System.Data.DataTable();
-                database.Open();
+                DataTable temp_table = new DataTable();
+                con.Open();
                 string SQLCommand = "select \"Лицевой счет\" from \"Журнал регистраций заявок\" " +
                 "group by \"Лицевой счет\"";
-                //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table = new System.Data.DataTable();
                 temp_table.Load(cmd.ExecuteReader());
+                con.Close();
                 List<string> templist = new List<string>();
                 foreach (DataRow row in temp_table.Rows)
                 {
@@ -99,7 +79,7 @@ namespace Journal_Client
             }
             finally
             {
-                database.Close();
+                con.Close();
             }
         }
 
@@ -117,15 +97,14 @@ namespace Journal_Client
             make_select(SQLCommand);
 
         }
+
         private void make_select(string main_sql)
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
             string sql_rule = "";
             try
-            {
-                System.Data.DataTable temp_table = new System.Data.DataTable();
-                database.Open();
+            { 
+                DataTable temp_table = new DataTable();
+                con.Open();
                 switch (select_type)
                 {
                     case 0:
@@ -142,10 +121,10 @@ namespace Journal_Client
                         break;
                 }
                 string SQLCommand = main_sql + sql_rule;
-                //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
-                temp_table = new System.Data.DataTable();
+                cmd = new NpgsqlCommand(SQLCommand, con);
+                temp_table = new DataTable();
                 temp_table.Load(cmd.ExecuteReader());
+                con.Close();
                 datagridview.DataSource = temp_table;
             }
             catch (Exception ex)
@@ -154,7 +133,7 @@ namespace Journal_Client
             }
             finally
             {
-                database.Close();
+                con.Close();
             }
 
         }

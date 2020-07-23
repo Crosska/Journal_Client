@@ -14,62 +14,28 @@ namespace Journal_Client
     public partial class DatabaseSealsControllersLinks : Form
     {
 
-        private string DistrictName;
+        private NpgsqlCommand cmd;
+        private NpgsqlConnection con;
+        private string login;
 
-        struct Database
-        {
-            public string IP;
-            public string Port;
-            public string DatabaseName;
-            public string User;
-            public string Password;
-        }
-        private Database ConData = new Database();
-
-        public DatabaseSealsControllersLinks(string IP)
+        public DatabaseSealsControllersLinks(NpgsqlConnection con_received, string login_received)
         {
             InitializeComponent();
-            ConData.Port = "5432";
-            ConData.DatabaseName = "postgres";
-            ConData.User = "root";
-            ConData.Password = "Qwerty2";
-            ConData.IP = IP;
-            switch (ConData.IP)
-            {
-                case "192.168.85.250":
-                    DistrictName = "Гвардейский";
-                    break;
-                case "192.168.82.250":
-                    DistrictName = "Горняцкий";
-                    break;
-                case "192.168.1.250":
-                    DistrictName = "Кировский";
-                    break;
-                case "192.168.87.250":
-                    DistrictName = "Советский";
-                    break;
-                case "192.168.88.250":
-                    DistrictName = "Центрально-городской";
-                    break;
-                default:
-                    MessageBox.Show("Произошла ошибка при передаче IP адреса сервера в программу");
-                    break;
-            }
+            con = con_received;
+            login = login_received;
             load_controllers_list();
         }
 
         private void load_controllers_list()
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
-                database.Open();
+                con.Open();
                 string SQLCommand = "SELECT \"ФИО контролера\" FROM \"Контролер\" ";
-                //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
+                con.Close();
                 List<string> List_controllers = new List<string>(temp_table.Rows.Count);
                 foreach (DataRow row in temp_table.Rows)
                 {
@@ -83,11 +49,11 @@ namespace Journal_Client
             }
             catch
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                MessageBox.Show("Ошибка при получении данных о контролерах.");
             }
             finally
             {
-                database.Close();
+                con.Close();
             }
         }
 
@@ -98,13 +64,13 @@ namespace Journal_Client
 
         private void Button_add_Click(object sender, EventArgs e)
         {
-            DialogAddSealToController temp_form_link = new DialogAddSealToController(DistrictName, combobox_controller.Text);
+            DialogAddSealToController temp_form_link = new DialogAddSealToController(combobox_controller.Text, con, login);
             temp_form_link.ShowDialog();
         }
 
         private void Button_delete_Click(object sender, EventArgs e)
         {
-            DialogDeleteSealFromController temp_form_link = new DialogDeleteSealFromController(DistrictName, listbox_sealers.SelectedItem.ToString());
+            DialogDeleteSealFromController temp_form_link = new DialogDeleteSealFromController(listbox_sealers.SelectedItem.ToString(), login, con, combobox_controller.SelectedItem.ToString());
             temp_form_link.ShowDialog();
         }
 
@@ -115,18 +81,16 @@ namespace Journal_Client
 
         private void load_seals_to_controllers()
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
-                database.Open();
+                con.Open();
                 string SQLCommand = "select \"Номер\" from \"Пломбиратор\" " +
                 "inner join \"Контролер\" on \"Пломбиратор\".\"#Код контролера\" = \"Контролер\".\"#Код контролера\" " +
                 "where \"ФИО контролера\" = '" + combobox_controller.Text + "' ";
-                //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
+                con.Close();
                 List<string> List_controllers = new List<string>(temp_table.Rows.Count);
                 foreach (DataRow row in temp_table.Rows)
                 {
@@ -140,11 +104,11 @@ namespace Journal_Client
             }
             catch
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                MessageBox.Show("Ошибка при получении данных о пломбираторах.");
             }
             finally
             {
-                database.Close();
+                con.Close();
             }
         }
     }

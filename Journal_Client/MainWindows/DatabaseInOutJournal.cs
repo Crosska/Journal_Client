@@ -1,48 +1,26 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Excel;
 
 namespace Journal_Client
 {
     public partial class DatabaseInOutJournal : Form
     {
 
-        struct Database
-        {
-            public string IP;
-            public string Port;
-            public string DatabaseName;
-            public string User;
-            public string Password;
-        }
-        private Database ConData = new Database();
-
         private bool select_in = true;
         private int select_type = 0;
+        private NpgsqlCommand cmd;
+        private NpgsqlConnection con;
 
-        public DatabaseInOutJournal(String server_ip)
+        public DatabaseInOutJournal(NpgsqlConnection con_received)
         {
             InitializeComponent();
-            ConData.Port = "5432";
-            ConData.DatabaseName = "postgres";
-            ConData.User = "root";
-            ConData.Password = "Qwerty2";
-            ConData.IP = server_ip;
-            // DistrictName = DistrictName_received;
-            // MessageBox.Show(DistrictName_received);
-            
-
             datagridview.RowHeadersVisible = false;
+            con = con_received;
             getFIO();
         }
 
@@ -105,13 +83,11 @@ namespace Journal_Client
 
         private void make_select(string main_sql)
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
             string sql_rule = "";
             try
             {
-                System.Data.DataTable temp_table = new System.Data.DataTable();
-                database.Open();
+                DataTable temp_table = new DataTable();
+                con.Open();
                 string type = "Вывод";
                 if (radiobutton_select_in.Checked)
                 {
@@ -133,10 +109,10 @@ namespace Journal_Client
                         break;
                 }
                 string SQLCommand = main_sql + sql_rule;
-                //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
-                temp_table = new System.Data.DataTable();
+                cmd = new NpgsqlCommand(SQLCommand, con);
+                temp_table = new DataTable();
                 temp_table.Load(cmd.ExecuteReader());
+                con.Close();
                 datagridview.DataSource = temp_table;
             }
             catch (Exception ex)
@@ -145,7 +121,7 @@ namespace Journal_Client
             }
             finally
             {
-                database.Close();
+                con.Close();
             }
             
         }
@@ -157,18 +133,15 @@ namespace Journal_Client
 
         private void getFIO()
         {
-            string conString = "";
-            conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
 
-                System.Data.DataTable temp_table = new System.Data.DataTable();
-                database.Open();
+                DataTable temp_table = new DataTable();
+                con.Open();
                 string SQLCommand = "select \"ФИО контролера\" from \"Контролер\" ";
-                //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
+                con.Close();
                 List<string> List_FIO = new List<string>(temp_table.Rows.Count);
                 foreach (DataRow row in temp_table.Rows)
                 {
@@ -182,11 +155,11 @@ namespace Journal_Client
             }
             catch
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                MessageBox.Show("Ошибка при получении данных о контролерах.");
             }
             finally
             {
-                database.Close();
+                con.Close();
             }
         }
 
@@ -226,7 +199,7 @@ namespace Journal_Client
                         }
                     }
                     objexcelapp.Columns.AutoFit();
-                    System.Windows.Forms.Application.DoEvents();
+                    Application.DoEvents();
                     saveFileDialog1.Filter = "Excel современный формат|*.xlsx|Excel старый формат|*.xls|All files(*.*)|*.*";
                     if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                         return;
@@ -242,7 +215,7 @@ namespace Journal_Client
                         objexcelapp.ActiveWorkbook.SaveCopyAs(filename);
                     }
                     objexcelapp.ActiveWorkbook.Saved = true;
-                    System.Windows.Forms.Application.DoEvents();
+                    Application.DoEvents();
                     foreach (Process proc in System.Diagnostics.Process.GetProcessesByName("EXCEL"))
                     {
                         proc.Kill();

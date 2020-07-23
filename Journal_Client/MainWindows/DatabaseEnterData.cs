@@ -1,12 +1,8 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Journal_Client
@@ -72,7 +68,6 @@ namespace Journal_Client
                 "inner join \"Участок\" on \"Журнал регистраций заявок\".\"#Код участка\" = \"Участок\".\"#Код участка\" " +
                 "inner join \"Контролер\" on \"Журнал ввода/вывода\".\"#Код контролера\" = \"Контролер\".\"#Код контролера\" " +
                 "where \"Лицевой счет\" = '" + personal_number_second[1] + "'";
-                //MessageBox.Show(SQLCommand);
                 cmd = new NpgsqlCommand(SQLCommand, con);
                 DataTable datatable = new DataTable();
                 datatable.Load(cmd.ExecuteReader());
@@ -106,7 +101,7 @@ namespace Journal_Client
 
         private void Button_change_Click(object sender, EventArgs e)
         {
-            DialogChangeMeter change_meter_form = new DialogChangeMeter();
+            DialogChangeMeter change_meter_form = new DialogChangeMeter(con, login);
             change_meter_form.ShowDialog();
         }
 

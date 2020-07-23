@@ -19,7 +19,6 @@ namespace Journal_Client
             login = login_received;
             prev_form = prev;
             con = con_received;
-            //MessageBox.Show(con.ConnectionString);
             district = district_received;
         }
 
@@ -37,25 +36,25 @@ namespace Journal_Client
 
         private void Button_sealers_directory_Click(object sender, EventArgs e) // Справочник пломбираторов
         {
-            DatabaseSealsControllersLinks seals_controllers_links_form = new DatabaseSealsControllersLinks("192.168.23.99"); // Открыть форму связей контролера и пломбиратора
+            DatabaseSealsControllersLinks seals_controllers_links_form = new DatabaseSealsControllersLinks(con, login); // Открыть форму связей контролера и пломбиратора
             seals_controllers_links_form.Show();
         }
 
         private void Button_controllers_directory_Click(object sender, EventArgs e) // Справочник контролеров
         {
-            DatabaseControllersDirectory controllers_directory_form = new DatabaseControllersDirectory("192.168.23.99"); // Открыть форму справочника контролеров
+            DatabaseControllersDirectory controllers_directory_form = new DatabaseControllersDirectory(login, con); // Открыть форму справочника контролеров
             controllers_directory_form.Show();
         }
 
         private void Button_seales_directory_Click(object sender, EventArgs e) // Справочник пломбираторов
         {
-            DatabaseSealsDirectory seals_directory_form = new DatabaseSealsDirectory(label_server.Text); // Открыть форму справочника пломбираторов
+            DatabaseSealsDirectory seals_directory_form = new DatabaseSealsDirectory(district, con, login); // Открыть форму справочника пломбираторов
             seals_directory_form.Show();
         }
 
         private void Button_in_out_journal_Click(object sender, EventArgs e) // Журнал ввода/вывода 
         {
-            DatabaseInOutJournal in_out_journal_form = new DatabaseInOutJournal("192.168.23.99"); // Открыть форму журнала ввод/вывод
+            DatabaseInOutJournal in_out_journal_form = new DatabaseInOutJournal(con); // Открыть форму журнала ввод/вывод
             in_out_journal_form.Show();
         }
 
@@ -72,13 +71,13 @@ namespace Journal_Client
 
         private void Button_inventory_journal_Click(object sender, EventArgs e)
         {
-            DatabaseInventoryJournal inventory_form = new DatabaseInventoryJournal("192.168.23.99");
+            DatabaseInventoryJournal inventory_form = new DatabaseInventoryJournal(con);
             inventory_form.Show();
         }
 
         private void Button_jurnal_reg_Click(object sender, EventArgs e)
         {
-            DatabaseJournalAllReg journal_reg_form = new DatabaseJournalAllReg("192.168.23.99");
+            DatabaseJournalAllReg journal_reg_form = new DatabaseJournalAllReg();
             journal_reg_form.Show();
         }
 

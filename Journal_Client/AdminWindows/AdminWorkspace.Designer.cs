@@ -125,6 +125,7 @@
             // 
             this.button_open_prg_log.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_open_prg_log.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_open_prg_log.Location = new System.Drawing.Point(16, 24);
             this.button_open_prg_log.Name = "button_open_prg_log";
             this.button_open_prg_log.Size = new System.Drawing.Size(195, 38);

@@ -10,7 +10,6 @@ namespace Journal_Client
     {
 
         private string login;
-
         NpgsqlConnection con;
         NpgsqlCommand cmd;
 
@@ -39,8 +38,6 @@ namespace Journal_Client
                     SQLCommand = "delete from \"Журнал ввода/вывода\" " +
                 "where \"#Код заявки \" = " + getApplicationCode(data_string) + " and \"№ пломбы\" = " + data_string[2] + " and \"Задолженность\" = " + data_string[1] + " and \"#Код контролера\" = " + getControllerCode(data_string[4]) + " and \"Показания\" = " + data_string[0] + " ";
                 }
-               
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, con);
                 cmd = new NpgsqlCommand(SQLCommand, con);
                 cmd.Prepare();
                 cmd.CommandType = CommandType.Text;
@@ -95,7 +92,7 @@ namespace Journal_Client
                 DataTable temp_table = new DataTable();
                 string SQLCommand = "select \"#Код заявки \" from \"Журнал ввода/вывода\" " +
                 "where \"№ пломбы\" = " + data_string[2] + " and \"Задолженность\" = " + data_string[1] + " and \"#Код контролера\" = " + getControllerCode(data_string[4]) + " and \"Показания\" = " + data_string[0];
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, con);
+                cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
                 foreach (DataRow row in temp_table.Rows)
                 {

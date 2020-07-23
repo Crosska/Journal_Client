@@ -151,12 +151,6 @@
     <Compile Include="DialogWindows\DialogAddStreet.Designer.cs">
       <DependentUpon>DialogAddStreet.cs</DependentUpon>
     </Compile>
-    <Compile Include="DialogWindows\DialogChangeMeter.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DialogWindows\DialogChangeMeter.Designer.cs">
-      <DependentUpon>DialogChangeMeter.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -260,9 +254,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DialogWindows\DialogAddStreet.resx">
       <DependentUpon>DialogAddStreet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DialogWindows\DialogChangeMeter.resx">
-      <DependentUpon>DialogChangeMeter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindows\DatabaseControllersDirectory.resx">
       <DependentUpon>DatabaseControllersDirectory.cs</DependentUpon>

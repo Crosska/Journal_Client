@@ -13,48 +13,17 @@ namespace Journal_Client
 {
     public partial class DatabaseSealsDirectory : Form
     {
-        private string DistrictName;
+        private string district;
+        private string login;
+        private NpgsqlCommand cmd;
+        private NpgsqlConnection con;
 
-        struct Database
-        {
-            public string IP;
-            public string Port;
-            public string DatabaseName;
-            public string User;
-            public string Password;
-        }
-        private Database ConData = new Database();
-
-        public DatabaseSealsDirectory(string DistrictName_received)
+        public DatabaseSealsDirectory(string district_received, NpgsqlConnection con_received, string login_received)
         {
             InitializeComponent();
-            ConData.Port = "5432";
-            ConData.DatabaseName = "postgres";
-            ConData.User = "root";
-            ConData.Password = "Qwerty2";
-            DistrictName = DistrictName_received;
-            switch (DistrictName)
-            {
-                case "Гвардейский":
-                    ConData.IP = "192.168.85.250"; // Гвардейский
-                    break;
-                case "Горняцкий":
-                    ConData.IP = "192.168.82.250"; // Горняцкий
-                    break;
-                case "Кировский":
-                    ConData.IP = "192.168.1.250"; // Кировский
-                    break;
-                case "Советский":
-                    ConData.IP = "192.168.87.250"; // Советский
-                    break;
-                case "Центрально-городской":
-                    ConData.IP = "192.168.88.250"; // Центральный
-                    break;
-                default:
-                    MessageBox.Show("Произошла ошибка при передаче выбранного сервера в форму добавления");
-                    this.Close();
-                    break;
-            }
+            district = district_received;
+            con = con_received;
+            login = login_received;
         }
 
         private void Button_add_seal_Click(object sender, EventArgs e)
@@ -65,28 +34,27 @@ namespace Journal_Client
                 bool error = check_all(textbox_number_seal.Text);
                 if (!error)
                 {
-                    string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-                    NpgsqlConnection database = new NpgsqlConnection(conString);
                     try
                     {
                         DataTable temp_table = new DataTable();
-                        database.Open();
+                        con.Open();
                         string SQLCommand = "INSERT INTO \"Пломбиратор\" (\"Номер\") VALUES ( " + textbox_number_seal.Text + " )";
-                        //MessageBox.Show(SQLCommand);
-                        NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
-                        cmd = new NpgsqlCommand(SQLCommand, database);
+                        cmd = new NpgsqlCommand(SQLCommand, con);
                         cmd.Prepare();
                         cmd.CommandType = CommandType.Text;
                         cmd.ExecuteNonQuery();
+                        con.Close();
+                        SystemInfoLogger logger = new SystemInfoLogger();
+                        logger.WriteNewDataline(login, "Добавил пломбиратор с номером " + textbox_number_seal.Text);
                         MessageBox.Show("Запись успешно добавлена.");
                     }
                     catch
                     {
-                        MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                        MessageBox.Show("Ошибка при добавлении пломбиратора.");
                     }
                     finally
                     {
-                        database.Close();
+                        con.Close();
                     }
                     Update_seals_list();
                 }
@@ -111,17 +79,15 @@ namespace Journal_Client
         private bool check_all(string text)
         {
             bool error = false;
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
-                database.Open();
+                con.Open();
                 string SQLCommand = "select * from \"Пломбиратор\" " +
                 "where \"Номер\" = 123 ";
-                //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
+                con.Close();
                 List<string> List_streets = new List<string>(temp_table.Rows.Count);
                 foreach (DataRow row in temp_table.Rows)
                 {
@@ -139,55 +105,52 @@ namespace Journal_Client
             }
             catch
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                MessageBox.Show("Ошибка при получении данных о пломбираторах.");
             }
             finally
             {
-                database.Close();
+                con.Close();
             }
             return error;
         }
 
         private void Button_delete_seal_Click(object sender, EventArgs e)
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
-                database.Open();
+                con.Open();
                 string SQLCommand = "DELETE FROM \"Пломбиратор\" where \"Номер\" = '" + combobox_sealer_list.SelectedItem.ToString() + "'";
-                //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
-                cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd = new NpgsqlCommand(SQLCommand, con);
                 cmd.Prepare();
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+                con.Close();
+                SystemInfoLogger logger = new SystemInfoLogger();
+                logger.WriteNewDataline(login, "Удалил пломбиратор с номером " + combobox_sealer_list.SelectedItem);
                 MessageBox.Show("Запись успешно удалена.");
             }
             catch
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                MessageBox.Show("Ошибка при попытке удаления пломбиратора.");
             }
             finally
             {
-                database.Close();
+                con.Close();
                 Update_seals_list();
             }
         }
 
         private void Update_seals_list()
         {
-            string conString = "Server=" + /*ConData.IP*/ "192.168.23.99" + ";Port=" + ConData.Port + ";UserID=" + ConData.User + ";Password=" + ConData.Password + ";Database=" + ConData.DatabaseName + ";";
-            NpgsqlConnection database = new NpgsqlConnection(conString);
             try
             {
                 DataTable temp_table = new DataTable();
-                database.Open();
+                con.Open();
                 string SQLCommand = "SELECT \"Номер\" FROM \"Пломбиратор\" ";
-                //MessageBox.Show(SQLCommand);
-                NpgsqlCommand cmd = new NpgsqlCommand(SQLCommand, database);
+                cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
+                con.Close();
                 List<string> List_seals = new List<string>(temp_table.Rows.Count);
                 foreach (DataRow row in temp_table.Rows)
                 {
@@ -201,11 +164,11 @@ namespace Journal_Client
             }
             catch
             {
-                MessageBox.Show("Ошибка при подключении к локальному серверу.");
+                MessageBox.Show("Ошибка при получении данных о номерах пломбираторов.");
             }
             finally
             {
-                database.Close();
+                con.Close();
             }
         }
 
