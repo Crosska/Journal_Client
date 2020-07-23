@@ -53,7 +53,7 @@ namespace Journal_Client.StartWindows
                     else if (search_user_post(textbox_login.Text) == 2)
                     {
                         logger.WriteNewDataline(textbox_login.Text, "Вошел в систему ");
-                        AdminWorkspace main_form = new AdminWorkspace(con, this);
+                        AdminWorkspace main_form = new AdminWorkspace(con, this, textbox_login.Text);
                         main_form.Show();
                         this.Visible = false;
                     }
