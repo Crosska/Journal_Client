@@ -99,12 +99,6 @@ namespace Journal_Client
             }
         }
 
-        private void Button_change_Click(object sender, EventArgs e)
-        {
-            DialogChangeMeter change_meter_form = new DialogChangeMeter(con, login);
-            change_meter_form.ShowDialog();
-        }
-
         private void Button_delete_Click(object sender, EventArgs e)
         {
             try
