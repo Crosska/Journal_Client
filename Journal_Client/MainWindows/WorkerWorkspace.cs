@@ -19,7 +19,7 @@ namespace Journal_Client
             login = login_received;
             prev_form = prev;
             con = con_received;
-            MessageBox.Show(con.ConnectionString);
+            //MessageBox.Show(con.ConnectionString);
             district = district_received;
         }
 

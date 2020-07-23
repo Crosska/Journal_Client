@@ -221,6 +221,9 @@
             this.datagridview.AllowUserToAddRows = false;
             this.datagridview.AllowUserToDeleteRows = false;
             this.datagridview.AllowUserToResizeRows = false;
+            this.datagridview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.datagridview.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridview.GridColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -234,6 +237,7 @@
             // 
             // button_export
             // 
+            this.button_export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_export.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_export.Location = new System.Drawing.Point(742, 478);
             this.button_export.Name = "button_export";
@@ -245,6 +249,7 @@
             // 
             // button_do_select
             // 
+            this.button_do_select.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button_do_select.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_do_select.Location = new System.Drawing.Point(214, 478);
             this.button_do_select.Name = "button_do_select";

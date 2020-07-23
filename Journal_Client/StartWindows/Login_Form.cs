@@ -32,7 +32,12 @@ namespace Journal_Client.StartWindows
             }
             else
             {
-                string connection = "Server=192.168.23.99;Port=5432;UserID=" + textbox_login.Text + ";Password=" + textbox_password.Text + ";Database=postgres;";
+                string connection = 
+                    "Server=192.168.23.99;" +
+                    "Port=5432;" +
+                    "UserID=" + textbox_login.Text + 
+                    ";Password=" + textbox_password.Text + 
+                    ";Database=postgres;";
                 NpgsqlConnection con = new NpgsqlConnection(connection);
                 try
                 {
