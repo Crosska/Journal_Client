@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatabaseControllersDirectory));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textbox_fio_controller = new System.Windows.Forms.TextBox();
@@ -71,7 +72,8 @@
             // button_add_controller
             // 
             this.button_add_controller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button_add_controller.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_add_controller.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_add_controller.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_add_controller.Location = new System.Drawing.Point(12, 397);
             this.button_add_controller.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_add_controller.Name = "button_add_controller";
@@ -110,6 +112,7 @@
             this.Controls.Add(this.button_add_controller);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DatabaseControllersDirectory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

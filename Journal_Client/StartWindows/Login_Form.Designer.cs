@@ -79,6 +79,7 @@
             // 
             // button_enter
             // 
+            this.button_enter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_enter.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_enter.Location = new System.Drawing.Point(12, 229);
             this.button_enter.Name = "button_enter";
@@ -143,6 +144,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Вход в программу";
             this.Load += new System.EventHandler(this.Login_Form_Load);
+            this.VisibleChanged += new System.EventHandler(this.clear);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

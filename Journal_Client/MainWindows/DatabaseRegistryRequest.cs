@@ -64,8 +64,8 @@ namespace Journal_Client
                 con.Open();
                 string SQLCommand = "select \"Улица\" from \"Улица\" " +
                 "inner join \"Район\" on \"Улица\".\"#Код района\" = \"Район\".\"#Код района\" " +
-                "where \"Район\" = '" + district + "' ";
-                //MessageBox.Show(SQLCommand);
+                "where \"Район\" = '" + district + "' " +
+                "order by \"Улица\"";
                 cmd = new NpgsqlCommand(SQLCommand, con);
                 temp_table.Load(cmd.ExecuteReader());
                 con.Close();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogDeleteSealFromController));
             this.button_delete_link = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button_cancel = new System.Windows.Forms.Button();
@@ -37,6 +38,7 @@
             // button_delete_link
             // 
             this.button_delete_link.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button_delete_link.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_delete_link.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_delete_link.Location = new System.Drawing.Point(234, 57);
             this.button_delete_link.Name = "button_delete_link";
@@ -59,6 +61,7 @@
             // button_cancel
             // 
             this.button_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button_cancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_cancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_cancel.Location = new System.Drawing.Point(12, 57);
             this.button_cancel.Name = "button_cancel";
@@ -89,9 +92,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_delete_link);
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DialogDeleteSealFromController";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Подтверждение отвязки пломбиратора";
             this.ResumeLayout(false);
             this.PerformLayout();

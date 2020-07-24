@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogAddSealToController));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.combobox_seal_number = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,6 +51,8 @@
             // 
             // combobox_seal_number
             // 
+            this.combobox_seal_number.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.combobox_seal_number.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combobox_seal_number.FormattingEnabled = true;
             this.combobox_seal_number.Location = new System.Drawing.Point(6, 43);
             this.combobox_seal_number.Name = "combobox_seal_number";
@@ -67,6 +70,7 @@
             // 
             // button_add_link
             // 
+            this.button_add_link.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_add_link.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_add_link.Location = new System.Drawing.Point(12, 89);
             this.button_add_link.Name = "button_add_link";
@@ -85,9 +89,10 @@
             this.Controls.Add(this.button_add_link);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DialogAddSealToController";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Выбор пломбиратора";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

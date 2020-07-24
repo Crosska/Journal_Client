@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogAddMeter));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button_cancel = new System.Windows.Forms.Button();
@@ -69,6 +70,7 @@
             // button_cancel
             // 
             this.button_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button_cancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_cancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_cancel.Location = new System.Drawing.Point(11, 226);
             this.button_cancel.Name = "button_cancel";
@@ -81,6 +83,7 @@
             // button_add
             // 
             this.button_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button_add.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_add.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_add.Location = new System.Drawing.Point(199, 226);
             this.button_add.Name = "button_add";
@@ -125,6 +128,8 @@
             // 
             // combobox_date
             // 
+            this.combobox_date.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.combobox_date.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combobox_date.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.combobox_date.FormattingEnabled = true;
             this.combobox_date.Location = new System.Drawing.Point(127, 74);
@@ -175,6 +180,8 @@
             // 
             // combobox_controller
             // 
+            this.combobox_controller.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.combobox_controller.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combobox_controller.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.combobox_controller.FormattingEnabled = true;
             this.combobox_controller.Location = new System.Drawing.Point(127, 179);
@@ -213,8 +220,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DialogAddMeter";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавить показания";
             this.Load += new System.EventHandler(this.DialogAddMeter_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numeric_meter)).EndInit();

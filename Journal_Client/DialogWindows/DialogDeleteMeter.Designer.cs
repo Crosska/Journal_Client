@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogDeleteMeter));
             this.button_cancel = new System.Windows.Forms.Button();
             this.button_delete = new System.Windows.Forms.Button();
             this.combobox_meter = new System.Windows.Forms.ComboBox();
@@ -37,6 +38,7 @@
             // button_cancel
             // 
             this.button_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button_cancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_cancel.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_cancel.Location = new System.Drawing.Point(13, 85);
             this.button_cancel.Margin = new System.Windows.Forms.Padding(4);
@@ -51,6 +53,7 @@
             // 
             this.button_delete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button_delete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_delete.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_delete.Location = new System.Drawing.Point(263, 85);
             this.button_delete.Margin = new System.Windows.Forms.Padding(4);
@@ -93,9 +96,10 @@
             this.Controls.Add(this.button_delete);
             this.Controls.Add(this.button_cancel);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "DialogDeleteMeter";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Удалить показания";
             this.ResumeLayout(false);
             this.PerformLayout();

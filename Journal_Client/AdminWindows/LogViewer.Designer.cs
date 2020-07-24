@@ -86,6 +86,7 @@
             // 
             this.button_refresh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_refresh.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_refresh.Location = new System.Drawing.Point(14, 455);
             this.button_refresh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

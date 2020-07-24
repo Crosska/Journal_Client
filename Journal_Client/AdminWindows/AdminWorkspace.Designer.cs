@@ -35,15 +35,15 @@
             this.button_clear_log = new System.Windows.Forms.Button();
             this.button_open_prg_log = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textbox_new_login = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.richtextbox_fio = new System.Windows.Forms.RichTextBox();
+            this.button_create_new = new System.Windows.Forms.Button();
+            this.radiobutton_admin = new System.Windows.Forms.RadioButton();
+            this.radiobutton_user = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.textbox_new_password = new System.Windows.Forms.TextBox();
-            this.radiobutton_user = new System.Windows.Forms.RadioButton();
-            this.radiobutton_admin = new System.Windows.Forms.RadioButton();
-            this.button_create_new = new System.Windows.Forms.Button();
-            this.richtextbox_fio = new System.Windows.Forms.RichTextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textbox_new_login = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.datagridview)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -113,6 +113,7 @@
             this.button_clear_log.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button_clear_log.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button_clear_log.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_clear_log.Location = new System.Drawing.Point(16, 68);
             this.button_clear_log.Name = "button_clear_log";
             this.button_clear_log.Size = new System.Drawing.Size(195, 40);
@@ -125,6 +126,7 @@
             // 
             this.button_open_prg_log.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_open_prg_log.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_open_prg_log.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_open_prg_log.Location = new System.Drawing.Point(16, 24);
             this.button_open_prg_log.Name = "button_open_prg_log";
@@ -155,21 +157,58 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Создание пользователя";
             // 
-            // textbox_new_login
+            // label3
             // 
-            this.textbox_new_login.Location = new System.Drawing.Point(16, 167);
-            this.textbox_new_login.Name = "textbox_new_login";
-            this.textbox_new_login.Size = new System.Drawing.Size(195, 26);
-            this.textbox_new_login.TabIndex = 0;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 20);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "ФИО";
             // 
-            // label1
+            // richtextbox_fio
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 144);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Логин";
+            this.richtextbox_fio.Location = new System.Drawing.Point(16, 47);
+            this.richtextbox_fio.Name = "richtextbox_fio";
+            this.richtextbox_fio.Size = new System.Drawing.Size(195, 94);
+            this.richtextbox_fio.TabIndex = 7;
+            this.richtextbox_fio.Text = "";
+            // 
+            // button_create_new
+            // 
+            this.button_create_new.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_create_new.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_create_new.Location = new System.Drawing.Point(95, 250);
+            this.button_create_new.Name = "button_create_new";
+            this.button_create_new.Size = new System.Drawing.Size(116, 54);
+            this.button_create_new.TabIndex = 6;
+            this.button_create_new.Text = "Создать";
+            this.button_create_new.UseVisualStyleBackColor = true;
+            this.button_create_new.Click += new System.EventHandler(this.button_create_new_Click);
+            // 
+            // radiobutton_admin
+            // 
+            this.radiobutton_admin.AutoSize = true;
+            this.radiobutton_admin.Location = new System.Drawing.Point(16, 280);
+            this.radiobutton_admin.Name = "radiobutton_admin";
+            this.radiobutton_admin.Size = new System.Drawing.Size(73, 24);
+            this.radiobutton_admin.TabIndex = 5;
+            this.radiobutton_admin.Text = "Admin";
+            this.radiobutton_admin.UseVisualStyleBackColor = true;
+            this.radiobutton_admin.CheckedChanged += new System.EventHandler(this.radiobutton_admin_CheckedChanged);
+            // 
+            // radiobutton_user
+            // 
+            this.radiobutton_user.AutoSize = true;
+            this.radiobutton_user.Checked = true;
+            this.radiobutton_user.Location = new System.Drawing.Point(16, 250);
+            this.radiobutton_user.Name = "radiobutton_user";
+            this.radiobutton_user.Size = new System.Drawing.Size(59, 24);
+            this.radiobutton_user.TabIndex = 4;
+            this.radiobutton_user.TabStop = true;
+            this.radiobutton_user.Text = "User";
+            this.radiobutton_user.UseVisualStyleBackColor = true;
+            this.radiobutton_user.CheckedChanged += new System.EventHandler(this.radiobutton_user_CheckedChanged);
             // 
             // label2
             // 
@@ -187,57 +226,21 @@
             this.textbox_new_password.Size = new System.Drawing.Size(195, 26);
             this.textbox_new_password.TabIndex = 2;
             // 
-            // radiobutton_user
+            // label1
             // 
-            this.radiobutton_user.AutoSize = true;
-            this.radiobutton_user.Checked = true;
-            this.radiobutton_user.Location = new System.Drawing.Point(16, 250);
-            this.radiobutton_user.Name = "radiobutton_user";
-            this.radiobutton_user.Size = new System.Drawing.Size(59, 24);
-            this.radiobutton_user.TabIndex = 4;
-            this.radiobutton_user.TabStop = true;
-            this.radiobutton_user.Text = "User";
-            this.radiobutton_user.UseVisualStyleBackColor = true;
-            this.radiobutton_user.CheckedChanged += new System.EventHandler(this.radiobutton_user_CheckedChanged);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 144);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Логин";
             // 
-            // radiobutton_admin
+            // textbox_new_login
             // 
-            this.radiobutton_admin.AutoSize = true;
-            this.radiobutton_admin.Location = new System.Drawing.Point(16, 280);
-            this.radiobutton_admin.Name = "radiobutton_admin";
-            this.radiobutton_admin.Size = new System.Drawing.Size(73, 24);
-            this.radiobutton_admin.TabIndex = 5;
-            this.radiobutton_admin.Text = "Admin";
-            this.radiobutton_admin.UseVisualStyleBackColor = true;
-            this.radiobutton_admin.CheckedChanged += new System.EventHandler(this.radiobutton_admin_CheckedChanged);
-            // 
-            // button_create_new
-            // 
-            this.button_create_new.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_create_new.Location = new System.Drawing.Point(95, 250);
-            this.button_create_new.Name = "button_create_new";
-            this.button_create_new.Size = new System.Drawing.Size(116, 54);
-            this.button_create_new.TabIndex = 6;
-            this.button_create_new.Text = "Создать";
-            this.button_create_new.UseVisualStyleBackColor = true;
-            this.button_create_new.Click += new System.EventHandler(this.button_create_new_Click);
-            // 
-            // richtextbox_fio
-            // 
-            this.richtextbox_fio.Location = new System.Drawing.Point(16, 47);
-            this.richtextbox_fio.Name = "richtextbox_fio";
-            this.richtextbox_fio.Size = new System.Drawing.Size(195, 94);
-            this.richtextbox_fio.TabIndex = 7;
-            this.richtextbox_fio.Text = "";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 20);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "ФИО";
+            this.textbox_new_login.Location = new System.Drawing.Point(16, 167);
+            this.textbox_new_login.Name = "textbox_new_login";
+            this.textbox_new_login.Size = new System.Drawing.Size(195, 26);
+            this.textbox_new_login.TabIndex = 0;
             // 
             // AdminWorkspace
             // 

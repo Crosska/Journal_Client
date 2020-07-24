@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatabaseJournalAllReg));
             this.datagridview = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radiobutton_date_obhoda = new System.Windows.Forms.RadioButton();
@@ -148,6 +149,7 @@
             // button_do_select
             // 
             this.button_do_select.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_do_select.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_do_select.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_do_select.Location = new System.Drawing.Point(245, 540);
             this.button_do_select.Margin = new System.Windows.Forms.Padding(4);
@@ -161,6 +163,7 @@
             // button_export
             // 
             this.button_export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_export.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_export.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_export.Location = new System.Drawing.Point(810, 540);
             this.button_export.Margin = new System.Windows.Forms.Padding(4);
@@ -284,6 +287,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.datagridview);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DatabaseJournalAllReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

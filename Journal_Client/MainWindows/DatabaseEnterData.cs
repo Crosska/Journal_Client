@@ -47,7 +47,7 @@ namespace Journal_Client
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.ToString());
+                //MessageBox.Show(error.ToString());
             }
             finally
             {
@@ -76,7 +76,7 @@ namespace Journal_Client
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.ToString());
+                //MessageBox.Show(error.ToString());
             }
             finally
             {
@@ -148,7 +148,7 @@ namespace Journal_Client
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.ToString());
+                //MessageBox.Show(error.ToString());
             }
             finally
             {
@@ -183,5 +183,7 @@ namespace Journal_Client
                 con.Close();
             }
         }
+
     }
+
 }

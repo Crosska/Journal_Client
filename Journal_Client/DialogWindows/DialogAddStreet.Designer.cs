@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogAddStreet));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.date_active = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,6 +77,7 @@
             // button_add
             // 
             this.button_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button_add.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_add.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_add.Location = new System.Drawing.Point(222, 122);
             this.button_add.Name = "button_add";
@@ -88,6 +90,7 @@
             // button_close
             // 
             this.button_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button_close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_close.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_close.Location = new System.Drawing.Point(6, 122);
             this.button_close.Name = "button_close";
@@ -126,9 +129,10 @@
             this.ClientSize = new System.Drawing.Size(477, 196);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DialogAddStreet";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавление улицы";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

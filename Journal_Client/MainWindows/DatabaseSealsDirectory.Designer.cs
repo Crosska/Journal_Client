@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatabaseSealsDirectory));
             this.label1 = new System.Windows.Forms.Label();
             this.textbox_number_seal = new System.Windows.Forms.TextBox();
             this.button_add_seal = new System.Windows.Forms.Button();
@@ -60,6 +61,7 @@
             // button_add_seal
             // 
             this.button_add_seal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button_add_seal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_add_seal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_add_seal.Location = new System.Drawing.Point(6, 81);
             this.button_add_seal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -96,6 +98,8 @@
             // 
             // combobox_sealer_list
             // 
+            this.combobox_sealer_list.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.combobox_sealer_list.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combobox_sealer_list.FormattingEnabled = true;
             this.combobox_sealer_list.Location = new System.Drawing.Point(6, 49);
             this.combobox_sealer_list.Name = "combobox_sealer_list";
@@ -105,6 +109,7 @@
             // button_delete_seal
             // 
             this.button_delete_seal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button_delete_seal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_delete_seal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_delete_seal.Location = new System.Drawing.Point(6, 81);
             this.button_delete_seal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -133,6 +138,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DatabaseSealsDirectory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

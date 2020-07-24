@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorkerWorkspace));
             this.button_in_out_journal = new System.Windows.Forms.Button();
             this.button_inventory_journal = new System.Windows.Forms.Button();
             this.label_server = new System.Windows.Forms.Label();
@@ -68,7 +69,7 @@
             this.button_inventory_journal.Location = new System.Drawing.Point(6, 102);
             this.button_inventory_journal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_inventory_journal.Name = "button_inventory_journal";
-            this.button_inventory_journal.Size = new System.Drawing.Size(367, 77);
+            this.button_inventory_journal.Size = new System.Drawing.Size(367, 87);
             this.button_inventory_journal.TabIndex = 4;
             this.button_inventory_journal.Text = "Инвентаризация";
             this.button_inventory_journal.UseVisualStyleBackColor = true;
@@ -87,10 +88,10 @@
             // button_seales_directory
             // 
             this.button_seales_directory.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_seales_directory.Location = new System.Drawing.Point(6, 100);
+            this.button_seales_directory.Location = new System.Drawing.Point(6, 102);
             this.button_seales_directory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_seales_directory.Name = "button_seales_directory";
-            this.button_seales_directory.Size = new System.Drawing.Size(367, 92);
+            this.button_seales_directory.Size = new System.Drawing.Size(367, 87);
             this.button_seales_directory.TabIndex = 5;
             this.button_seales_directory.Text = "Список пломбираторов";
             this.button_seales_directory.UseVisualStyleBackColor = true;
@@ -99,10 +100,10 @@
             // button_controllers_directory
             // 
             this.button_controllers_directory.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_controllers_directory.Location = new System.Drawing.Point(6, 200);
+            this.button_controllers_directory.Location = new System.Drawing.Point(6, 197);
             this.button_controllers_directory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_controllers_directory.Name = "button_controllers_directory";
-            this.button_controllers_directory.Size = new System.Drawing.Size(367, 83);
+            this.button_controllers_directory.Size = new System.Drawing.Size(367, 87);
             this.button_controllers_directory.TabIndex = 4;
             this.button_controllers_directory.Text = "Список контролеров";
             this.button_controllers_directory.UseVisualStyleBackColor = true;
@@ -114,7 +115,7 @@
             this.button_sealers_controllers_links.Location = new System.Drawing.Point(6, 7);
             this.button_sealers_controllers_links.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_sealers_controllers_links.Name = "button_sealers_controllers_links";
-            this.button_sealers_controllers_links.Size = new System.Drawing.Size(367, 85);
+            this.button_sealers_controllers_links.Size = new System.Drawing.Size(367, 87);
             this.button_sealers_controllers_links.TabIndex = 3;
             this.button_sealers_controllers_links.Text = "Связи пломбираторов и контролеров";
             this.button_sealers_controllers_links.UseVisualStyleBackColor = true;
@@ -154,9 +155,9 @@
             // 
             this.button_enter_data.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_enter_data.Font = new System.Drawing.Font("Century Gothic", 18F);
-            this.button_enter_data.Location = new System.Drawing.Point(6, 170);
+            this.button_enter_data.Location = new System.Drawing.Point(6, 196);
             this.button_enter_data.Name = "button_enter_data";
-            this.button_enter_data.Size = new System.Drawing.Size(367, 74);
+            this.button_enter_data.Size = new System.Drawing.Size(367, 87);
             this.button_enter_data.TabIndex = 2;
             this.button_enter_data.Text = "Занесение показаний";
             this.button_enter_data.UseVisualStyleBackColor = true;
@@ -166,10 +167,10 @@
             // 
             this.button_registry_request.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_registry_request.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_registry_request.Location = new System.Drawing.Point(6, 89);
+            this.button_registry_request.Location = new System.Drawing.Point(6, 102);
             this.button_registry_request.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_registry_request.Name = "button_registry_request";
-            this.button_registry_request.Size = new System.Drawing.Size(367, 74);
+            this.button_registry_request.Size = new System.Drawing.Size(367, 87);
             this.button_registry_request.TabIndex = 1;
             this.button_registry_request.Text = "Регистрации заявок";
             this.button_registry_request.UseVisualStyleBackColor = true;
@@ -182,7 +183,7 @@
             this.button_registry_area.Location = new System.Drawing.Point(6, 7);
             this.button_registry_area.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_registry_area.Name = "button_registry_area";
-            this.button_registry_area.Size = new System.Drawing.Size(367, 74);
+            this.button_registry_area.Size = new System.Drawing.Size(367, 87);
             this.button_registry_area.TabIndex = 0;
             this.button_registry_area.Text = "Регистрация участков";
             this.button_registry_area.UseVisualStyleBackColor = true;
@@ -217,10 +218,10 @@
             // button_jurnal_reg
             // 
             this.button_jurnal_reg.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_jurnal_reg.Location = new System.Drawing.Point(6, 187);
+            this.button_jurnal_reg.Location = new System.Drawing.Point(6, 197);
             this.button_jurnal_reg.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button_jurnal_reg.Name = "button_jurnal_reg";
-            this.button_jurnal_reg.Size = new System.Drawing.Size(367, 77);
+            this.button_jurnal_reg.Size = new System.Drawing.Size(367, 87);
             this.button_jurnal_reg.TabIndex = 5;
             this.button_jurnal_reg.Text = "Регистрации заявок";
             this.button_jurnal_reg.UseVisualStyleBackColor = true;
@@ -246,6 +247,7 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.tab_control);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "WorkerWorkspace";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

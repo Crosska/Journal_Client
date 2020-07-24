@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatabaseInOutJournal));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radiobutton_all = new System.Windows.Forms.RadioButton();
             this.radiobutton_select_for_controller = new System.Windows.Forms.RadioButton();
@@ -171,6 +172,8 @@
             // 
             // combobox_controller
             // 
+            this.combobox_controller.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.combobox_controller.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combobox_controller.FormattingEnabled = true;
             this.combobox_controller.Location = new System.Drawing.Point(14, 279);
             this.combobox_controller.Name = "combobox_controller";
@@ -238,6 +241,7 @@
             // button_export
             // 
             this.button_export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_export.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_export.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_export.Location = new System.Drawing.Point(742, 478);
             this.button_export.Name = "button_export";
@@ -250,6 +254,7 @@
             // button_do_select
             // 
             this.button_do_select.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_do_select.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_do_select.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_do_select.Location = new System.Drawing.Point(214, 478);
             this.button_do_select.Name = "button_do_select";
@@ -272,6 +277,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DatabaseInOutJournal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

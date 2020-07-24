@@ -98,5 +98,11 @@ namespace Journal_Client.StartWindows
         {
             combobox_district.SelectedIndex = 0;
         }
+
+        private void clear(object sender, EventArgs e)
+        {
+            textbox_login.Text = "";
+            textbox_password.Text = "";
+        }
     }
 }
